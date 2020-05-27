@@ -14,7 +14,7 @@
         "outputPath": "/Users/reid/Desktop/ChatApp/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.config/NuGet/NuGet.Config"
+          "/Users/reid/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -80,7 +80,7 @@
         "outputPath": "/Users/reid/Desktop/ChatApp/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.config/NuGet/NuGet.Config"
+          "/Users/reid/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -133,7 +133,7 @@
         "outputPath": "/Users/reid/Desktop/ChatApp/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.config/NuGet/NuGet.Config"
+          "/Users/reid/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"

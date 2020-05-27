@@ -1,1 +1,11 @@
+container-fluid {
+   height: 100%;
+}
+
+div {
+   border: black solid .5px !important;
+   position: absolute;
+   height: 100%;
+   width: 100%;
+}
 
