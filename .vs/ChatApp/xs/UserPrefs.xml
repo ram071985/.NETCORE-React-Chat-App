@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/App.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/index.css">
     <Files>
-      <File FileName="API/client/src/index.js" Line="1" Column="1" />
-      <File FileName="API/client/src/index.css" Line="3" Column="2" />
-      <File FileName="API/client/public/index.html" Line="26" Column="10" />
-      <File FileName="API/client/src/EmptyJSFile.js" Line="24" Column="15" />
-      <File FileName="API/client/src/App.js" Line="22" Column="11" />
+      <File FileName="API/client/src/index.js" Line="8" Column="21" />
+      <File FileName="API/client/src/index.css" Line="49" Column="15" />
+      <File FileName="API/client/src/EmptyJSFile.js" Line="21" Column="21" />
+      <File FileName="API/client/public/index.html" Line="30" Column="9" />
+      <File FileName="API/client/src/App.js" Line="7" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +15,7 @@
               <Node name="client" expanded="True">
                 <Node name="public" expanded="True" />
                 <Node name="src" expanded="True">
-                  <Node name="App.js" selected="True" />
+                  <Node name="index.css" selected="True" />
                 </Node>
               </Node>
             </Node>

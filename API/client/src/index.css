@@ -1,5 +1,6 @@
-container-fluid {
+/*.container-fluid {
    height: 100%;
+   font-size: 16px;
 }
 
 div {
@@ -8,4 +9,78 @@ div {
    height: 100%;
    width: 100%;
 }
+
+div.col {
+   background-color: #350d36;
+}
+
+#users-h1 {
+    color: white !important;
+    text-align: center;
+    opacity: 0.95;
+    padding-top: 40px;
+}
+
+hr {
+    border-top: 1px solid white !important;
+    width: 100%;
+}
+    */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+div {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    margin: 0 0;
+}
+
+#one.col-4 h1 {
+    padding-top: 10px;
+    margin: auto;
+}
+
+#one.col-4 {
+    margin: .6px 20px 0px 0px;
+    position: fixed;
+    left: 0px;
+    border: 1px solid black;
+    height: 75px;
+    width: 25%;
+    text-align: center;
+}
+
+#two.col-4 {
+    padding-top: 40px;
+    position: absolute;
+    left: 300px;
+}
+
+#three.col-4 {
+    position: fixed;
+    left: 0px;
+    top: 76px;
+    width: 25%;
+    border: 1px solid black;
+    padding-top: 20px;
+}
+
+#four.col-4 {
+    position: fixed;
+
+}
+
+
+
+
+
+
+
+
+
 
