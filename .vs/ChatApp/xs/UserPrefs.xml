@@ -1,9 +1,24 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/EmptyJSFile.js">
+    <Files>
+      <File FileName="API/client/src/index.js" Line="1" Column="1" />
+      <File FileName="API/client/src/index.css" Line="1" Column="1" />
+      <File FileName="API/client/public/index.html" Line="30" Column="9" />
+      <File FileName="API/client/src/EmptyJSFile.js" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ChatApp" expanded="True" selected="True" />
+          <Node name="ChatApp" expanded="True">
+            <Node name="API" expanded="True">
+              <Node name="client" expanded="True">
+                <Node name="public" expanded="True" />
+                <Node name="src" expanded="True">
+                  <Node name="EmptyJSFile.js" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
