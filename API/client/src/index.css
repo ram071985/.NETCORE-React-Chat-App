@@ -31,50 +31,91 @@ html, body {
     width: 100%;
 }
 
-div {
-    width: 100%;
-    height: 100%;
-}
 
 .container {
+    height: 100%;
+    width: 100%;
     margin: 0 0;
 }
 
-#one.col-4 h1 {
+
+#one.col h2 {
     padding-top: 10px;
     margin: auto;
+    color: #FFFFFF;
+    opacity: 0.9;
 }
 
-#one.col-4 {
-    margin: .6px 20px 0px 0px;
+#three.col h6 {
+    padding: 5px 5px 5px 0px;
+    margin: auto;
+    color: #FFFFFF;
+    opacity: 0.89;
+}
+
+#two.col h6 {
     position: fixed;
-    left: 0px;
-    border: 1px solid black;
-    height: 75px;
-    width: 25%;
-    text-align: center;
+    opacity: 0.9;
+    left: 30%;
+    
 }
 
-#two.col-4 {
+#two.col p  {
+    padding: 18px 10px 3px 0;
+    position: fixed;
+    opacity: 0.9;
+    left: 30%;
+
+}
+
+#one.col {
+    margin: 0;
+    position: fixed;
+    display: block;
+    left: 0%;
+    border-style: solid;
+    border-width: 1px;
+    height: 8%;
+    width: 25%;
+    text-align: left;
+    background: #3F0E40;
+}
+
+#two.col {
     padding-top: 40px;
-    position: absolute;
-    left: 300px;
+    position: fixed;
+    display: block;
+    left: 25%;
+    width: 75%;
+    border: 1px solid white;
+    height: 100%;
 }
 
-#three.col-4 {
+#three.col {
     position: fixed;
-    left: 0px;
+    display: block;
+    left: 0%;
     top: 76px;
+    height: 92%;
     width: 25%;
-    border: 1px solid black;
-    padding-top: 20px;
+    background: #3F0E40;
 }
 
-#four.col-4 {
+#four.col {
     position: fixed;
-
+    top: 90%;
+    width: 65%;
+    left: 30%;
+    height: 6.5%;
+   align-items: center;
+    
 }
 
+/* form */
+
+.form-control {
+    margin-top: 5px;
+}
 
 
 
