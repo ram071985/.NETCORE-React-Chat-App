@@ -39,34 +39,14 @@ html, body {
 }
 
 
-#one.col h2 {
-    padding-top: 10px;
+#one.col h5 {
+    padding-top:40px;
     margin: auto;
     color: #FFFFFF;
     opacity: 0.9;
 }
 
-#three.col h6 {
-    padding: 5px 5px 5px 0px;
-    margin: auto;
-    color: #FFFFFF;
-    opacity: 0.89;
-}
-
-#two.col h6 {
-    position: fixed;
-    opacity: 0.9;
-    left: 30%;
-    
-}
-
-#two.col p  {
-    padding: 18px 10px 3px 0;
-    position: fixed;
-    opacity: 0.9;
-    left: 30%;
-
-}
+/*   First column  */
 
 #one.col {
     margin: 0;
@@ -81,6 +61,8 @@ html, body {
     background: #3F0E40;
 }
 
+/*   Second column  */
+
 #two.col {
     padding-top: 40px;
     position: fixed;
@@ -91,6 +73,22 @@ html, body {
     height: 100%;
 }
 
+    #two.col h6 {
+        position: fixed;
+        opacity: 0.9;
+        left: 30%;
+        display: inline-block;
+    }
+
+    #two.col p {
+        padding: 18px 10px 3px 0;
+        position: fixed;
+        opacity: 0.9;
+        left: 30%;
+    }
+
+/*   Third column  */
+
 #three.col {
     position: fixed;
     display: block;
@@ -100,6 +98,19 @@ html, body {
     width: 25%;
     background: #3F0E40;
 }
+#three.col h6 {
+    padding: 5px 5px 5px 10px;
+    left: 30%;
+    margin: auto;
+    color: #FFFFFF;
+    opacity: 0.89;
+    }
+
+.user-icon.container {
+    height: 3%;
+}
+
+/*   Fourth column  */
 
 #four.col {
     position: fixed;
