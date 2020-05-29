@@ -124,10 +124,30 @@ html, body {
 
 /* form */
 
-.form-control {
-    margin-top: 5px;
+.btn.submit-button {
+    color: white !important;
+    background: #3F0E40;
 }
 
+    .btn.submit-button:hover {
+        text-decoration: none !important;
+        background: #3F0E40 !important;
+      
+    }
+.btn.submit-button:focus, .btn.submit-button:active {
+    outline: none !important;
+    box-shadow: none;
+    outline-style: none !important;
+    outline-color: none;
+}
+
+input[type="button"] {
+    outline: none !important;
+}
+
+    input[type="button"]::-moz-focus-inner {
+        border: 0 !important;
+    }
 
 
 
