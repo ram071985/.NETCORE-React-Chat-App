@@ -1,7 +1,8 @@
 ﻿import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 import "./index.css";
+import { Circle } from 'react-feather';
 
 
 
@@ -9,18 +10,37 @@ class ChatRoom extends Component {
     constructor() {
         super();
         this.state = {
-
+         
         };
     }
 
+    UserOneIcon = () => {
+        return (
+            <Container className="user-icon">
+                <Circle className="d-inline-block" color="white" width="12" height="12" />
+                <h6 className="d-inline">You</h6>
+            </Container>
+        )
+    }
+
+    UserTwoIcon = () => {
+        return (
+            <Container className="user-icon">
+                <Circle className="d-inline-block" color="white" width="12" height="12" />
+                <h6 className="d-inline">Ricky Bobby</h6>
+            </Container>
+        )
+    }
+
+
     render() {
         return (
-      <div class="container">
-        <div class="row">
-          <div class="col" id="one">
-            <h2>Users</h2>
+      <div className="container">
+        <div className="row">
+          <div className="col" id="one">
+            <h5>Users</h5>
           </div>
-                    <div class="col" id="two">
+                    <div className="col" id="two">
                         <br />
                         <br />
                         <h6>Ricky Bobby:</h6>
@@ -29,7 +49,7 @@ class ChatRoom extends Component {
                         <br />
                         <hr />             
                         <h6>You:</h6>
-                        <p>Ricky, just got to the grocery store.........</p>
+                        <p>Ricky, just go to the grocery store.........</p>
                         <br />
                         <br />
                         <hr />
@@ -59,12 +79,14 @@ class ChatRoom extends Component {
                         <br />
                         <hr />
           </div> 
-                    <div class="col" id="three">
-                        <br />                       
-                        <h6>You</h6>
-                        <h6>Ricky Bobby</h6>
+                    <div className="col" id="three">
+                        <br />
+                        {this.UserOneIcon()}
+                        {this.UserTwoIcon()}
+
+                       
           </div>
-          <div class="col" id="four">
+          <div className="col" id="four">
             <Form.Group>
                             <Form.Control type="text" placeholder="Message" />
                             </Form.Group>
