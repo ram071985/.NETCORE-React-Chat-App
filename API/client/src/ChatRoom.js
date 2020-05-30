@@ -7,10 +7,20 @@ import { Circle } from "react-feather";
 class ChatRoom extends Component {
   constructor() {
     super();
-    this.state = {};
+      this.state = {
+          userSelf: [{
+              name: 'You',
+              messages: [
+                  { text: 'Ricky, just go to the grocery store.........' },
+                  { text: 'Ricky, just go to the grocery store.........' }
+              ]
+          }]      
+    };
   }
 
-  UserOneIcon = () => {
+
+
+  userOneIcon = () => {
     return (
       <Container className="user-icon">
         <Circle
@@ -24,7 +34,7 @@ class ChatRoom extends Component {
     );
   };
 
-  UserTwoIcon = () => {
+  userTwoIcon = () => {
     return (
       <Container className="user-icon">
         <Circle
@@ -38,7 +48,22 @@ class ChatRoom extends Component {
     );
   };
 
-  render() {
+    render() {
+
+        console.log()
+
+      const userSelfMessages = this.state.userSelf.map((user, index) => {
+          return (
+        <div key={index}>
+        <br />
+        <br />
+        <hr />
+        <h6>{user.name}:</h6>
+        <p>{user.messages[index].text}</p>
+            </div>
+          )
+    });
+
     return (
       <div className="container">
         <div className="row">
@@ -46,63 +71,26 @@ class ChatRoom extends Component {
             <h5>Users</h5>
           </div>
           <div className="col" id="two">
-            <br />
-            <br />
-            <h6>Ricky Bobby:</h6>
-            <p>
-              Can anyone on here please tell me where I can find some shake n'
-              bake??!!!
-            </p>
-            <br />
-            <br />
-            <hr />
-            <h6>You:</h6>
-            <p>Ricky, just go to the grocery store.........</p>
-            <br />
-            <br />
-            <hr />
-            <h6>Ricky:</h6>
-            <p>Ten, four!</p>
-            <br />
-            <br />
-            <hr />
-            <h6>Ricky:</h6>
-            <p>Can you give me a ride to the grocery store?</p>
-            <br />
-            <br />
-            <hr />
-            <h6>You:</h6>
-            <p>Why don't you drive yourself?</p>
-            <br />
-            <br />
-            <hr />
-            <h6>Ricky:</h6>
-            <p>I only drive my race car Reid...</p>
-            <br />
-            <br />
-            <hr />
-            <h6>You:</h6>
-            <p>That's too bad Ricky, you're a prima donna.</p>
-            <br />
-            <br />
-            <hr />
+            {userSelfMessages}
           </div>
           <div className="col" id="three">
             <br />
-            {this.UserOneIcon()}
-            {this.UserTwoIcon()}
+            {this.userOneIcon()}
+            {this.userTwoIcon()}
           </div>
           <div className="col" id="four">
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            placeholder="Message"
-                            aria-label="Recipient's message"
-                            aria-describedby="basic-addon2"
-                        />
-                        <InputGroup.Append>
-                            <Button className="submit-button" variant="outline-secondary">Submit</Button>
-                        </InputGroup.Append>
-                    </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Message"
+                aria-label="Recipient's message"
+                aria-describedby="basic-addon2"
+              />
+              <InputGroup.Append>
+                <Button className="submit-button" variant="outline-secondary">
+                  Send
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
           </div>
         </div>
       </div>

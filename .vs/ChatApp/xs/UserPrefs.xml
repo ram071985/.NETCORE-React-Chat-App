@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/index.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
     <Files>
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
-      <File FileName="API/client/src/index.css" Line="43" Column="19" />
-      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="API/client/src/index.css" />
+      <File FileName="API/client/src/ChatRoom.js" Line="17" Column="15" />
       <File FileName="API/client/public/index.html" />
       <File FileName="API/client/src/App.js" />
       <File FileName="API/client/package.json" />
@@ -14,8 +14,9 @@
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
+                <Node name="public" expanded="True" />
                 <Node name="src" expanded="True">
-                  <Node name="index.css" selected="True" />
+                  <Node name="ChatRoom.js" selected="True" />
                 </Node>
               </Node>
             </Node>
