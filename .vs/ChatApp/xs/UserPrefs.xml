@@ -4,11 +4,11 @@
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
       <File FileName="API/client/src/index.css" />
       <File FileName="API/client/src/ChatRoom.js" />
-      <File FileName="API/WeatherForecast.cs" Line="16" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="2" Column="32" />
-      <File FileName="API/Startup.cs" Line="13" Column="36" />
-      <File FileName="API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
-      <File FileName="API/Messages.cs" Line="10" Column="2" />
+      <File FileName="API/WeatherForecast.cs" />
+      <File FileName="API/Controllers/WeatherForecastController.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="23" Column="28" />
+      <File FileName="API/Messages.cs" />
+      <File FileName="API/Startup.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
