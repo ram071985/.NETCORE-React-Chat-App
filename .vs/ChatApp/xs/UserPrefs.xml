@@ -1,23 +1,23 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/MessagesController.cs">
     <Files>
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
       <File FileName="API/client/src/index.css" />
-      <File FileName="API/client/src/ChatRoom.js" Line="17" Column="1" />
-      <File FileName="API/client/public/index.html" />
-      <File FileName="API/client/src/App.js" />
-      <File FileName="API/client/package.json" />
+      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="API/WeatherForecast.cs" Line="16" Column="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="2" Column="32" />
+      <File FileName="API/Startup.cs" Line="13" Column="36" />
+      <File FileName="API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="API/Messages.cs" Line="10" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="client" expanded="True">
-                <Node name="public" expanded="True" />
-                <Node name="src" expanded="True">
-                  <Node name="ChatRoom.js" selected="True" />
-                </Node>
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="MessagesController.cs" selected="True" />
               </Node>
             </Node>
           </Node>
