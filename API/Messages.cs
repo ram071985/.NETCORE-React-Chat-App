@@ -3,8 +3,10 @@ namespace API
 {
     public class Messages
     {
-        public string Username { get; set; } = "";
+        public int id { get; set; } = 1;
 
-        public string Text { get; set; } = "";
+        public string username { get; set; } = "";
+
+        public string text { get; set; } = "";
     }
 }

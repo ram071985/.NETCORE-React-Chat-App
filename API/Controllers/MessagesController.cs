@@ -7,7 +7,7 @@ namespace API.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
 
     public class MessagesController : ControllerBase
     {
@@ -15,7 +15,9 @@ namespace API.Controllers
 
         public MessagesController()
         {
-            message.Add(new Messages { Username = "Reid", Text = "Hey there." });
+            message.Add(new Messages { id = 1, username = "Reid", text = "Hey there." });
+            message.Add(new Messages { id = 2, username = "Reid", text = "Hey there." });
+            message.Add(new Messages { id = 3, username = "Reid", text = "Hey there." });
         }
 
         public List<Messages> Get()
