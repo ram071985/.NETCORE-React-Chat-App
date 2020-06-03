@@ -20,9 +20,17 @@ namespace API.Controllers
             message.Add(new Messages { id = 3, username = "Reid", text = "Hey there." });
         }
 
+        [HttpGet]
         public List<Messages> Get()
         {
             return message;
         }
+
+        [HttpPost]
+        public void Post(Messages val)
+        {
+            message.Add(val);
+        }
+      
     }
 }
