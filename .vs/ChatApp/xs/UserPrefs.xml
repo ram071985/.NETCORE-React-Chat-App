@@ -6,7 +6,7 @@
       <File FileName="API/client/src/ChatRoom.js" />
       <File FileName="API/WeatherForecast.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="23" Column="28" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="32" Column="30" />
       <File FileName="API/Messages.cs" />
       <File FileName="API/Startup.cs" />
     </Files>
