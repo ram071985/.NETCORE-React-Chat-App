@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using API;
 
 [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
 
     public class UsersController : ControllerBase
     {
@@ -31,11 +31,11 @@ using API;
         }
 
     [HttpGet]
-    [Route("api/users/{id}")]
-    public List<Users> Get()
+    public Users Get()
     {
-        return user;
+        return user.Where(x => x.Id == IDesignTimeMvcBuilderConfiguration).FirstOrDefault();
     }
+
 
 
 }
