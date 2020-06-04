@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/MessagesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersContoller.cs">
     <Files>
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
       <File FileName="API/client/src/index.css" />
       <File FileName="API/client/src/ChatRoom.js" />
       <File FileName="API/WeatherForecast.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="32" Column="30" />
       <File FileName="API/Messages.cs" />
       <File FileName="API/Startup.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="9" Column="1" />
+      <File FileName="API/UsersController.cs" Line="2" Column="10" />
+      <File FileName="API/Controllers/UsersContoller.cs" Line="30" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,8 +18,11 @@
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
               <Node name="Dependencies" expanded="True" />
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True">
-                <Node name="MessagesController.cs" selected="True" />
+                <Node name="UsersContoller.cs" selected="True" />
               </Node>
             </Node>
           </Node>
