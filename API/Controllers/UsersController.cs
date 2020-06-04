@@ -6,32 +6,36 @@ using API;
 using System.Linq;
 
 [ApiController]
-    [Route("api/users")]
+[Route("api/users")]
 
-    public class UsersController : ControllerBase
-    {
-        List<Users> user = new List<Users>();
+ public class UsersController : ControllerBase
+ {
+        List<Users> users = new List<Users>();
 
         public UsersController()
         {
-            user.Add(new Users { id = 1, username = "Reid" });
-            user.Add(new Users { id = 2, username = "James" });
-            user.Add(new Users { id = 3, username = "Rick" });
+            users.Add(new Users { Id = 1, Username = "Reid" });
+            users.Add(new Users { Id = 2, Username = "James" });
+            users.Add(new Users { Id = 3, Username = "Rick" });
         }
 
-        public List<Users> Get()
+    [HttpGet]
+    public List<Users> Get()
         {
-            return user;
-        }
+            return users;
+    }
+    [HttpPost]
 
-        public void Post(Users val)
+    public void Post(Users val)
         {
-            user.Add(val);
+            users.Add(val);
         }
 
+    [HttpGet("{id}")]
     public Users Get(int id)
     {
-        return user.Where(x => x.Id == id).FirstOrDefault();
+        var user = users.FirstOrDefault(x => x.Id == id);
+        return user;
     }
 }
 

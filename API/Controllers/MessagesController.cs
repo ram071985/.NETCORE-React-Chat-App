@@ -23,7 +23,7 @@ namespace API.Controllers
         [HttpGet]
         public List<Messages> Get()
         {
-            return message;  
+            return message;
         }
 
         [HttpPost]
