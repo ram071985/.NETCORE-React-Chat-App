@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersContoller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Users.cs">
     <Files>
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
       <File FileName="API/client/src/index.css" />
@@ -8,9 +8,9 @@
       <File FileName="API/Controllers/WeatherForecastController.cs" />
       <File FileName="API/Messages.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="9" Column="1" />
-      <File FileName="API/UsersController.cs" Line="2" Column="10" />
-      <File FileName="API/Controllers/UsersContoller.cs" Line="30" Column="6" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="31" Column="36" />
+      <File FileName="API/Controllers/UsersController.cs" />
+      <File FileName="API/Users.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,10 +21,11 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="UsersContoller.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Users.cs" selected="True" />
             </Node>
+            <Node name="Core" expanded="True" />
+            <Node name="Infrastructure" expanded="True" />
           </Node>
         </State>
       </Pad>
