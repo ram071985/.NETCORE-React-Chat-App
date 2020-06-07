@@ -32,17 +32,34 @@ namespace API.Controllers
 
             // Retrieve all rows
             await using (var cmd = new NpgsqlCommand("SELECT * FROM messages", conn))
-            await using (var reader = await cmd.ExecuteReaderAsync())
-                while (await reader.ReadAsync())
-                    var data = reader[0];
-           
+            {
+                await using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var id = reader[0]; 
+                        var userId = reader[1];
+                        var text = reader[2];
+                        var createdDate = reader[3];
 
+                    }
+                }
+            }
+                           
         }
 
-        [HttpPost]
-        public void Post(Messages val)
+        [HttpPost("/post")]
+        public async System.Threading.Tasks.Task PostAsync()
         {
-            message.Add(val);
+            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+
+            await using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+            using (var cmd = new NpgsqlCommand("INSERT INTO messages (id, user_id, text) VALUES (@p)", conn))
+            {
+                cmd.Parameters.AddWithValue("p", (NpgsqlTypes.NpgsqlDbType)2, 24, "Here is a post.");
+                cmd.ExecuteNonQuery();
+            }
         }
       
     }
