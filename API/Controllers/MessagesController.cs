@@ -48,8 +48,8 @@ namespace API.Controllers
                            
         }
 
-        [HttpPost("/post")]
-        public async System.Threading.Tasks.Task PostAsync()
+        [HttpPost]
+        public async System.Threading.Tasks.Task PostAsync(UserInput userInput)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
