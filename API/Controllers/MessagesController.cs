@@ -55,9 +55,12 @@ namespace API.Controllers
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var cmd = new NpgsqlCommand("INSERT INTO messages (id, user_id, text) VALUES (@p)", conn))
+            using (var cmd = new NpgsqlCommand("INSERT INTO messages (id, user_id, text, created_date) VALUES (@id, @user_id, @text, @created_date)", conn))
             {
-                cmd.Parameters.AddWithValue("p", (NpgsqlTypes.NpgsqlDbType)2, 24, "Here is a post.");
+                cmd.Parameters.AddWithValue("@id", userInput.Id);
+                cmd.Parameters.AddWithValue("@user_id", userInput.UserId);
+                cmd.Parameters.AddWithValue("@text", userInput.Text);
+                cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
         }
