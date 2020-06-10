@@ -27,17 +27,18 @@ namespace API.Controllers
             {
                 await using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    List<Messages> message = new List<Messages>();
+                    List<Messages> messageList = new List<Messages>();
 
                     while (await reader.ReadAsync())
                     {
-                        message.Add(new Messages());
-                        var id = reader[0];
-                        var userName = reader[1];
-                        var text = reader[2];
-               
+                        var message = new Messages();
+                        message.Id = (int)reader[0];
+                        message.UserName = (string)reader[1];
+                        message.Text = (string)reader[2];
+                        messageList.Add(message);
+                    
                     }
-                    return message;
+                    return messageList;
                 }
             }
                            
