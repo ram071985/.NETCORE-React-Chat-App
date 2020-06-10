@@ -12,18 +12,10 @@ namespace API.Controllers
 
     public class MessagesController : ControllerBase
     {
-        List<Messages> message = new List<Messages>();
-
-
-        public MessagesController()
-        {
-            message.Add(new Messages { id = 1, username = "Reid", text = "Hey there." });
-            message.Add(new Messages { id = 2, username = "Reid", text = "Hey there." });
-            message.Add(new Messages { id = 3, username = "Reid", text = "Hey there." });
-        }
+        
 
         [HttpGet]
-        public async System.Threading.Tasks.Task GetAsync()
+        public async System.Threading.Tasks.Task<List<Messages>> GetAsync()
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -35,14 +27,17 @@ namespace API.Controllers
             {
                 await using (var reader = await cmd.ExecuteReaderAsync())
                 {
+                    List<Messages> message = new List<Messages>();
+
                     while (await reader.ReadAsync())
                     {
-                        var id = reader[0]; 
-                        var userId = reader[1];
+                        message.Add(new Messages());
+                        var id = reader[0];
+                        var userName = reader[1];
                         var text = reader[2];
-                        var createdDate = reader[3];
-
+               
                     }
+                    return message;
                 }
             }
                            

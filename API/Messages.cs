@@ -3,10 +3,11 @@ namespace API
 {
     public class Messages
     {
-        public int id { get; set; }
+        public static int Id { get; set; }
 
-        public string username { get; set; }
+        public static string UserName { get; set; }
 
-        public string text { get; set; }
+        public static string Text { get; set; }
+
     }
 }
