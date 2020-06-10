@@ -33,8 +33,9 @@ namespace API.Controllers
                     {
                         var message = new Messages();
                         message.Id = (int)reader[0];
-                        message.UserName = (string)reader[1];
-                        message.Text = (string)reader[2];
+                        message.UserName = reader[1].ToString();
+                        message.Text = reader[2].ToString();
+                        message.CreatedDate = (DateTime)reader[3];
                         messageList.Add(message);
                     
                     }
