@@ -1,7 +1,7 @@
 ﻿using System;
 namespace API
 {
-    public class UserInput
+    public class UserInputMessages
     {
        
         public int Id { get; set; }
