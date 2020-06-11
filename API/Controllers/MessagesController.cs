@@ -33,7 +33,7 @@ namespace API.Controllers
                     {
                         var message = new Messages();
                         message.Id = (int)reader[0];
-                        message.UserName = reader[1].ToString();
+                        message.UserId = reader[1].ToString();
                         message.Text = reader[2].ToString();
                         message.CreatedDate = (DateTime)reader[3];
                         messageList.Add(message);
@@ -54,8 +54,9 @@ namespace API.Controllers
             await conn.OpenAsync();
             using (var cmd = new NpgsqlCommand("INSERT INTO messages (id, user_id, text, created_date) VALUES (@id, @user_id, @text, @created_date)", conn))
             {
-                cmd.Parameters.AddWithValue("@id", userInput.Id);
-                cmd.Parameters.AddWithValue("@user_id", userInput.UserId);
+                var random = new Random();
+                cmd.Parameters.AddWithValue("@id", random.Next());
+                cmd.Parameters.AddWithValue("@user_id", random.Next());
                 cmd.Parameters.AddWithValue("@text", userInput.Text);
                 cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                 cmd.ExecuteNonQuery();
