@@ -33,7 +33,7 @@ namespace API.Controllers
                     {
                         var message = new Messages();
                         message.Id = (int)reader[0];
-                        message.UserId = reader[1].ToString();
+                        message.UserId = (int)reader[1];
                         message.Text = reader[2].ToString();
                         message.CreatedDate = (DateTime)reader[3];
                         messageList.Add(message);
@@ -46,17 +46,16 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task PostAsync(UserInput userInput)
+        public async System.Threading.Tasks.Task PostAsync(UserInputMessages userInputMessages)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var cmd = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@user_id, @text, @created_date)", conn))
+            using (var cmd = new NpgsqlCommand("INSERT INTO messages (text, created_date) VALUES (@text, @created_date)", conn))
             {
                 var random = new Random();
-                cmd.Parameters.AddWithValue("@user_id", random.Next());
-                cmd.Parameters.AddWithValue("@text", userInput.Text);
+                cmd.Parameters.AddWithValue("@text", userInputMessages.Text);
                 cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
