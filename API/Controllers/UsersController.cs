@@ -7,7 +7,7 @@ using System.Linq;
 using Npgsql;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/users")]
 
  public class UsersController : ControllerBase
  {
@@ -64,10 +64,29 @@ using Npgsql;
 
 
     [HttpGet("{id}")]
-    public Users Get(int id)
+    public async System.Threading.Tasks.Task<List<Users>> GetAsync()
     {
-        var user = users.FirstOrDefault(x => x.Id == id);
-        return user;
+        var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+
+        await using var conn = new NpgsqlConnection(connString);
+        await conn.OpenAsync();
+
+        // Retrieve all rows
+        await using (var cmd = new NpgsqlCommand("SELECT * FROM users", conn))
+        {
+            await using (var reader = await cmd.ExecuteReaderAsync())
+            {
+                List<Users> userList = new List<Users>();
+
+                while (await reader.ReadAsync())
+                {
+                
+
+                }
+                return userList;
+            }
+        }
+
     }
 }
 
