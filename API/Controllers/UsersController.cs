@@ -64,7 +64,7 @@ using Npgsql;
 
 
     [HttpGet("{id}")]
-    public async System.Threading.Tasks.Task<List<Users>> GetAsync()
+    public async System.Threading.Tasks.Task<List<Users>> GetAsync(int id)
     {
         var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -80,7 +80,10 @@ using Npgsql;
 
                 while (await reader.ReadAsync())
                 {
-                
+              
+                    var user = new Users();
+                    users.Id = (int)reader[0];
+                    var user = userList.FirstOrDefault(x => x.Id == id);
 
                 }
                 return userList;
