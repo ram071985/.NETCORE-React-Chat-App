@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/UserInputMessages.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersController.cs">
     <Files>
       <File FileName="API/client/src/index.js" Line="8" Column="21" />
       <File FileName="API/client/src/index.css" />
@@ -8,11 +8,11 @@
       <File FileName="API/WeatherForecast.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
       <File FileName="API/Messages.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="55" Column="118" />
-      <File FileName="API/UserInputMessages.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/UsersController.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="API/UserInputMessages.cs" />
+      <File FileName="API/Controllers/UsersController.cs" Line="67" Column="68" />
       <File FileName="API/Users.cs" />
-      <File FileName="API/UserInputUser.cs" Line="8" Column="1" />
+      <File FileName="API/UserInputUser.cs" />
       <File FileName="API/Program.cs" />
       <File FileName="API/System/Threading/Tasks/Task.cs" />
     </Files>
@@ -25,13 +25,14 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UsersController.cs" selected="True" />
+              </Node>
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
                   <Node name="Tasks" expanded="True" />
                 </Node>
               </Node>
-              <Node name="UserInputMessages.cs" selected="True" />
             </Node>
             <Node name="Core" expanded="True" />
             <Node name="Infrastructure" expanded="True" />
