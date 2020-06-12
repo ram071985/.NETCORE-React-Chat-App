@@ -22,7 +22,7 @@ using Npgsql;
         await conn.OpenAsync();
 
         // Retrieve all rows
-        await using (var cmd = new NpgsqlCommand("SELECT * FROM messages", conn))
+        await using (var cmd = new NpgsqlCommand("SELECT * FROM users", conn))
         {
             await using (var reader = await cmd.ExecuteReaderAsync())
             {
@@ -33,7 +33,7 @@ using Npgsql;
                     var user = new Users();
                     user.Id = (int)reader[0];
                     user.UserName = reader[1].ToString();       
-                    user.CreatedDate = (DateTime)reader[3];
+                    user.CreatedDate = (DateTime)reader[2];
                     userList.Add(user);
 
                 }
@@ -51,7 +51,7 @@ using Npgsql;
 
         await using var conn = new NpgsqlConnection(connString);
         await conn.OpenAsync();
-        using (var cmd = new NpgsqlCommand("INSERT INTO messages (user_name, created_date) VALUES (@user_name, @created_date)", conn))
+        using (var cmd = new NpgsqlCommand("INSERT INTO users (user_name, created_date) VALUES (@user_name, @created_date)", conn))
         {
             var random = new Random();
             cmd.Parameters.AddWithValue("@user_name", userInputUser.UserName);
