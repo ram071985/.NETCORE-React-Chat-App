@@ -64,29 +64,30 @@ using Npgsql;
 
 
     [HttpGet("{id}")]
-    public async System.Threading.Tasks.Task<List<Users>> GetAsync(int id)
+    public Users GetUser(int id)
     {
         var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
-        await using var conn = new NpgsqlConnection(connString);
-        await conn.OpenAsync();
+        using var conn = new NpgsqlConnection(connString);
+        conn.Open();
 
         // Retrieve all rows
-        await using (var cmd = new NpgsqlCommand("SELECT * FROM users", conn))
+        using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE id = @id", conn))
         {
-            await using (var reader = await cmd.ExecuteReaderAsync())
+            cmd.Parameters.AddWithValue("@id", id);
+            using (var reader = cmd.ExecuteReader())
             {
-                List<Users> userList = new List<Users>();
+                var user = new Users();
 
-                while (await reader.ReadAsync())
+                while (reader.Read())
                 {
-              
-                    var user = new Users();
-                    users.Id = (int)reader[0];
-                    var user = userList.FirstOrDefault(x => x.Id == id);
+                    user.Id = (int)reader[0];
+                    user.UserName = reader[1].ToString();
+                    user.CreatedDate = (DateTime)reader[2];
 
                 }
-                return userList;
+                return user;
+               
             }
         }
 
