@@ -61,6 +61,38 @@ namespace API.Controllers
                 cmd.ExecuteNonQuery();
             }
         }
-      
+
+
+        [HttpGet("{id}")]
+        public Messages GetUser(int id)
+        {
+            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+
+            using var conn = new NpgsqlConnection(connString);
+            conn.Open();
+
+            // Retrieve all rows
+            using (var cmd = new NpgsqlCommand("SELECT * FROM messages WHERE id = @id", conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    var message = new Messages();
+
+                    while (reader.Read())
+                    {
+                        message.Id = (int)reader[0];
+                        message.UserId = (int)reader[1];
+                        message.Text = reader[2].ToString();
+                        message.CreatedDate = (DateTime)reader[3];
+
+                    }
+                    return message;
+
+                }
+            }
+
+        }
+
     }
 }
