@@ -3,8 +3,7 @@ namespace API
 {
     public class Session
     {
-        public Session()
-        {
-        }
+       public int Id { get; set; }
+       public int UserId { get; set; }
     }
 }
