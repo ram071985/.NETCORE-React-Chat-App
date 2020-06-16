@@ -15,7 +15,7 @@ namespace API.Controllers
         
 
         [HttpGet]
-        public async System.Threading.Tasks.Task<List<Messages>> GetAsync()
+        public async System.Threading.Tasks.Task<List<MessageModel>> GetAsync()
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -27,11 +27,11 @@ namespace API.Controllers
             {
                 await using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    List<Messages> messageList = new List<Messages>();
+                    List<MessageModel> messageList = new List<MessageModel>();
 
                     while (await reader.ReadAsync())
                     {
-                        var message = new Messages();
+                        var message = new MessageModel();
                         message.Id = (int)reader[0];
                         message.UserId = (int)reader[1];
                         message.Text = reader[2].ToString();
@@ -46,7 +46,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task PostAsync(UserInputMessages userInputMessages)
+        public async System.Threading.Tasks.Task PostAsync(MessageInput messageInput)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -55,8 +55,8 @@ namespace API.Controllers
             using (var cmd = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@user_id, @text, @created_date)", conn))
             {
                 var random = new Random();
-                cmd.Parameters.AddWithValue("@user_id", userInputMessages.UserId);
-                cmd.Parameters.AddWithValue("@text", userInputMessages.Text);
+                cmd.Parameters.AddWithValue("@user_id", messageInput.UserId);
+                cmd.Parameters.AddWithValue("@text", messageInput.Text);
                 cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
@@ -64,7 +64,7 @@ namespace API.Controllers
 
 
         [HttpGet("{id}")]
-        public Messages GetUser(int id)
+        public MessageModel GetUser(int id)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -77,7 +77,7 @@ namespace API.Controllers
                 cmd.Parameters.AddWithValue("@id", id);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    var message = new Messages();
+                    var message = new MessageModel();
 
                     while (reader.Read())
                     {

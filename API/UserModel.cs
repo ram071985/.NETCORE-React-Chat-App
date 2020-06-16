@@ -1,7 +1,7 @@
 ﻿using System;
 namespace API
 {
-    public class Users
+    public class UserModel
     {
 
         public int Id { get; internal set; }

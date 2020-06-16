@@ -1,7 +1,7 @@
 ﻿using System;
 namespace API
 {
-    public class Session
+    public class SessionModel
     {
        public int Id { get; set; }
        public int UserId { get; set; }

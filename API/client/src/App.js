@@ -1,11 +1,11 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import ChatRoom from './ChatRoom.js';
+import LandingPage from './LandingPage';
 
 
 function App() {
     return (
-        <ChatRoom />
+ <LandingPage />
 
   );
 }

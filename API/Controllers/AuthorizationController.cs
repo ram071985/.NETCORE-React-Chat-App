@@ -13,7 +13,7 @@ namespace API.Controllers
     {
 
         [HttpGet]
-        public async System.Threading.Tasks.Task<List<Session>> GetAsync()
+        public async System.Threading.Tasks.Task<List<SessionModel>> GetAsync()
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -25,11 +25,11 @@ namespace API.Controllers
             {
                 await using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    List<Session> sessionList = new List<Session>();
+                    List<SessionModel> sessionList = new List<SessionModel>();
 
                     while (await reader.ReadAsync())
                     {
-                        var session = new Session();
+                        var session = new SessionModel();
                         session.Id = (int)reader[0];
                         session.UserId = (int)reader[1];            
                         sessionList.Add(session);
@@ -42,7 +42,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task PostAsync(Session session)
+        public async System.Threading.Tasks.Task PostAsync(SessionModel session)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 

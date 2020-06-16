@@ -26,132 +26,172 @@ hr {
     width: 100%;
 }
     */
-html, body {
-    height: 100%;
-    width: 100%;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  font-size: 16px;
 }
-
 
 .container {
-    height: 100%;
-    width: 100%;
-    margin: 0 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 0;
 }
 
-
 #one.col h5 {
-    padding-top:40px;
-    margin: auto;
-    color: #FFFFFF;
-    opacity: 0.9;
+  padding-top: 40px;
+  margin: auto;
+  color: #ffffff;
+  opacity: 0.9;
 }
 
 /*   First column  */
 
 #one.col {
-    margin: 0;
-    position: fixed;
-    display: block;
-    left: 0%;
-    border-style: solid;
-    border-width: 1px;
-    height: 8%;
-    width: 25%;
-    text-align: left;
-    background: #3F0E40;
+  margin: 0;
+  position: fixed;
+  display: block;
+  left: 0%;
+  border-style: solid;
+  border-width: 1px;
+  height: 8%;
+  width: 25%;
+  text-align: left;
+  background: #3f0e40;
 }
 
 /*   Second column  */
 
 #two.col {
-    padding-top: 40px;
-    position: fixed;
-    display: block;
-    left: 25%;
-    width: 75%;
-    border: 1px solid white;
-    height: 100%;
+  padding-top: 40px;
+  position: fixed;
+  display: block;
+  left: 25%;
+  width: 75%;
+  border: 1px solid white;
+  height: 100%;
 }
 
-    #two.col h6 {
-        position: fixed;
-        opacity: 0.9;
-        left: 30%;
-        display: inline-block;
-    }
+#two.col h6 {
+  position: fixed;
+  opacity: 0.9;
+  left: 30%;
+  display: inline-block;
+}
 
-    #two.col p {
-        padding: 18px 10px 3px 0;
-        position: fixed;
-        opacity: 0.9;
-        left: 30%;
-    }
+#two.col p {
+  padding: 18px 10px 3px 0;
+  position: fixed;
+  opacity: 0.9;
+  left: 30%;
+}
 
 /*   Third column  */
 
 #three.col {
-    position: fixed;
-    display: block;
-    left: 0%;
-    top: 76px;
-    height: 92%;
-    width: 25%;
-    background: #3F0E40;
+  position: fixed;
+  display: block;
+  left: 0%;
+  top: 76px;
+  height: 92%;
+  width: 25%;
+  background: #3f0e40;
 }
 #three.col h6 {
-    padding: 5px 5px 5px 10px;
-    left: 30%;
-    margin: auto;
-    color: #FFFFFF;
-    opacity: 0.89;
-    }
+  padding: 5px 5px 5px 10px;
+  left: 30%;
+  margin: auto;
+  color: #ffffff;
+  opacity: 0.89;
+}
 
 .user-icon.container {
-    height: 3%;
+  height: 3%;
 }
 
 /*   Fourth column  */
 
 #four.col {
-    position: fixed;
-    top: 90%;
-    width: 65%;
-    left: 30%;
-    height: 6.5%;
-   align-items: center;
-    
+  position: fixed;
+  top: 90%;
+  width: 65%;
+  left: 30%;
+  height: 6.5%;
+  align-items: center;
 }
 
 /* form */
 
 .btn.submit-button {
-    color: white !important;
-    background: #3F0E40;
+  color: white !important;
+  background: #3f0e40;
 }
 
-    .btn.submit-button:hover {
-        text-decoration: none !important;
-        background: #3F0E40 !important;
-      
-    }
-.btn.submit-button:focus, .btn.submit-button:active {
-    outline: none !important;
-    box-shadow: none;
-    outline-style: none !important;
-    outline-color: none;
+.btn.submit-button:hover {
+  text-decoration: none !important;
+  background: #3f0e40 !important;
+}
+.btn.submit-button:focus,
+.btn.submit-button:active {
+  outline: none !important;
+  box-shadow: none;
+  outline-style: none !important;
+  outline-color: none;
 }
 
 input[type="button"] {
-    outline: none !important;
+  outline: none !important;
 }
 
-    input[type="button"]::-moz-focus-inner {
-        border: 0 !important;
-    }
+input[type="button"]::-moz-focus-inner {
+  border: 0 !important;
+}
 
 
 
+.launch-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+  height: 100%;
 
+}
+
+.launch-button {
+  background-color: #611f69 !important;
+  text-transform: uppercase;
+  border-color: none !important;
+  outline: none;
+
+}
+
+.btn {
+    border: 1px solid #611f69 !important;
+}
+
+.btn:focus {
+    border-color: none;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.prompt-links {
+    line-height: 0;
+    color: #1264a3;
+}
+
+.prompt-title {
+    margin-bottom: 30px;
+}
+
+.card {
+    border: 2px solid rgba(0,0,0,.125) !important;
+}
 
 
 

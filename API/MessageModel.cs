@@ -1,7 +1,7 @@
 ﻿using System;
 namespace API
 {
-    public class Messages
+    public class MessageModel
     {
         public int Id { get; set; }
 
