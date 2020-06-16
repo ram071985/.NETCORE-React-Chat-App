@@ -11,7 +11,7 @@ using Npgsql;
 
  public class UsersController : ControllerBase
  {
-        List<Users> users = new List<Users>();
+        List<UserModel> users = new List<UserModel>();
 
    
 
@@ -36,7 +36,7 @@ using Npgsql;
 
 
     [HttpGet("{id}")]
-    public Users GetUser(int id)
+    public UserModel GetUser(int id)
     {
         var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -49,7 +49,7 @@ using Npgsql;
             cmd.Parameters.AddWithValue("@id", id);
             using (var reader = cmd.ExecuteReader())
             {
-                var user = new Users();
+                var user = new UserModel();
 
                 while (reader.Read())
                 {
