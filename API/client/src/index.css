@@ -187,10 +187,23 @@ input[type="button"]::-moz-focus-inner {
 
 .prompt-title {
     margin-bottom: 30px;
+    font-size: 2.8rem;
+    line-height: 1;
 }
 
 .card {
+    padding: 25px;
+    margin-top: 300px;
     border: 2px solid rgba(0,0,0,.125) !important;
+    width: 50% !important;
+}
+
+.gab-color {
+    color: #611f69;
+}
+
+.btn.btn-primary {
+    background-color: #611f69 !important;
 }
 
 
