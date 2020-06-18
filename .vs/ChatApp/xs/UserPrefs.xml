@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorizationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorizationPracticeController.cs">
     <Files>
       <File FileName="API/Controllers/MessagesController.cs" Line="59" Column="73" />
       <File FileName="API/Controllers/UsersController.cs" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="37" Column="22" />
-      <File FileName="API/UserInputUser.cs" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="14" Column="1" />
+      <File FileName="API/SessionInput.cs" Line="1" Column="1" />
+      <File FileName="API/UserInputUser.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="19" Column="75" />
+      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +19,7 @@
                 <Node name="src" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True">
-                <Node name="AuthorizationController.cs" selected="True" />
+                <Node name="AuthorizationPracticeController.cs" selected="True" />
               </Node>
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
