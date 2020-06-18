@@ -50,6 +50,7 @@ namespace API.Controllers
             await conn.OpenAsync();
             using (var cmd = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@user_id)", conn))
             {
+
                 cmd.ExecuteNonQuery();
             }
         }

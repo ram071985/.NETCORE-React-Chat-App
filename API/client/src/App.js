@@ -1,13 +1,9 @@
-import React from 'react';
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LandingPage from './LandingPage';
-
+import LandingPage from "./LandingPage";
 
 function App() {
-    return (
- <LandingPage />
-
-  );
+  return <LandingPage />;
 }
 
 export default App;
