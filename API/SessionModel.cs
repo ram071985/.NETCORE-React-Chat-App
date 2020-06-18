@@ -3,7 +3,6 @@ namespace API
 {
     public class SessionModel
     {
-       public int SessionID { get; set; }
-       public int UserId { get; set; }
+       public int SessionID { get; set; } = 5;
     }
 }
