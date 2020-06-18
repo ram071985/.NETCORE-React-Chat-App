@@ -13,6 +13,7 @@ import {
 import "./index.css";
 import { Circle } from "react-feather";
 import NewUserForm from "./NewUserForm";
+import axios from "axios";
 
 class LandingPage extends Component {
   constructor() {
@@ -28,15 +29,19 @@ class LandingPage extends Component {
     console.log(this.state.password);
   };
 
-
   handleSubmit = () => {
-  }
-
-  handleClick = () => {
-  
+    this.postNewUser();
   };
 
+  handleClick = () => {};
+
   handleUserLogIn = () => {};
+
+  postNewUser = () => {
+    axios.post("/api/authorization/createUser", {
+      data: { username: this.state.username, password: this.state.password }
+    });
+  };
 
   render() {
     return (
@@ -84,7 +89,7 @@ class LandingPage extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onSubmit={this.handleSubmit}>
                 Submit
               </Button>
             </Form>
