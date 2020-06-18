@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorizationPracticeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/MessageModel.cs">
     <Files>
-      <File FileName="API/Controllers/MessagesController.cs" Line="59" Column="73" />
       <File FileName="API/Controllers/UsersController.cs" />
+      <File FileName="API/SessionInput.cs" Line="8" Column="1" />
       <File FileName="API/Controllers/AuthorizationController.cs" Line="14" Column="1" />
-      <File FileName="API/SessionInput.cs" Line="1" Column="1" />
       <File FileName="API/UserInputUser.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="19" Column="75" />
-      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="67" Column="44" />
+      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="19" Column="37" />
+      <File FileName="API/SessionModel.cs" Line="7" Column="39" />
+      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,14 +19,13 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="AuthorizationPracticeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
                   <Node name="Tasks" expanded="True" />
                 </Node>
               </Node>
+              <Node name="MessageModel.cs" selected="True" />
             </Node>
             <Node name="Core" expanded="True" />
             <Node name="Infrastructure" expanded="True" />
