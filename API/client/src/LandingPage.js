@@ -30,16 +30,6 @@ class LandingPage extends Component {
 
 
   handleSubmit = () => {
-    axios
-    .get("/api/tweet/topic", {
-      params: { topicname: this.state.entry }
-    })
-    .then(res => {
-      this.setState({
-        query: res.data.statuses
-      });
-    })
-
   }
 
   handleClick = () => {
