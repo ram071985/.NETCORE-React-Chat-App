@@ -18,7 +18,9 @@ import axios from "axios";
 class LandingPage extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      sessionId: []
+    };
   }
 
   handleChange = event => {
@@ -26,7 +28,6 @@ class LandingPage extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state.password);
   };
 
   handleSubmit = () => {
@@ -38,9 +39,12 @@ class LandingPage extends Component {
   handleUserLogIn = () => {};
 
   postNewUser = () => {
-    axios.post("/api/authorization/createUser", {
-      data: { username: this.state.username, password: this.state.password }
+    axios.post("/api/authpractice").then(res => {
+      this.setState({
+        sessionId: res
+      });
     });
+    console.log(this.state.sessionId);
   };
 
   render() {
@@ -89,7 +93,11 @@ class LandingPage extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" onSubmit={this.handleSubmit}>
+              <Button
+                variant="primary"
+                type="submit"
+                onSubmit={this.handleSubmit}
+              >
                 Submit
               </Button>
             </Form>
