@@ -30,21 +30,23 @@ class LandingPage extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     this.postNewUser();
   };
-
-  handleClick = () => {};
 
   handleUserLogIn = () => {};
 
   postNewUser = () => {
-    axios.post("/api/authpractice").then(res => {
-      this.setState({
-        sessionId: res
-      });
+      axios.post("/api/authpractice",{
+        data: {
+        userName: "ried",
+        password: "ried"
+        }
+      })
+      .then( res => {
+        console.log(res);
     });
-    console.log(this.state.sessionId);
   };
 
   render() {
