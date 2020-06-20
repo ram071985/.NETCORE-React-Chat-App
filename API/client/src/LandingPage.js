@@ -38,14 +38,10 @@ class LandingPage extends Component {
   handleUserLogIn = () => {};
 
   postNewUser = () => {
-      axios.post("/api/authpractice",{
-        data: {
-        userName: "ried",
-        password: "ried"
-        }
+      axios.post("/api/authpractice"
       })
       .then( res => {
-        console.log(res);
+        console.log(res.data);
     });
   };
 
@@ -72,7 +68,7 @@ class LandingPage extends Component {
         </div>
         <div>
           <div className="container">
-            <Form className="mt-3">
+            <Form className="mt-3" onSubmit={this.handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Choose username</Form.Label>
                 <Form.Control
@@ -98,7 +94,6 @@ class LandingPage extends Component {
               <Button
                 variant="primary"
                 type="submit"
-                onSubmit={this.handleSubmit}
               >
                 Submit
               </Button>

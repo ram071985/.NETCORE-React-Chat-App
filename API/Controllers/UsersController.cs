@@ -53,7 +53,7 @@ using Npgsql;
 
                 while (reader.Read())
                 {
-                    user.Id = (int)reader[0];
+ 
                     user.UserName = reader[1].ToString();
                     user.CreatedDate = (DateTime)reader[2];
 

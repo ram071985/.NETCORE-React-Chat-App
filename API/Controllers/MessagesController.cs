@@ -60,6 +60,7 @@ namespace API.Controllers
                 cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
+
         }
 
 
