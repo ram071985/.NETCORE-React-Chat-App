@@ -16,11 +16,21 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public SessionModel SendId()
+        public async System.Threading.Tasks.Task PostAsync(SessionModel sessionModel)
         {
-            SessionModel sessionId = new SessionModel();
-            return sessionId;
+            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+
+            await using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (session_id,) VALUES (@session_id)", conn))
+            {
+                var random = new Random();
+                cmd.Parameters.AddWithValue("@session_id", random.Next());
+                cmd.ExecuteNonQuery();
+            }
+
         }
-        
+
+
     }
 }
