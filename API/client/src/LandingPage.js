@@ -38,7 +38,7 @@ class LandingPage extends Component {
   handleUserLogIn = () => {};
 
   postNewUser = () => {
-      axios.post("/api/authpractice"
+      axios.post("/api/authpractice", {
       })
       .then( res => {
         console.log(res.data);
