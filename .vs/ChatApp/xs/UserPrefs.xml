@@ -6,7 +6,7 @@
       <File FileName="API/Controllers/AuthorizationController.cs" />
       <File FileName="API/UserInputUser.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="33" Column="1" />
+      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="28" Column="17" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/MessageModel.cs" />
       <File FileName="API/Program.cs" />
@@ -20,7 +20,9 @@
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="client" expanded="True" />
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True">
                 <Node name="AuthorizationPracticeController.cs" selected="True" />
               </Node>

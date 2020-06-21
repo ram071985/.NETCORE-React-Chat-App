@@ -22,7 +22,7 @@ namespace API.Controllers
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (session_id,) VALUES (@session_id)", conn))
+            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (session_id) VALUES (@session_id)", conn))
             {
                 var random = new Random();
                 cmd.Parameters.AddWithValue("@session_id", random.Next());
