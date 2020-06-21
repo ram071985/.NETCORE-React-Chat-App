@@ -15,7 +15,7 @@ namespace API.Controllers
     {
 
         [HttpGet]
-        public async System.Threading.Tasks.Task<List<SessionModel>> GetAsync(SessionModel sessionModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> GetAsync([FromForm] SessionModel sessionModel)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
