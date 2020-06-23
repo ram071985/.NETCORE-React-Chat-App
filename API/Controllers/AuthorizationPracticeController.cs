@@ -23,7 +23,7 @@ namespace API.Controllers
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (created_date) VALUES (@created_date) RETURNING id", conn))
+            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (id, created_date) VALUES (@id, @created_date)", conn))
             {
 
                 await using (var reader = await cmd.ExecuteReaderAsync())
@@ -34,8 +34,11 @@ namespace API.Controllers
                     {
                         var session = new SessionModel();
                         var random = new Random();
-                        cmd.Parameters.AddWithValue("@session_id", random.Next());               
-                        session.CreatedDate = (DateTime)reader[0];
+                        cmd.Parameters.AddWithValue("@id", sessionModel.Id);
+                        cmd.Parameters.AddWithValue("@created_date", sessionModel.Id);
+                        session.Id = (int)reader[0];
+                        session.UserId = (int)reader[1];
+                        session.CreatedDate = (DateTime)reader[2];
                         sessionList.Add(session);
 
                     }
