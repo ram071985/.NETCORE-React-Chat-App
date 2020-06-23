@@ -6,7 +6,7 @@
       <File FileName="API/SessionInput.cs" />
       <File FileName="API/UserInputUser.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="30" Column="75" />
+      <File FileName="API/Controllers/AuthorizationPracticeController.cs" Line="41" Column="22" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/MessageModel.cs" />
       <File FileName="API/Program.cs" />
