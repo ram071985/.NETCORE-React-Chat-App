@@ -58,7 +58,7 @@ namespace API.Controllers
                 cmd.Parameters.AddWithValue("@user_id", messageInput.UserId);
                 cmd.Parameters.AddWithValue("@text", messageInput.Text);
                 cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
-                cmd.ExecuteNonQuery();
+                 
             }
 
         }
