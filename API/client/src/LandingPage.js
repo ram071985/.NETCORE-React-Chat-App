@@ -1,25 +1,15 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Container,
-  Button,
-  Card,
-  InputGroup,
-  FormControl,
-  Form,
-  Col,
-  Row
-} from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import "./index.css";
-import { Circle } from "react-feather";
-import NewUserForm from "./NewUserForm";
 import axios from "axios";
 
 class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      sessionId: []
+      username: "",
+      password: ""
     };
   }
 
@@ -38,11 +28,13 @@ class LandingPage extends Component {
   handleUserLogIn = () => {};
 
   postNewUser = () => {
-      axios.post("/api/authpractice",{})
-          .then(res => {
-              localStorage.setItem("session_id", res.data[0].id);
-        console.log(res.data[0].id);
-    });
+    axios
+      .post("/api/register", {
+      })
+      .then(res => {
+        localStorage.setItem("session_id", res.data[0].id);
+        console.log(this.state.username);
+      });
   };
 
   render() {
@@ -91,10 +83,7 @@ class LandingPage extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-              >
+              <Button variant="primary" type="submit">
                 Submit
               </Button>
             </Form>
