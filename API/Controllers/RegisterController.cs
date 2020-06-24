@@ -20,7 +20,8 @@ namespace API.Controllers
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@user_id)", conn))
+
+            using (var cmd = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (1) RETURNING id", conn))
             {
 
                 cmd.ExecuteNonQuery();
