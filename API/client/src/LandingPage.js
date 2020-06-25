@@ -29,12 +29,10 @@ class LandingPage extends Component {
 
   postNewUser = () => {
     axios
-      .post("/api/authpractice", {
-        params: { username: this.state.username, password: this.state.password }
-      })
+      .post("/api/register", {username: this.state.username, password: this.state.password })
       .then(res => {
-        localStorage.setItem("session_id", res.data[0].id);
-        console.log(this.state.username);
+      localStorage.setItem("session_id", res.data[0].id);
+          console.log(res.data[0].id);
       });
   };
 

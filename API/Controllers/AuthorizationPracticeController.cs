@@ -23,10 +23,11 @@ namespace API.Controllers
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password) VALUES (@username, @password) RETURNING id", conn))
+            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
             {
                 userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
                 userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
+                userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
 
                 await using (var reader = await userInsertCommand.ExecuteReaderAsync())
                 {
