@@ -17,7 +17,7 @@ using Npgsql;
 
 
             [HttpPost]
-                public async System.Threading.Tasks.Task PostAsync(UserInputUser userInputUser)
+                public async System.Threading.Tasks.Task PostAsync(UserModel userModel)
             {
                 var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -26,7 +26,7 @@ using Npgsql;
                 using (var cmd = new NpgsqlCommand("INSERT INTO users (user_name, created_date) VALUES (@user_name, @created_date)", conn))
                 {
                     var random = new Random();
-                    cmd.Parameters.AddWithValue("@user_name", userInputUser.UserName);
+                    cmd.Parameters.AddWithValue("@user_name", userModel.Username);
                     cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
                     cmd.ExecuteNonQuery();
                 }
@@ -54,7 +54,7 @@ using Npgsql;
                 while (reader.Read())
                 {
  
-                    user.UserName = reader[1].ToString();
+                    user.Username = reader[1].ToString();
                     user.CreatedDate = (DateTime)reader[2];
 
                 }

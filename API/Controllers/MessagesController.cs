@@ -35,7 +35,7 @@ namespace API.Controllers
                         message.Id = (int)reader[0];
                         message.UserId = (int)reader[1];
                         message.Text = reader[2].ToString();
-                        message.CreatedDate = (DateTime)reader[3];
+                        message.CreatedDate = (DateTime)reader[3];                            
                         messageList.Add(message);
                     
                     }
