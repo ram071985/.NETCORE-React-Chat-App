@@ -19,39 +19,40 @@ namespace API.Controllers
         public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] SessionModel sessionModel, UserModel userModel)
         {
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            var user = new UserModel();
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
             using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password) VALUES (@username, @password) RETURNING id", conn))
             {
+                userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
+                userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
+
                 await using (var reader = await userInsertCommand.ExecuteReaderAsync())
                 {
-                    List<UserModel> sessionList = new List<UserModel>();
+                    var users = new List<UserModel>();
                     while (await reader.ReadAsync())
-                    {
-                        var userId = new UserModel();
-                        userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
-                        userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
-                        userId.Id = (int)reader[0];
-                        sessionList.Add(userId);
+                    {                           
+                        user.Id = (int)reader[0];
+                     
                     }
                 }
             }
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
-
+                sessionInsertCommand.Parameters.AddWithValue("@userId", user.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
                 {
-                     List<SessionModel> sessionList = new List<SessionModel>();
+                     var sessions = new List<SessionModel>();
 
                      while (await reader.ReadAsync())
                      {
                           var session = new SessionModel();
                           session.Id = (int)reader[0];
-                          sessionList.Add(session);
+                          sessions.Add(session);
 
                      }
-                     return sessionList;
+                     return sessions;
                 }
             }
 
