@@ -12,7 +12,6 @@ namespace API.Controllers
     public class RegisterController : ControllerBase
     {
 
-
         [HttpPost]
         public async System.Threading.Tasks.Task PostAsync([FromForm] RegisterModel registerModel)
         {
