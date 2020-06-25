@@ -9,14 +9,16 @@ class LandingPage extends Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     };
   }
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      errorMessage: ""
     });
   };
 
@@ -29,10 +31,22 @@ class LandingPage extends Component {
 
   postNewUser = () => {
     axios
-      .post("/api/register", {username: this.state.username, password: this.state.password })
+      .post("/api/register", {
+        username: this.state.username,
+        password: this.state.password
+      })
       .then(res => {
-      localStorage.setItem("session_id", res.data[0].id);
-          console.log(res.data[0].id);
+        localStorage.setItem("session_id", res.data[0].id);
+        console.log(res.data[0].id);
+      })
+      .catch(err => {
+        if (err.response.status === 500) {
+          this.setState({
+            errorMessage: "Please enter a username and password."
+            
+          });
+        }
+        console.log(this.state.errorMessage)
       });
   };
 
@@ -85,6 +99,7 @@ class LandingPage extends Component {
               <Button variant="primary" type="submit">
                 Submit
               </Button>
+              {this.state.errorMessage}
             </Form>
           </div>
         </div>

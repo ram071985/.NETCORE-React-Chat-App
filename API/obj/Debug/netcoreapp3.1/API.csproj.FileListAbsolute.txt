@@ -102,3 +102,4 @@
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.RazorAssemblyInfo.cache
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.RazorAssemblyInfo.cs
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Npgsql.dll
+/Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/mono_crash.1cfb5decbf.0.json

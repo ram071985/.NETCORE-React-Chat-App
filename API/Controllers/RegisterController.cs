@@ -21,7 +21,11 @@ namespace API.Controllers
         [HttpPost]
         public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] SessionModel sessionModel, UserModel userModel)
         {
-            
+
+            if (userModel.Username == "" || userModel.Password == "")
+            {
+                throw new Exception("Please enter a valid username or password.");
+            }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
             var user = new UserModel();
@@ -41,10 +45,7 @@ namespace API.Controllers
                    
                     while (await reader.ReadAsync())
                     {
-                        if (user.Username == "" || user.Password == "")
-                        {
-                            return <string> "fffff";
-                        }
+                       
                         user.Id = (int)reader[0];
 
                     }
