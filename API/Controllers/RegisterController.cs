@@ -42,12 +42,8 @@ namespace API.Controllers
 
                     while (await reader.ReadAsync())
                     {
-                        if ("username" == "@username")
-                        {
-                            throw new Exception("Choose an unregistedred username");
-                        }
-               
-
+                        user.Username = reader[1].ToString();
+                   
                     }
                 }
             }
