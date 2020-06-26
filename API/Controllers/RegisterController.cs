@@ -13,9 +13,6 @@ namespace API.Controllers
 
     public class RegisterController : ControllerBase
     {
-        string noText = "Please enter a valid username and password";
-
-
 
 
         [HttpPost]
@@ -33,31 +30,48 @@ namespace API.Controllers
     
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-           
 
-            if (userModel.Username == "")
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
             {
-                throw new Exception("Please enter a valid username or password.");
+
+                checkUsernameCommand.Parameters.AddWithValue("@username", userModel.Username);
+
+
+                await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
+                {
+
+                    while (await reader.ReadAsync())
+                    {
+                        if ("username" == "@username")
+                        {
+                            throw new Exception("Choose an unregistedred username");
+                        }
+               
+
+                    }
+                }
             }
 
-            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) SELECT (@username, @password, @created_date) WHERE NOT EXISTS(SELECT 1 FROM users WHERE username=@username RETURNING id", conn))
+
+            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
             {
             
                 userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
                 userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
                 userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
 
-                await using (var reader = await userInsertCommand.ExecuteReaderAsync())
+                await using (var reader = await userInsertCommand.ExecuteReaderAsync()) 
                 {
                    
                     while (await reader.ReadAsync())
                     {
                        
                         user.Id = (int)reader[0];
-
+                                  
                     }
                 }
             }
+
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
                 sessionInsertCommand.Parameters.AddWithValue("@userId", user.Id);

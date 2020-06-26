@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/LandingPage.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/RegisterController.cs">
     <Files>
       <File FileName="API/Controllers/AuthorizationController.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="API/Controllers/UsersController.cs" />
       <File FileName="API/SessionInput.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" />
-      <File FileName="API/client/src/LandingPage.js" Line="47" Column="14" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="1" Column="1" />
+      <File FileName="API/client/src/LandingPage.js" />
       <File FileName="API/UserModel.cs" />
       <File FileName="API/RegisterModel.cs" />
       <File FileName="API/SessionModel.cs" />
@@ -19,11 +19,11 @@
             <Node name="API" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="client" expanded="True">
-                <Node name="src" expanded="True">
-                  <Node name="LandingPage.js" selected="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="RegisterController.cs" selected="True" />
+              </Node>
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
                   <Node name="Tasks" expanded="True" />

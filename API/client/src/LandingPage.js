@@ -37,7 +37,7 @@ class LandingPage extends Component {
       })
       .then(res => {
         localStorage.setItem("session_id", res.data[0].id);
-        console.log(res.data[0].id);
+        console.log(res.data);
       })
       .catch(err => {
         if (err.response.status === 500) {
