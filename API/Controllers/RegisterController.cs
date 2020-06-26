@@ -33,9 +33,16 @@ namespace API.Controllers
     
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
+           
+
+            if (userModel.Username == "")
             {
-          
+                throw new Exception("Please enter a valid username or password.");
+            }
+
+            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) SELECT (@username, @password, @created_date) WHERE NOT EXISTS(SELECT 1 FROM users WHERE username=@username RETURNING id", conn))
+            {
+            
                 userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
                 userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
                 userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);

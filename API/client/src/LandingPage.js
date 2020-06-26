@@ -46,7 +46,6 @@ class LandingPage extends Component {
             
           });
         }
-        console.log(this.state.errorMessage)
       });
   };
 
