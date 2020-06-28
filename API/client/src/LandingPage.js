@@ -8,8 +8,10 @@ class LandingPage extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: "",
+      newUsername: "",
+      newPassword: "",
+      existingUsername: "",
+      existingPassword: "",
       errorMessage: ""
     };
   }
@@ -32,12 +34,11 @@ class LandingPage extends Component {
   postNewUser = () => {
     axios
       .post("/api/register", {
-        username: this.state.username,
-        password: this.state.password
+        username: this.state.newUsername,
+        password: this.state.newPassword
       })
       .then(res => {
         localStorage.setItem("session_id", res.data[0].id);
-        console.log(res.data);
       })
       .catch(err => {
         if (err.response.data.title === "empty username") {
@@ -60,6 +61,7 @@ class LandingPage extends Component {
   };
 
   render() {
+    console.log(this.state.errorMessage);
     return (
       <div>
         <Container className="top-container" fluid>
@@ -69,19 +71,25 @@ class LandingPage extends Component {
                 <span className="purple-gab">The Gab</span> Chat Room
               </h1>
             </Col>
-            <Col className="sign-in-form">
-              <Form>
-                <Row>
+            <Col>
+              <Form className="sign-in-form">
+                <Row className="sign-in-row">
                   <Col className="col-lg-4 username-col">
+                    <Form.Label className="top-form-label">Username</Form.Label>
                     <Form.Control
-                      className="username-sign-in"
-                      placeholder="First name"
+                      type="input"
+                      className="input-sign-in"
+                      onChange={this.handleChange}
+                      name="existingUsername"
                     />
                   </Col>
                   <Col className="col-lg-4 password-col">
+                    <Form.Label className="top-form-label">Password</Form.Label>
                     <Form.Control
-                      className="password-sign-in"
-                      placeholder="Last name"
+                      type="input"
+                      className="input-sign-in"
+                      onChange={this.handleChange}
+                      name="existingPassword"
                     />
                   </Col>
                 </Row>
@@ -96,20 +104,18 @@ class LandingPage extends Component {
               <h2 class="painless-text">It's quick and painless.</h2>
             </Col>
           </Row>
-          <Row className="w-50">
+          <br />
+          <Row>
             <Col>
-              <Form className="mt-3" onSubmit={this.handleSubmit}>
+              <Form className="mt-3 sign-up-form" onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Choose username</Form.Label>
                   <Form.Control
                     type="input"
                     placeholder="Enter a new username"
-                    name="username"
+                    name="newUsername"
                     onChange={this.handleChange}
                   />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
@@ -117,17 +123,27 @@ class LandingPage extends Component {
                   <Form.Control
                     type="password"
                     placeholder="Enter a new password"
-                    name="password"
+                    name="newPassword"
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="light" type="submit">
                   Submit
                 </Button>
-                {this.state.errorMessage}
               </Form>
+              <br />
+              <h2 className="text-center error-text">
+                {this.state.errorMessage}
+              </h2>
             </Col>
           </Row>
+          <div className="container-fluid footer-container">
+            <footer>
+              <h6 className="text-center footer-text mt-2">
+                Created by Reid Muchow
+              </h6>
+            </footer>
+          </div>
         </Container>
       </div>
     );
