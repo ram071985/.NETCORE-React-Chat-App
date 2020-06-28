@@ -40,7 +40,7 @@ namespace API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error");
             }
 
             app.UseHttpsRedirection();
