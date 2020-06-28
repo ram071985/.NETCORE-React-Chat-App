@@ -19,9 +19,13 @@ namespace API.Controllers
         public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] SessionModel sessionModel, UserModel userModel)
         {
 
-            if (userModel.Username == "" || userModel.Password == "")
+            if (userModel.Username == "")
             {
-                throw new Exception("Please enter a valid username or password.");
+                throw new Exception("empty username");
+            }
+            if (userModel.Password == "")
+            {
+                throw new Exception("empty password");
             }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
@@ -43,6 +47,10 @@ namespace API.Controllers
                     while (await reader.ReadAsync())
                     {
                         user.Username = reader[1].ToString();
+                        if(userModel.Username == user.Username)
+                        {
+                            throw new Exception("redundant username");
+                        }
                    
                     }
                 }

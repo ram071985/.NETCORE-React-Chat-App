@@ -122,81 +122,6 @@ body {
   align-items: center;
 }
 
-/* form */
-
-.btn.submit-button {
-  color: white !important;
-  background: #3f0e40;
-}
-
-.btn.submit-button:hover {
-  text-decoration: none !important;
-  background: #3f0e40 !important;
-}
-.btn.submit-button:focus,
-.btn.submit-button:active {
-  outline: none !important;
-  box-shadow: none;
-  outline-style: none !important;
-  outline-color: none;
-}
-
-input[type="button"] {
-  outline: none !important;
-}
-
-input[type="button"]::-moz-focus-inner {
-  border: 0 !important;
-}
-
-
-
-.launch-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 300px;
-  height: 100%;
-
-}
-
-.launch-button {
-  background-color: #611f69 !important;
-  text-transform: uppercase;
-  border-color: none !important;
-  outline: none;
-
-}
-
-.btn {
-    border: 1px solid #611f69 !important;
-}
-
-.btn:focus {
-    border-color: none;
-}
-
-.card-container {
-    display: flex;
-    justify-content: center;
-}
-
-.prompt-links {
-    line-height: 0;
-    color: #1264a3;
-}
-
-.prompt-title {
-    margin-bottom: 30px;
-    font-size: 2.8rem;
-    line-height: 1;
-}
-
-.card {
-    padding: 25px;
-    margin-top: 200px;
-    border: 2px solid rgba(0,0,0,.125) !important;
-    width: 50% !important;
-}
 
 .gab-color {
     color: #611f69;
@@ -205,6 +130,47 @@ input[type="button"]::-moz-focus-inner {
 .btn.btn-primary {
     background-color: #611f69 !important;
 }
+
+.top-container {
+ padding: 20px 0px;
+}
+
+.bottom-container {
+  position: fixed;
+  background-color: #611f69;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.join-text {
+  text-align: center;
+  margin: 30px 0px 10px 0px;
+}
+
+.painless-text {
+  text-align: center;
+  margin: 0;
+}
+
+.gab-logo {
+  margin-left: 50px;
+}
+
+.purple-gab {
+  color: #611f69;
+}
+
+.sign-in-form {
+margin-top: 10px;
+}
+
+.username-col.col {
+padding: 0;
+}
+
 
 
 
