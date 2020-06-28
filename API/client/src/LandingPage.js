@@ -24,18 +24,50 @@ class LandingPage extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleNewUserSubmit = e => {
     e.preventDefault();
     this.postNewUser();
   };
 
-  handleUserLogIn = () => {};
+  handleLogInSubmit = e => {
+    e.preventDefault();
+    this.postNewUser();
+  };
 
   postNewUser = () => {
     axios
       .post("/api/register", {
         username: this.state.newUsername,
         password: this.state.newPassword
+      })
+      .then(res => {
+        localStorage.setItem("session_id", res.data[0].id);
+      })
+      .catch(err => {
+        if (err.response.data.title === "empty username") {
+          this.setState({
+            errorMessage: "Please choose a username."
+          });
+        }
+        if (err.response.data.title === "empty password") {
+          this.setState({
+            errorMessage: "Please choose a password."
+          });
+        }
+        if (err.response.data.title === "redundant username") {
+          this.setState({
+            errorMessage:
+              "The username you chose is already taken.  Please try another entry."
+          });
+        }
+      });
+  };
+
+  logInUser = () => {
+    axios
+      .post("/api/authorize", {
+        username: this.state.existingUsername,
+        password: this.state.existingPassword
       })
       .then(res => {
         localStorage.setItem("session_id", res.data[0].id);
@@ -72,7 +104,7 @@ class LandingPage extends Component {
               </h1>
             </Col>
             <Col>
-              <Form className="sign-in-form">
+              <Form className="sign-in-form" onSubmit={this.handleLogInSubmit}>
                 <Row className="sign-in-row">
                   <Col className="col-lg-4 username-col">
                     <Form.Label className="top-form-label">Username</Form.Label>
@@ -107,7 +139,10 @@ class LandingPage extends Component {
           <br />
           <Row>
             <Col>
-              <Form className="mt-3 sign-up-form" onSubmit={this.handleSubmit}>
+              <Form
+                className="mt-3 sign-up-form"
+                onSubmit={this.handleNewUserSubmit}
+              >
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Choose username</Form.Label>
                   <Form.Control
