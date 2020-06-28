@@ -16,14 +16,14 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] SessionModel sessionModel, UserModel userModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel)
         {
 
-            if (userModel.Username == "")
+            if (authorizationModel.Username == "")
             {
                 throw new Exception("empty username");
             }
-            if (userModel.Password == "")
+            if (authorizationModel.Password == "")
             {
                 throw new Exception("empty password");
             }
