@@ -16,7 +16,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel, UserModel userModel)
         {
 
             if (authorizationModel.Username == "")
@@ -29,7 +29,8 @@ namespace API.Controllers
             }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-            var user = new UserModel();
+            var user = new AuthorizationModel();
+            var usersModel = new UserModel();
 
     
             await using var conn = new NpgsqlConnection(connString);
@@ -38,7 +39,7 @@ namespace API.Controllers
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
             {
 
-                checkUsernameCommand.Parameters.AddWithValue("@username", userModel.Username);
+                checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
 
 
                 await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
@@ -47,9 +48,10 @@ namespace API.Controllers
                     while (await reader.ReadAsync())
                     {
                         user.Username = reader[1].ToString();
-                        if(userModel.Username == user.Username)
+                        if(authorizationModel.Username != user.Username)
                         {
                             throw new Exception("redundant username");
+
                         }
                    
                     }
@@ -57,20 +59,22 @@ namespace API.Controllers
             }
 
 
-            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
+            using (var checkPasswordCommand = new NpgsqlCommand("SELECT * FROM users WHERE password = @password", conn))
             {
             
-                userInsertCommand.Parameters.AddWithValue("@username", userModel.Username);
-                userInsertCommand.Parameters.AddWithValue("@password", userModel.Password);
-                userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
+         
+                checkPasswordCommand.Parameters.AddWithValue("@password", authorizationModel.Password);
+               
 
-                await using (var reader = await userInsertCommand.ExecuteReaderAsync()) 
+                await using (var reader = await checkPasswordCommand.ExecuteReaderAsync()) 
                 {
                    
                     while (await reader.ReadAsync())
                     {
-                       
-                        user.Id = (int)reader[0];
+                        if (authorizationModel.Password != user.Password)
+                        {
+                            throw new Exception("incorrect password");
+                        }
                                   
                     }
                 }
@@ -78,7 +82,7 @@ namespace API.Controllers
 
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", user.Id);
+                sessionInsertCommand.Parameters.AddWithValue("@userId", usersModel.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
                 {
                     var sessions = new List<SessionModel>();
