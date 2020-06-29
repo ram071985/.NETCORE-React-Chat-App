@@ -16,7 +16,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel, UserModel userModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] UserInputUser userInputUser, UserModel userModel)
         {
 
             if (userModel.Username == "")
@@ -30,6 +30,7 @@ namespace API.Controllers
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
             var user = new UserModel();
+  
 
     
             await using var conn = new NpgsqlConnection(connString);
@@ -46,14 +47,14 @@ namespace API.Controllers
 
                     while (await reader.ReadAsync())
                     {
-                        user.Username = reader[1].ToString();
-                        user.Password = reader[2].ToString();
+                        user.Username = reader[0].ToString();
+                        user.Password = reader[1].ToString();
                         if (userModel.Username != user.Username)
                         {
                             throw new Exception("false username");
 
                         }
-                        if (userModel.Password != user.Password)
+                        if (userInputUser.Password != user.Password)
                         {
                             throw new Exception("false password");
 

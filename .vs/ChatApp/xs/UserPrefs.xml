@@ -4,15 +4,16 @@
       <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" />
       <File FileName="API/SessionInput.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/client/src/LandingPage.js" Line="100" Column="14" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="73" Column="25" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="19" Column="91" />
-      <File FileName="API/UserModel.cs" Line="13" Column="1" />
+      <File FileName="API/client/src/LandingPage.js" />
+      <File FileName="API/Controllers/RegisterController.cs" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="51" Column="62" />
+      <File FileName="API/UserModel.cs" />
       <File FileName="API/RegisterModel.cs" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/MessageModel.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/Controllers/ErrorController.cs" Line="18" Column="10" />
+      <File FileName="API/Controllers/ErrorController.cs" />
+      <File FileName="API/UserInputUser.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
