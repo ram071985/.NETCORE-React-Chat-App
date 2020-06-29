@@ -5,14 +5,14 @@
       <File FileName="API/Controllers/UsersController.cs" />
       <File FileName="API/SessionInput.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="26" Column="42" />
+      <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/client/src/LandingPage.js" Line="49" Column="14" />
-      <File FileName="API/UserModel.cs" Line="1" Column="1" />
-      <File FileName="API/RegisterModel.cs" Line="1" Column="1" />
-      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
-      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
-      <File FileName="API/Startup.cs" Line="48" Column="30" />
-      <File FileName="API/Controllers/ErrorController.cs" Line="21" Column="1" />
+      <File FileName="API/UserModel.cs" />
+      <File FileName="API/RegisterModel.cs" />
+      <File FileName="API/SessionModel.cs" />
+      <File FileName="API/MessageModel.cs" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="API/Controllers/ErrorController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
