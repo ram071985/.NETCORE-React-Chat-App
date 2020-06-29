@@ -19,28 +19,27 @@ namespace API.Controllers
         public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel, UserModel userModel)
         {
 
-            if (authorizationModel.Username == "")
+            if (userModel.Username == "")
             {
                 throw new Exception("empty username");
             }
-            if (authorizationModel.Password == "")
+            if (userModel.Password == "")
             {
                 throw new Exception("empty password");
             }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-            var user = new AuthorizationModel();
-            var usersModel = new UserModel();
+            var user = new UserModel();
 
     
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT username,password FROM users WHERE username = @username AND password = @password", conn))
             {
 
-                checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
-
+                checkUsernameCommand.Parameters.AddWithValue("@username", userModel.Username);
+                checkUsernameCommand.Parameters.AddWithValue("@password", userModel.Password);
 
                 await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
                 {
@@ -48,12 +47,18 @@ namespace API.Controllers
                     while (await reader.ReadAsync())
                     {
                         user.Username = reader[1].ToString();
-                        if(authorizationModel.Username != user.Username)
+                        user.Password = reader[2].ToString();
+                        if (userModel.Username != user.Username)
                         {
-                            throw new Exception("redundant username");
+                            throw new Exception("false username");
 
                         }
-                   
+                        if (userModel.Password != user.Password)
+                        {
+                            throw new Exception("false password");
+
+                        }
+
                     }
                 }
             }
@@ -63,7 +68,7 @@ namespace API.Controllers
             {
             
          
-                checkPasswordCommand.Parameters.AddWithValue("@password", authorizationModel.Password);
+                checkPasswordCommand.Parameters.AddWithValue("@password", userModel.Password);
                
 
                 await using (var reader = await checkPasswordCommand.ExecuteReaderAsync()) 
@@ -71,7 +76,8 @@ namespace API.Controllers
                    
                     while (await reader.ReadAsync())
                     {
-                        if (authorizationModel.Password != user.Password)
+                        user.Id = (int)reader[0];
+                        if (userModel.Password != user.Password)
                         {
                             throw new Exception("incorrect password");
                         }
@@ -82,7 +88,7 @@ namespace API.Controllers
 
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", usersModel.Id);
+                sessionInsertCommand.Parameters.AddWithValue("@userId", userModel.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
                 {
                     var sessions = new List<SessionModel>();

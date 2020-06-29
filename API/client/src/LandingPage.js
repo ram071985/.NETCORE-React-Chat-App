@@ -12,7 +12,8 @@ class LandingPage extends Component {
       newPassword: "",
       existingUsername: "",
       existingPassword: "",
-      errorMessage: ""
+      errorMessage: "",
+      logInErrorMessage: ""
     };
   }
 
@@ -20,8 +21,10 @@ class LandingPage extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-      errorMessage: ""
+        errorMessage: "",
+        logInErrorMessage: ""
     });
+         
   };
 
   handleNewUserSubmit = e => {
@@ -31,7 +34,7 @@ class LandingPage extends Component {
 
   handleLogInSubmit = e => {
     e.preventDefault();
-    this.postNewUser();
+    this.logInUser();
   };
 
   postNewUser = () => {
@@ -69,31 +72,41 @@ class LandingPage extends Component {
         username: this.state.existingUsername,
         password: this.state.existingPassword
       })
-      .then(res => {
-        localStorage.setItem("session_id", res.data[0].id);
+        .then(res => {
+          console.log(res.data)
+          localStorage.setItem("session_id", res.data[0].id);
       })
       .catch(err => {
+        console.log(err.response);
         if (err.response.data.title === "empty username") {
           this.setState({
-            errorMessage: "Please choose a username."
+            logInErrorMessage: "Please enter a username."
           });
         }
         if (err.response.data.title === "empty password") {
           this.setState({
-            errorMessage: "Please choose a password."
+            logInErrorMessage: "Please enter a password."
           });
         }
-        if (err.response.data.title === "redundant username") {
+        if (err.response.data.title === "false username") {
           this.setState({
-            errorMessage:
+            logInErrorMessage:
               "The username you chose is already taken.  Please try another entry."
           });
         }
+        if (err.response.data.title === "false password") {
+          this.setState({
+            logInErrorMessage:
+              "Incorrect password."
+          });
+        }
+          console.log(err.response);
       });
   };
 
-  render() {
-    console.log(this.state.errorMessage);
+    render() {
+       
+    console.log(this.state.existingUsername);
     return (
       <div>
         <Container className="top-container" fluid>
@@ -105,7 +118,7 @@ class LandingPage extends Component {
             </Col>
             <Col>
               <Form className="sign-in-form" onSubmit={this.handleLogInSubmit}>
-                <Row className="sign-in-row">
+                <Form.Row className="sign-in-row">
                   <Col className="col-lg-4 username-col">
                     <Form.Label className="top-form-label">Username</Form.Label>
                     <Form.Control
@@ -124,7 +137,13 @@ class LandingPage extends Component {
                       name="existingPassword"
                     />
                   </Col>
-                </Row>
+                  <Col>
+                    <Button className="login-btn" variant="dark" type="submit">
+                      <h6 className="login-text">Log In</h6>
+                    </Button>
+                    <h6>{this.state.logInErrorMessage}</h6>
+                  </Col>
+                </Form.Row>
               </Form>
             </Col>
           </Row>
