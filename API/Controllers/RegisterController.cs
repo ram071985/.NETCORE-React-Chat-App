@@ -16,7 +16,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm]SessionModel sessionModel, UserModel userModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] UserModel userModel)
         {
 
             if (userModel.Username == "")
