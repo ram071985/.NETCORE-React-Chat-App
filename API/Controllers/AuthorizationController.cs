@@ -16,7 +16,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] AuthorizationModel authorizationModel)
         {
 
             if (authorizationModel.Username == "")
@@ -30,14 +30,13 @@ namespace API.Controllers
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
             var authorizeUser = new AuthorizationModel();
-            var user = new UserModel();
   
 
     
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT username FROM users WHERE username = @username", conn))
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
             {
 
                 checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
@@ -46,25 +45,23 @@ namespace API.Controllers
                 {
 
                     while (await reader.ReadAsync())
-                    {
-                        authorizeUser.Username = reader[1].ToString();
-                        if (authorizationModel.Username == authorizeUser.Username)
-                        {
-                          
-
-                        }
-                        else
+                    {              
+                        authorizeUser.Username = reader[0].ToString();
+                        if (authorizationModel.Username != authorizeUser.Username)
                         {
 
                             throw new Exception("false username");
+
                         }
+                       
+                                            
                     }
                 }
             }
 
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", user.Id);
+                sessionInsertCommand.Parameters.AddWithValue("@userId", authorizeUser.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
                 {
                     var sessions = new List<SessionModel>();
