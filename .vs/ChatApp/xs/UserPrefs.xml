@@ -1,19 +1,16 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorizationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/ErrorController.cs">
     <Files>
-      <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" />
-      <File FileName="API/SessionInput.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/client/src/LandingPage.js" />
-      <File FileName="API/Controllers/RegisterController.cs" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="51" Column="62" />
-      <File FileName="API/UserModel.cs" />
-      <File FileName="API/RegisterModel.cs" />
-      <File FileName="API/SessionModel.cs" />
+      <File FileName="API/client/src/LandingPage.js" Line="82" Column="26" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="41" Column="95" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="45" Column="1" />
+      <File FileName="API/AuthorizationModel.cs" Line="11" Column="1" />
+      <File FileName="API/RegisterModel.cs" Line="1" Column="1" />
+      <File FileName="API/UserModel.cs" Line="13" Column="1" />
       <File FileName="API/MessageModel.cs" />
-      <File FileName="API/Startup.cs" />
-      <File FileName="API/Controllers/ErrorController.cs" />
       <File FileName="API/UserInputUser.cs" />
+      <File FileName="API/Controllers/ErrorController.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +22,7 @@
                 <Node name="src" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True">
-                <Node name="AuthorizationController.cs" selected="True" />
+                <Node name="ErrorController.cs" selected="True" />
               </Node>
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
@@ -44,7 +41,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/AuthorizationController.cs" relfile="API/Controllers/AuthorizationController.cs" line="64" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/AuthorizationController.cs" relfile="API/Controllers/AuthorizationController.cs" line="40" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

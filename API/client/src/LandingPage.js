@@ -100,7 +100,6 @@ class LandingPage extends Component {
               "Incorrect password."
           });
         }
-          console.log(err.response);
       });
   };
 
