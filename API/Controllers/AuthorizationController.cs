@@ -45,16 +45,17 @@ namespace API.Controllers
                 {
 
                     while (await reader.ReadAsync())
-                    {              
-                        authorizeUser.Username = reader[0].ToString();
+                    {
+                       
                         if (authorizationModel.Username != authorizeUser.Username)
                         {
 
                             throw new Exception("false username");
 
                         }
-                       
-                                            
+                        authorizeUser.Id = (int)reader[0];
+                        authorizeUser.Username = reader[1].ToString();
+
                     }
                 }
             }
