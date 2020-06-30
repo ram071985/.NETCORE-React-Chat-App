@@ -16,19 +16,20 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] UserInputUser userInputUser, UserModel userModel)
+        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromForm] AuthorizationModel authorizationModel)
         {
 
-            if (userModel.Username == "")
+            if (authorizationModel.Username == "")
             {
                 throw new Exception("empty username");
             }
-            if (userModel.Password == "")
+            if (authorizationModel.Password == "")
             {
                 throw new Exception("empty password");
             }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            var authorizeUser = new AuthorizationModel();
             var user = new UserModel();
   
 
@@ -39,18 +40,17 @@ namespace API.Controllers
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT username FROM users WHERE username = @username", conn))
             {
 
-                checkUsernameCommand.Parameters.AddWithValue("@username", userModel.Username);
+                checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
 
                 await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
                 {
 
                     while (await reader.ReadAsync())
                     {
-
-                        if (user.Username == user.Username)
+                        authorizeUser.Username = reader[1].ToString();
+                        if (authorizationModel.Username == authorizeUser.Username)
                         {
-                            user.Id = (int)reader[0];
-                            user.Username = reader[1].ToString();
+                          
 
                         }
                         else
