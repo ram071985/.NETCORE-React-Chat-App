@@ -44,7 +44,7 @@ class LandingPage extends Component {
         password: this.state.newPassword
       })
       .then(res => {
-        localStorage.setItem("session_id", res.data[0].id);
+        localStorage.setItem("session_id", res.data.id);
       })
       .catch(err => {
         if (err.response.data.title === "empty username") {
@@ -73,8 +73,7 @@ class LandingPage extends Component {
         password: this.state.existingPassword
       })
         .then(res => {
-          console.log(res.data)
-          localStorage.setItem("session_id", res.data[0].id);
+          localStorage.setItem("session_id", res.data.id);
       })
       .catch(err => {
         console.log(err.response);
