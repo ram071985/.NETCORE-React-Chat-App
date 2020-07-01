@@ -16,7 +16,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] UserModel userModel)
+        public async System.Threading.Tasks.Task<SessionModel> PostAsync([FromBody] UserModel userModel)
         {
 
             if (userModel.Username == "")
@@ -76,24 +76,24 @@ namespace API.Controllers
                 }
             }
 
+            var session = new SessionModel();
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
                 sessionInsertCommand.Parameters.AddWithValue("@userId", user.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
                 {
-                    var sessions = new List<SessionModel>();
+                   
 
                     while (await reader.ReadAsync())
                     {
-                        var session = new SessionModel();
+               
                         session.Id = (int)reader[0];
-                        sessions.Add(session);
 
                     }
-                    return sessions;
+                    
                 }
             }
-
+            return session;
         }
 
     }
