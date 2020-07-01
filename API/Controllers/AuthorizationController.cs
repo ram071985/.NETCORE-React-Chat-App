@@ -13,11 +13,12 @@ namespace API.Controllers
 
     public class AuthorizationController : ControllerBase
     {
-
+        
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] AuthorizationModel authorizationModel)
+        public async System.Threading.Tasks.Task<SessionModel> PostAsync([FromBody] AuthorizationModel authorizationModel)
         {
+            var session = new SessionModel();
 
             if (authorizationModel.Username == "")
             {
@@ -29,56 +30,50 @@ namespace API.Controllers
             }
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-            var authorizeUser = new AuthorizationModel();
-  
 
-    
+
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
             {
 
                 checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
+                checkUsernameCommand.Parameters.AddWithValue("@password", authorizationModel.Password);
 
                 await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
                 {
 
                     while (await reader.ReadAsync())
                     {
-                       
-                        if (authorizationModel.Username != authorizeUser.Username)
-                        {
-
-                            throw new Exception("false username");
-
-                        }
-                        authorizeUser.Id = (int)reader[0];
-                        authorizeUser.Username = reader[1].ToString();
-
+                        authorizationModel.Id = (int)reader[0];                    
+                    
                     }
                 }
             }
 
+            if (authorizationModel.Id == 0)
+            {
+
+                throw new Exception("false username");
+
+            }
+            
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
             {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", authorizeUser.Id);
+                
+                sessionInsertCommand.Parameters.AddWithValue("@userId", authorizationModel.Id);
                 await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
-                {
-                    var sessions = new List<SessionModel>();
+                {                   
 
                     while (await reader.ReadAsync())
                     {
-                        var session = new SessionModel();
-                        session.Id = (int)reader[0];
-
-                        sessions.Add(session);
-
+                        session.Id = (int)reader[0];  
                     }
-                    return sessions;
+                    
                 }
             }
-
+            return session;
         }
 
     }
