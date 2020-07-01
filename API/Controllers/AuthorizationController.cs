@@ -46,8 +46,10 @@ namespace API.Controllers
 
                     while (await reader.ReadAsync())
                     {
-                        authorizationModel.Id = (int)reader[0];                    
-                    
+                        authorizationModel.Id = (int)reader[0];
+                        authorizationModel.Username = reader[1].ToString();
+                        authorizationModel.Password = reader[2].ToString();
+
                     }
                 }
             }
