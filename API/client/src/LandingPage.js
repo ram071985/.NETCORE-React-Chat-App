@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import ChatRoom from './ChatRoom';
 
 class LandingPage extends Component {
   constructor() {
@@ -21,10 +23,9 @@ class LandingPage extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-        errorMessage: "",
-        logInErrorMessage: ""
+      errorMessage: "",
+      logInErrorMessage: ""
     });
-         
   };
 
   handleNewUserSubmit = e => {
@@ -72,8 +73,8 @@ class LandingPage extends Component {
         username: this.state.existingUsername,
         password: this.state.existingPassword
       })
-        .then(res => {
-          localStorage.setItem("session_id", res.data.id);
+      .then(res => {
+        localStorage.setItem("session_id", res.data.id);
       })
       .catch(err => {
         console.log(err.response);
@@ -95,16 +96,14 @@ class LandingPage extends Component {
         }
         if (err.response.data.title === "false password") {
           this.setState({
-            logInErrorMessage:
-              "Incorrect password."
+            logInErrorMessage: "Incorrect password."
           });
         }
       });
   };
 
-    render() {
-       
-    console.log(this.state.existingUsername);
+  render() {
+    const sessionId = localStorage.getItem("session_id");
     return (
       <div>
         <Container className="top-container" fluid>
@@ -198,6 +197,7 @@ class LandingPage extends Component {
           </div>
         </Container>
       </div>
+
     );
   }
 }

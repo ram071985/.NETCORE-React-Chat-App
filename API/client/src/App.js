@@ -1,9 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LandingPage from "./LandingPage";
+import Authenticate from "./Authenticate";
+import "./index.css"
 
 function App() {
-  return <LandingPage />;
+
+  return <Authenticate />;
 }
 
 export default App;

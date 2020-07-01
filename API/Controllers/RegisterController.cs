@@ -49,9 +49,10 @@ namespace API.Controllers
                         user.Username = reader[1].ToString();
                         if(userModel.Username != user.Username)
                         {
+
                             throw new Exception("redundant username");
-                        }
-                   
+
+                        }                   
                     }
                 }
             }
