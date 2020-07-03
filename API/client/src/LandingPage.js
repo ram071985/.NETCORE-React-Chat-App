@@ -3,8 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import ChatRoom from './ChatRoom';
+import { Redirect } from "react-router-dom";
 
 class LandingPage extends Component {
   constructor() {
@@ -15,7 +14,8 @@ class LandingPage extends Component {
       existingUsername: "",
       existingPassword: "",
       errorMessage: "",
-      logInErrorMessage: ""
+      logInErrorMessage: "",
+      toChatRoom: false
     };
   }
 
@@ -36,8 +36,16 @@ class LandingPage extends Component {
   handleLogInSubmit = e => {
     e.preventDefault();
     this.logInUser();
+
   };
 
+  redirectUser =() => {
+    if (this.state.toChatRoom === true) {
+      return <Redirect to='/' />
+    }
+  }
+
+  
   postNewUser = () => {
     axios
       .post("/api/register", {
@@ -75,9 +83,12 @@ class LandingPage extends Component {
       })
       .then(res => {
         localStorage.setItem("session_id", res.data.id);
+        this.setState({
+          toChatRoom: true
+        })
       })
       .catch(err => {
-        console.log(err.response);
+  
         if (err.response.data.title === "empty username") {
           this.setState({
             logInErrorMessage: "Please enter a username."
@@ -103,7 +114,15 @@ class LandingPage extends Component {
   };
 
   render() {
-    const sessionId = localStorage.getItem("session_id");
+
+    console.log(this.state.toChatRoom)
+    if (this.state.toChatRoom === true) {
+      return <Redirect to='/' />
+    } 
+    else if(this.state.toChatRoom === false) {
+      return <Redirect to='/login' />
+    }
+
     return (
       <div>
         <Container className="top-container" fluid>
@@ -136,7 +155,7 @@ class LandingPage extends Component {
                   </Col>
                   <Col>
                     <Button className="login-btn" variant="dark" type="submit">
-                      <h6 className="login-text">Log In</h6>
+                    <h6 className="login-text">Log In</h6>
                     </Button>
                     <h6>{this.state.logInErrorMessage}</h6>
                   </Col>
@@ -197,7 +216,6 @@ class LandingPage extends Component {
           </div>
         </Container>
       </div>
-
     );
   }
 }

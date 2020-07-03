@@ -22,16 +22,7 @@ class Authenticate extends Component {
   render() {
     const sessionId = localStorage.getItem("session_id");
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            {(sessionId !== null) ? <ChatRoom /> : <LandingPage />}
-          </Route>
-          <Route path="/thegabchat">
-             <ChatRoom />
-          </Route>
-        </Switch>
-      </Router>
+
     );
   }
 }
