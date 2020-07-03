@@ -115,13 +115,10 @@ class LandingPage extends Component {
 
   render() {
 
-    console.log(this.state.toChatRoom)
+    console.log(window.localStorage.length === 0)
     if (this.state.toChatRoom === true) {
       return <Redirect to='/' />
     } 
-    else if(this.state.toChatRoom === false) {
-      return <Redirect to='/login' />
-    }
 
     return (
       <div>
@@ -167,8 +164,8 @@ class LandingPage extends Component {
         <Container className="bottom-container" fluid>
           <Row className="w-100">
             <Col className="w-100">
-              <h1 class="join-text">Join The Gab Community</h1>
-              <h2 class="painless-text">It's quick and painless.</h2>
+              <h1 className="join-text">Join The Gab Community</h1>
+              <h2 className="painless-text">It's quick and painless.</h2>
             </Col>
           </Row>
           <br />
