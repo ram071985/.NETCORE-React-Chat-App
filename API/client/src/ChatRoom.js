@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Button, InputGroup, FormControl } from "react-bootstrap";
 import "./index.css";
 import { Circle } from "react-feather";
+import { Redirect } from "react-router-dom";
 
 class ChatRoom extends Component {
   constructor() {
@@ -32,7 +33,9 @@ class ChatRoom extends Component {
           created_date: new Date()
         }
       ],
-      messageInput: ""
+      messageInput: "",
+      isLoggedIn: true
+
     };
   }
 
@@ -43,12 +46,18 @@ class ChatRoom extends Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.addMessage();
     this.clearInput();
   };
 
+  handleClick = () => {
+    localStorage.removeItem("session_id");
+    this.setState({
+      isLoggedIn: false
+    })
+  };
 
 
   addMessage = () => {
@@ -71,7 +80,11 @@ class ChatRoom extends Component {
     });
   };
 
+
   render() {
+    if (this.state.isLoggedIn === false) {
+      return <Redirect to="/login" />;
+    }
     const usersLoggedIn = this.state.users.map(user => {
       return (
         <Container key={user.id} className="user-icon">
@@ -102,7 +115,7 @@ class ChatRoom extends Component {
       <div className="container">
         <div className="row">
           <div className="col" id="one">
-            <h5>Users</h5>
+            <h5 className="users-header">Users</h5>
           </div>
           <div className="col" id="two">
             {userMessages}
@@ -111,29 +124,38 @@ class ChatRoom extends Component {
             <br />
             {usersLoggedIn}
           </div>
+          <div className="col" id="five">
+            <Button
+              onClick={this.handleClick}
+              className="log-out-button"
+              variant="secondary"
+              size="sm"
+            >
+              Log Out
+            </Button>
+          </div>
           <div className="col" id="four">
             <form onSubmit={this.handleSubmit}>
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Message"
-                aria-label="Recipient's message"
-                aria-describedby="basic-addon2"
-                name="messageInput"
-                value={this.state.messageInput}
-                type="input"
-                onChange={this.handleChange}              
-              />
-              <InputGroup.Append>
-                <Button
-                  className="submit-button"
-                  variant="outline-secondary"
-                  type="submit"
-        
-                >
-                  Send
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
+              <InputGroup className="mb-3">
+                <FormControl
+                  placeholder="Message"
+                  aria-label="Recipient's message"
+                  aria-describedby="basic-addon2"
+                  name="messageInput"
+                  value={this.state.messageInput}
+                  type="input"
+                  onChange={this.handleChange}
+                />
+                <InputGroup.Append>
+                  <Button
+                    className="submit-button"
+                    variant="outline-secondary"
+                    type="submit"
+                  >
+                    Send
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
             </form>
           </div>
         </div>
