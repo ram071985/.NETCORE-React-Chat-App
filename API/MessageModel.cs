@@ -3,7 +3,6 @@ namespace API
 {
     public class MessageModel
     {
-        public int Id { get; set; }
 
         public int SessionId { get; set; }
 
