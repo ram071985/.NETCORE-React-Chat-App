@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/LandingPage.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/MessagesController.cs">
     <Files>
-      <File FileName="API/client/src/LandingPage.js" Line="36" Column="17" IsPinned="True" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="81" Column="1" />
-      <File FileName="API/AuthorizationModel.cs" Line="7" Column="40" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="38" Column="1" />
-      <File FileName="API/RegisterModel.cs" Line="8" Column="8" />
-      <File FileName="API/UserModel.cs" Line="6" Column="5" />
+      <File FileName="API/client/src/LandingPage.js" Line="86" Column="57" IsPinned="True" />
+      <File FileName="API/AuthorizationModel.cs" />
       <File FileName="API/MessageModel.cs" />
+      <File FileName="API/Controllers/AuthorizationController.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="101" Column="12" />
+      <File FileName="API/Controllers/RegisterController.cs" />
+      <File FileName="API/RegisterModel.cs" />
+      <File FileName="API/UserModel.cs" />
       <File FileName="API/UserInputUser.cs" />
-      <File FileName="API/Controllers/ErrorController.cs" />
-      <File FileName="API/SessionModel.cs" Line="8" Column="49" />
+      <File FileName="API/SessionModel.cs" />
       <File FileName="API/Program.cs" />
+      <File FileName="API/client/src/ChatRoom.js" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,11 +21,11 @@
             <Node name="API" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="client" expanded="True">
-                <Node name="src" expanded="True">
-                  <Node name="LandingPage.js" selected="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="MessagesController.cs" selected="True" />
+              </Node>
               <Node name="System" expanded="True">
                 <Node name="Threading" expanded="True">
                   <Node name="Tasks" expanded="True" />
@@ -44,7 +44,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="81" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/AuthorizationController.cs" relfile="API/Controllers/AuthorizationController.cs" line="19" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/MessagesController.cs" relfile="API/Controllers/MessagesController.cs" line="103" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/MessagesController.cs" relfile="API/Controllers/MessagesController.cs" line="70" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

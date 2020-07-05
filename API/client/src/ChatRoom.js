@@ -4,6 +4,7 @@ import { Container, Button, InputGroup, FormControl } from "react-bootstrap";
 import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class ChatRoom extends Component {
   constructor() {
@@ -13,30 +14,27 @@ class ChatRoom extends Component {
         { id: 1, username: "You" },
         { id: 2, username: "Fred" }
       ],
-      messages: [
-        {
-          id: 1,
-          username: "You",
-          text: "Hello world!",
-          created_date: new Date()
-        },
-        {
-          id: 2,
-          username: "Fred",
-          text: "Hello back at ya",
-          created_date: new Date()
-        },
-        {
-          id: 3,
-          username: "Fred",
-          text: "The World is beautiful.",
-          created_date: new Date()
-        }
-      ],
+      messages: [],
       messageInput: "",
       isLoggedIn: true
 
     };
+  }
+
+  componentDidMount() {
+  }
+
+    getMessagesFromDatabase = () => {
+
+        var sessionId = localStorage.getItem("session_id");
+
+      axios.get("/api/messages", {          
+          sessionId: sessionId,
+          text: this.state.messageInput
+      })
+     .then(res => {
+    console.log(res.data)
+     })
   }
 
   handleChange = event => {
@@ -48,7 +46,7 @@ class ChatRoom extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.addMessage();
+    this.getMessagesFromDatabase();
     this.clearInput();
   };
 
@@ -82,6 +80,7 @@ class ChatRoom extends Component {
 
 
   render() {
+    console.log(this.state.messages)
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
