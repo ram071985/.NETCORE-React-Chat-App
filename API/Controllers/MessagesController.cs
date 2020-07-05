@@ -12,88 +12,118 @@ namespace API.Controllers
 
     public class MessagesController : ControllerBase
     {
-        
 
-        [HttpGet]
-        public async System.Threading.Tasks.Task<List<MessageModel>> GetAsync()
+        [HttpPost]
+        public async System.Threading.Tasks.Task<MessageModel> PostAsync([FromBody] MessageModel messageModel)
         {
+
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            
+
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            // Retrieve all rows
-            await using (var cmd = new NpgsqlCommand("SELECT * FROM messages", conn))
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
             {
-                await using (var reader = await cmd.ExecuteReaderAsync())
+
+                checkUsernameCommand.Parameters.AddWithValue("@id", messageModel.SessionId);
+
+                await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
                 {
-                    List<MessageModel> messageList = new List<MessageModel>();
 
                     while (await reader.ReadAsync())
                     {
-                        var message = new MessageModel();
-                        message.Id = (int)reader[0];
-                        message.UserId = (int)reader[1];
-                        message.Text = reader[2].ToString();
-                        message.CreatedDate = (DateTime)reader[3];                            
-                        messageList.Add(message);
-                    
+                        
+                        messageModel.UserId = (int)reader[0];
+               
                     }
-                    return messageList;
                 }
             }
-                           
+
+            var message = new MessageModel();
+            using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
+            {
+                messageInsertCommand.Parameters.AddWithValue("@userId", messageModel.UserId);
+                messageInsertCommand.Parameters.AddWithValue("@text", messageModel.Text);
+                messageInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
+
+                await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
+                {
+
+                    while (await reader.ReadAsync())
+                    {
+              
+                        messageModel.UserId = (int)reader[1];
+                        messageModel.Text = reader[2].ToString();
+                        messageModel.CreatedDate = (DateTime)reader[3];
+
+                    }
+
+                }
+            }
+            return message;
         }
 
-        [HttpPost]
-        public async System.Threading.Tasks.Task PostAsync(MessageInput messageInput)
+        [HttpGet("text")]
+        public async System.Threading.Tasks.Task<List<MessageModel>> GetMessages()
         {
+            var message = new MessageModel();
+
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+
+
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            using (var cmd = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@user_id, @text, @created_date)", conn))
+
+
+
+            using (var messageInsertCommand = new NpgsqlCommand("SELECT * FROM messages", conn))
             {
-                var random = new Random();
-                cmd.Parameters.AddWithValue("@user_id", messageInput.UserId);
-                cmd.Parameters.AddWithValue("@text", messageInput.Text);
-                cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
-                 
-            }
-
-        }
-
-
-        [HttpGet("{id}")]
-        public MessageModel GetUser(int id)
-        {
-            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-
-            // Retrieve all rows
-            using (var cmd = new NpgsqlCommand("SELECT * FROM messages WHERE id = @id", conn))
-            {
-                cmd.Parameters.AddWithValue("@id", id);
-                using (var reader = cmd.ExecuteReader())
+             
+                await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
                 {
-                    var message = new MessageModel();
+  
 
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
                     {
+
                         message.Id = (int)reader[0];
                         message.UserId = (int)reader[1];
-                        message.Text = reader[2].ToString();
-                        message.CreatedDate = (DateTime)reader[3];
+                     
+                   
 
                     }
-                    return message;
-
+            
                 }
+                
+            }
+
+            using (var messageInsertCommand = new NpgsqlCommand("SELECT text FROM messages WHERE user_id = @user_id", conn))
+            {
+
+                   messageInsertCommand.Parameters.AddWithValue("@id", message.UserId);
+
+                await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
+                {
+                    var messages = new List<MessageModel>();
+
+                    while (await reader.ReadAsync())
+                    {
+
+                        message.Text = reader[0].ToString();
+                        messages.Add(message);
+                       
+                
+                    }
+                    return messages;
+                }
+
             }
 
         }
+
 
     }
 }

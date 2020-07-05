@@ -52,8 +52,9 @@ class LandingPage extends Component {
         username: this.state.newUsername,
         password: this.state.newPassword
       })
-      .then(res => {
-        localStorage.setItem("session_id", res.data.id);
+        .then(res => {
+          localStorage.setItem("session_id", res.data.id);
+          localStorage.setItem("user_id", res.data.userId);
       })
       .catch(err => {
         if (err.response.data.title === "empty username") {
