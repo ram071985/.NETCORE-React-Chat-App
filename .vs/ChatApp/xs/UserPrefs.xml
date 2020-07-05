@@ -3,9 +3,10 @@
     <Files>
       <File FileName="API/client/src/LandingPage.js" Line="86" Column="57" IsPinned="True" />
       <File FileName="API/AuthorizationModel.cs" />
-      <File FileName="API/MessageModel.cs" />
       <File FileName="API/Controllers/AuthorizationController.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="101" Column="12" />
+      <File FileName="API/MessageModel.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="87" Column="22" />
+      <File FileName="API/MessageInput.cs" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/RegisterModel.cs" />
       <File FileName="API/UserModel.cs" />
@@ -45,8 +46,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/AuthorizationController.cs" relfile="API/Controllers/AuthorizationController.cs" line="19" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/MessagesController.cs" relfile="API/Controllers/MessagesController.cs" line="103" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/ChatApp/API/Controllers/MessagesController.cs" relfile="API/Controllers/MessagesController.cs" line="70" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
