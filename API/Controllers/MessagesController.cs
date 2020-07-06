@@ -67,8 +67,6 @@ namespace API.Controllers
         [HttpGet]
         public async System.Threading.Tasks.Task<List<MessageModel>> GetMessages()
         {
-            var message = new MessageModel();
-
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
             await using var conn = new NpgsqlConnection(connString);
@@ -77,14 +75,13 @@ namespace API.Controllers
             using (var messageInsertCommand = new NpgsqlCommand("SELECT u.username, m.text, m.created_date FROM messages m JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
             {
 
-                   messageInsertCommand.Parameters.AddWithValue("@id", message.UserId);
-
                 await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
                 {
                     var messages = new List<MessageModel>();
 
                     while (await reader.ReadAsync())
                     {
+                        var message = new MessageModel();
                         message.Username = reader[0].ToString();
                         message.Text = reader[1].ToString();
                         message.CreatedDate = (DateTime)reader[2];
