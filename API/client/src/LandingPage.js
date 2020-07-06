@@ -53,8 +53,8 @@ class LandingPage extends Component {
         password: this.state.newPassword
       })
         .then(res => {
-          localStorage.setItem("session_id", res.data.id);
-          localStorage.setItem("user_id", res.data.userId);
+          localStorage.setItem("session_id", res.data[0].id);
+          localStorage.setItem("user_id", res.data[1].userId);
       })
       .catch(err => {
         if (err.response.data.title === "empty username") {
@@ -82,8 +82,10 @@ class LandingPage extends Component {
         username: this.state.existingUsername,
         password: this.state.existingPassword
       })
-      .then(res => {
-        localStorage.setItem("session_id", res.data.id);
+        .then(res => {
+          console.log(res.data);
+          localStorage.setItem("session_id", res.data[0].id);
+          localStorage.setItem("user_id", res.data[0].userId);
         this.setState({
           toChatRoom: true
         })
@@ -115,8 +117,6 @@ class LandingPage extends Component {
   };
 
   render() {
-
-    console.log(window.localStorage.length === 0)
     if (this.state.toChatRoom === true) {
       return <Redirect to='/' />
     } 

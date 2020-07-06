@@ -18,7 +18,7 @@ namespace API.Controllers
         {
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-            
+
 
 
             await using var conn = new NpgsqlConnection(connString);
@@ -34,9 +34,9 @@ namespace API.Controllers
 
                     while (await reader.ReadAsync())
                     {
-                        
+
                         messageModel.SessionId = (int)reader[0];
-               
+
                     }
                 }
             }
@@ -53,7 +53,7 @@ namespace API.Controllers
 
                     while (await reader.ReadAsync())
                     {
-              
+
                         messageModel.Text = reader[2].ToString();
                         messageModel.CreatedDate = (DateTime)reader[3];
 
@@ -86,8 +86,8 @@ namespace API.Controllers
                         message.Text = reader[1].ToString();
                         message.CreatedDate = (DateTime)reader[2];
                         messages.Add(message);
-                       
-                
+
+
                     }
                     return messages;
                 }

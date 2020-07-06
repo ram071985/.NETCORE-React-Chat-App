@@ -10,32 +10,36 @@ class ChatRoom extends Component {
   constructor() {
     super();
     this.state = {
-      users: [
-        { id: 1, username: "You" },
-        { id: 2, username: "Fred" }
-      ],
+      users: [],
       messages: [],
       messageInput: "",
       isLoggedIn: true
-
     };
   }
 
   componentDidMount() {
+    this.getMessagesFromDatabase();
+    this.getUsers();
   }
 
-    getMessagesFromDatabase = () => {
+  getMessagesFromDatabase = () => {
+    axios.get("/api/messages", {}).then(res => {
+      console.log(res.data);
+      this.setState({
+        messages: res.data
+      });
+    });
+  };
 
-        var sessionId = localStorage.getItem("session_id");
-
-      axios.get("/api/messages", {          
-          sessionId: sessionId,
-          text: this.state.messageInput
-      })
-     .then(res => {
-    console.log(res.data)
-     })
-  }
+  getUsers = () => {
+    let id = localStorage.getItem("user_id");
+    axios.get(`/api/users/${id}`, {}).then(res => {
+      console.log(res.data);
+      this.setState({
+        users: res.data
+      });
+    });
+  };
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -46,7 +50,6 @@ class ChatRoom extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.getMessagesFromDatabase();
     this.clearInput();
   };
 
@@ -54,9 +57,8 @@ class ChatRoom extends Component {
     localStorage.removeItem("session_id");
     this.setState({
       isLoggedIn: false
-    })
+    });
   };
-
 
   addMessage = () => {
     const addNewMessage = {
@@ -78,25 +80,11 @@ class ChatRoom extends Component {
     });
   };
 
-
   render() {
-    console.log(this.state.messages)
+    console.log(this.state.messages);
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
-    const usersLoggedIn = this.state.users.map(user => {
-      return (
-        <Container key={user.id} className="user-icon">
-          <Circle
-            className="d-inline-block"
-            color="white"
-            width="12"
-            height="12"
-          />
-          <h6 className="d-inline">{user.username}</h6>
-        </Container>
-      );
-    });
 
     const userMessages = this.state.messages.map(message => {
       return (
@@ -121,7 +109,15 @@ class ChatRoom extends Component {
           </div>
           <div className="col" id="three">
             <br />
-            {usersLoggedIn}
+            <Container className="user-icon">
+              <Circle
+                className="d-inline-block"
+                color="white"
+                width="12"
+                height="12"
+              />
+              <h6 className="d-inline">{this.state.users.username}</h6>
+            </Container>
           </div>
           <div className="col" id="five">
             <Button
