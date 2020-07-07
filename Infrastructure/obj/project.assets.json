@@ -192,7 +192,7 @@
       "outputPath": "/Users/reid/Desktop/ChatApp/Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.nuget/NuGet/NuGet.Config"
+        "/Users/reid/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

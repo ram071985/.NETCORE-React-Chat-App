@@ -17,9 +17,9 @@ namespace API.Controllers
         public async System.Threading.Tasks.Task<MessageModel> PostAsync([FromBody] MessageModel messageModel)
         {
 
+            var message = new MessageModel();
+
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
-
-
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
@@ -27,7 +27,7 @@ namespace API.Controllers
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
             {
 
-                checkUsernameCommand.Parameters.AddWithValue("@id", messageModel.SessionId);
+               checkUsernameCommand.Parameters.AddWithValue("@id", messageModel.SessionId);
 
                 await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
                 {
@@ -41,11 +41,12 @@ namespace API.Controllers
                 }
             }
 
-            var message = new MessageModel();
+            
+
             using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
             {
                 messageInsertCommand.Parameters.AddWithValue("@userId", messageModel.SessionId);
-                messageInsertCommand.Parameters.AddWithValue("@text", message.Text);
+                messageInsertCommand.Parameters.AddWithValue("@text", messageModel.Text);
                 messageInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
 
                 await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
@@ -54,8 +55,8 @@ namespace API.Controllers
                     while (await reader.ReadAsync())
                     {
 
-                        messageModel.Text = reader[2].ToString();
-                        messageModel.CreatedDate = (DateTime)reader[3];
+                        messageModel.Text = reader[3].ToString();
+                        messageModel.CreatedDate = (DateTime)reader[4];
 
                     }
 
