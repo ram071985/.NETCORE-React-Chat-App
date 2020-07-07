@@ -35,7 +35,6 @@ class ChatRoom extends Component {
 
   getMessagesFromDatabase = () => {
     axios.get("/api/messages", {}).then(res => {
-      console.log(res.data);
       this.setState({
         messages: res.data
       });
@@ -45,7 +44,6 @@ class ChatRoom extends Component {
   getUsers = () => {
     let id = localStorage.getItem("user_id");
     axios.get(`/api/users/${id}`, {}).then(res => {
-      console.log(res.data);
       this.setState({
         users: res.data
       });
@@ -55,7 +53,7 @@ class ChatRoom extends Component {
   postNewMessage = () => {
     let id = localStorage.getItem("session_id");
     axios.post("/api/messages", {
-       session_id: this.state.sessionId,
+       sessionId: this.state.sessionId,
        text: this.state.messageInput    
     })
     .then(res => {
@@ -92,8 +90,6 @@ class ChatRoom extends Component {
   };
 
     render() {
-
-        console.log(this.state.sessionId);
 
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
