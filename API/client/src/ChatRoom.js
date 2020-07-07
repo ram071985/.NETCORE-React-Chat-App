@@ -13,14 +13,25 @@ class ChatRoom extends Component {
       users: [],
       messages: [],
       messageInput: "",
-      isLoggedIn: true
+      isLoggedIn: true,
+      sessionId: 0
     };
   }
 
-  componentDidMount() {
+    componentDidMount() {
+    let id = localStorage.getItem("session_id");
     this.getMessagesFromDatabase();
-    this.getUsers();
-  }
+      this.getUsers();
+      this.setState({
+          sessionId: id 
+      })
+    }
+
+    componentDidUpdate() {
+        
+        this.getMessagesFromDatabase();
+     
+    }
 
   getMessagesFromDatabase = () => {
     axios.get("/api/messages", {}).then(res => {
@@ -41,6 +52,19 @@ class ChatRoom extends Component {
     });
   };
 
+  postNewMessage = () => {
+    let id = localStorage.getItem("session_id");
+    axios.post("/api/messages", {
+       session_id: this.state.sessionId,
+       text: this.state.messageInput    
+    })
+    .then(res => {
+      console.log(res.data);
+      
+    });
+
+  };
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -50,6 +74,7 @@ class ChatRoom extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.postNewMessage();
     this.clearInput();
   };
 
@@ -60,28 +85,16 @@ class ChatRoom extends Component {
     });
   };
 
-  addMessage = () => {
-    const addNewMessage = {
-      id: Math.random(),
-      username: "You",
-      text: this.state.messageInput,
-      created_date: new Date()
-    };
-    this.setState(prevState => {
-      return {
-        messages: [...prevState.messages, addNewMessage]
-      };
-    });
-  };
-
   clearInput = () => {
     this.setState({
       messageInput: ""
     });
   };
 
-  render() {
-    console.log(this.state.messages);
+    render() {
+
+        console.log(this.state.sessionId);
+
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
