@@ -100,7 +100,7 @@ class ChatRoom extends Component {
 
     const userMessages = this.state.messages.map(message => {
       return (
-        <div className="message-container" id="scroll" key={message.id}>
+        <div className="message-container" key={message.id}>
           <h6 className="message-username">{message.username}:</h6>
           <p className="message-text">{message.text}</p>
           <br />
@@ -115,8 +115,10 @@ class ChatRoom extends Component {
           <div className="col" id="one">
             <h5 className="users-header">Users</h5>
           </div>
-          <div className="col" id="two">
+          <div className="col-two" id="two">
+    
             {userMessages}
+        
           </div>
           <div className="col" id="three">
             <br />
