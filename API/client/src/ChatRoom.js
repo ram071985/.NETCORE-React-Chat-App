@@ -18,20 +18,14 @@ class ChatRoom extends Component {
     };
   }
 
-    componentDidMount() {
+  componentDidMount() {
     let id = localStorage.getItem("session_id");
     this.getMessagesFromDatabase();
-      this.getUsers();
-      this.setState({
-          sessionId: id 
-      })
-    }
-
-    componentDidUpdate() {
-        
-        this.getMessagesFromDatabase();
-     
-    }
+    this.getUsers();
+    this.setState({
+      sessionId: id
+    });
+  }
 
   getMessagesFromDatabase = () => {
     axios.get("/api/messages", {}).then(res => {
@@ -51,16 +45,25 @@ class ChatRoom extends Component {
   };
 
   postNewMessage = () => {
-    let id = localStorage.getItem("session_id");
-    axios.post("/api/messages", {
-       sessionId: this.state.sessionId,
-       text: this.state.messageInput    
-    })
-    .then(res => {
-      console.log(res.data);
-      
-    });
+    let parseId = parseInt(localStorage.getItem("session_id"));
 
+    const addNewMessage = {
+      username: this.state.users.username,
+      text: this.state.messageInput
+    };
+    axios
+      .post("/api/messages", {
+        sessionId: parseId,
+        text: this.state.messageInput
+      })
+      .then(res => {
+        console.log(res.data);
+        this.setState(prevState => {
+          return {
+            messages: [...prevState.messages, addNewMessage]
+          };
+        });
+      });
   };
 
   handleChange = event => {
@@ -73,6 +76,7 @@ class ChatRoom extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.postNewMessage();
+    this.getMessagesFromDatabase();
     this.clearInput();
   };
 
@@ -89,20 +93,18 @@ class ChatRoom extends Component {
     });
   };
 
-    render() {
-
+  render() {
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
 
     const userMessages = this.state.messages.map(message => {
       return (
-        <div key={message.id}>
-          <h6>{message.username}:</h6>
-          <p>{message.text}</p>
+        <div className="message-container" id="scroll" key={message.id}>
+          <h6 className="message-username">{message.username}:</h6>
+          <p className="message-text">{message.text}</p>
           <br />
           <br />
-          <hr />
         </div>
       );
     });
