@@ -146,6 +146,8 @@ class ChatRoom extends Component {
             <form onSubmit={this.handleSubmit}>
               <InputGroup className="mb-3">
                 <FormControl
+                  as="textarea"
+                  className="message-input"
                   placeholder="Message"
                   aria-label="Recipient's message"
                   aria-describedby="basic-addon2"
