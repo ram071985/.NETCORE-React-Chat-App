@@ -94,21 +94,24 @@ class ChatRoom extends Component {
   };
 
   render() {
+    console.log(this.state.messages)
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
-
+   
     const userMessages = this.state.messages.map(message => {
+      const sortCreatedDate = this.state.messages.sort((a, b) => b.this.state.messages.createdDate - a.this.state.messages.createdDate);
+      console.log(message.createdDate)
       return (
-        <div className="card message-card" style={{ width: "40rem" }} key={message.id}>
+        <div className="card message-card" style={{ width: "40rem" }} key={message.createdDate}>
           <div className="card-body">
-            <h6 className="card-title">{message.username}:</h6>
+            <h6 className="card-title">{message.username}</h6>
             <p className="card-text">{message.text}</p>
           </div>
         </div>
       );
     });
-
+ console.log(sortCreatedDate)
     return (
       <div className="container">
         <div className="row h-100">
