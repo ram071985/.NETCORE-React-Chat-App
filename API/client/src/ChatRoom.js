@@ -114,6 +114,7 @@ class ChatRoom extends Component {
         <div className="row h-100">
           <div className="col-xs h-100 w-25 users-col">
             <h5 className="mt-5 users-header">Users</h5>
+            <hr />
           </div>
           <div className="col-xs h-100 messages-col mt-5">{userMessages}</div>
           <div className="col-xs message-input">

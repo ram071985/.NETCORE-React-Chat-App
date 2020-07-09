@@ -40,6 +40,10 @@ body {
   margin: 0 0;
 }
 
+#root {
+  background-color: #fff5d7;
+}
+
 
 #log-out.col {
   display: inline !important;
@@ -179,7 +183,7 @@ body {
 }
 
 .users-col {
-background-color: #2d545e;
+background-color: #ff5e6c;
 position: absolute;
 left: 0%;
 }
@@ -189,7 +193,7 @@ left: 0%;
   margin-left: 20rem;
   height: 80%;
   max-height: 800px;
-  
+  background-color: #fff5d7 !important;
 }
 
 .message-input {
@@ -198,7 +202,14 @@ left: 0%;
   bottom: 5%;
 }
 
-.message-card {
-  border-radius: .1rem !important;
+.card {
+  background-color: #fdf5df !important;
+  border-radius: .20rem !important;
+  border:1px solid white!important;
+}
+
+.users-header {
+color: white;
+margin-left: 30px !important;
 }
 
