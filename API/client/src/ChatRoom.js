@@ -100,53 +100,27 @@ class ChatRoom extends Component {
 
     const userMessages = this.state.messages.map(message => {
       return (
-        <div className="message-container" key={message.id}>
-          <h6 className="message-username">{message.username}:</h6>
-          <p className="message-text">{message.text}</p>
-          <br />
-          <br />
+        <div className="card message-card" style={{ width: "40rem" }} key={message.id}>
+          <div className="card-body">
+            <h6 className="card-title">{message.username}:</h6>
+            <p className="card-text">{message.text}</p>
+          </div>
         </div>
       );
     });
 
     return (
       <div className="container">
-        <div className="row">
-          <div className="col" id="one">
-            <h5 className="users-header">Users</h5>
+        <div className="row h-100">
+          <div className="col-xs h-100 w-25 users-col">
+            <h5 className="mt-5 users-header">Users</h5>
           </div>
-          <div className="col-two" id="two">
-    
-            {userMessages}
-        
-          </div>
-          <div className="col" id="three">
-            <br />
-            <Container className="user-icon">
-              <Circle
-                className="d-inline-block"
-                color="white"
-                width="12"
-                height="12"
-              />
-              <h6 className="d-inline">{this.state.users.username}</h6>
-            </Container>
-          </div>
-          <div className="col" id="five">
-            <Button
-              onClick={this.handleClick}
-              className="log-out-button"
-              variant="secondary"
-              size="sm"
-            >
-              Log Out
-            </Button>
-          </div>
-          <div className="col" id="four">
+          <div className="col-xs h-100 messages-col mt-5">{userMessages}</div>
+          <div className="col-xs message-input">
             <form onSubmit={this.handleSubmit}>
-              <InputGroup className="mb-3">
+              <InputGroup className="messgae-input-group">
                 <FormControl
-                  as="textarea"
+                  style={{ width: "37rem" }}
                   className="message-input"
                   placeholder="Message"
                   aria-label="Recipient's message"
