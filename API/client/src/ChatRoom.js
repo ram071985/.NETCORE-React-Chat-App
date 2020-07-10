@@ -12,7 +12,6 @@ class ChatRoom extends Component {
     this.state = {
       users: [],
       messages: [],
-      messagesTest: [],
       messageInput: "",
       isLoggedIn: true,
       sessionId: 0
@@ -29,10 +28,14 @@ class ChatRoom extends Component {
   }
 
   getMessagesFromDatabase = () => {
-    axios.get("/api/messages", {}).then(res => {
+    axios.get("/api/messages", {}).then(res => {     
+      const messageDates = res.data.sort((a, b) => {
+        const message1 = new Date(b.createdDate);
+        const message2 = new Date(a.createdDate);
+        return message1 - message2;
+      });
       this.setState({
-        messages: res.data,
-        messagesTest: res.data
+        messages: messageDates
       });
     });
   };
@@ -98,22 +101,17 @@ class ChatRoom extends Component {
     }
   };
 
+
   clearInput = () => {
     this.setState({
       messageInput: ""
     });
   };
 
-
-
-
   render() {
-    console.log(this.testFunction);
-    const sortedDates = this.state.messages.sort((a, b) => {
-      console.log(typeof new Date(b.createdDate));
-      console.log(typeof new Date(a.createdDate));
-      return new Date(b.createDate) - new Date(a.createdDate);
-    });
+
+   
+
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
@@ -132,8 +130,6 @@ class ChatRoom extends Component {
         </div>
       );
     });
-
-    console.log(sortedDates)
     return (
       <div className="container">
         <div className="row h-100">
@@ -141,6 +137,7 @@ class ChatRoom extends Component {
             <h5 className="mt-5 users-header">Users</h5>
             <hr />
             <br />
+            {this.sortedDates}
             <Circle
               className="d-inline-block ml-3 mb-1"
               color="white"
