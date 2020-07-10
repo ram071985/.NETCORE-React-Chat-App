@@ -87,6 +87,15 @@ class ChatRoom extends Component {
     });
   };
 
+  onKeyPress = e => {
+    if(e.which === 13) {
+      e.preventDefault();
+      this.postNewMessage();
+      this.getMessagesFromDatabase();
+      this.clearInput();
+    }
+  }
+
   clearInput = () => {
     this.setState({
       messageInput: ""
@@ -94,16 +103,19 @@ class ChatRoom extends Component {
   };
 
   render() {
-    console.log(this.state.messages)
+    console.log(this.state.messages);
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
-   
+
     const userMessages = this.state.messages.map(message => {
-      const sortCreatedDate = this.state.messages.sort((a, b) => b.this.state.messages.createdDate - a.this.state.messages.createdDate);
-      console.log(message.createdDate)
+      console.log(message.createdDate);
       return (
-        <div className="card message-card" style={{ width: "40rem" }} key={message.createdDate}>
+        <div
+          className="card message-card"
+          style={{ width: "40rem" }}
+          key={message.createdDate}
+        >
           <div className="card-body">
             <h6 className="card-title">{message.username}</h6>
             <p className="card-text">{message.text}</p>
@@ -111,17 +123,25 @@ class ChatRoom extends Component {
         </div>
       );
     });
- console.log(sortCreatedDate)
+    console.log();
     return (
       <div className="container">
         <div className="row h-100">
           <div className="col-xs h-100 w-25 users-col">
             <h5 className="mt-5 users-header">Users</h5>
             <hr />
+            <br />
+            <Circle
+              className="d-inline-block ml-3 mb-1"
+              color="white"
+              width="12"
+              height="12"
+            />
+            <h6 className="d-inline ml-2">{this.state.users.username}</h6>
           </div>
           <div className="col-xs h-100 messages-col mt-5">{userMessages}</div>
           <div className="col-xs message-input">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
               <InputGroup className="messgae-input-group">
                 <FormControl
                   style={{ width: "37rem" }}

@@ -203,13 +203,12 @@ left: 0%;
 }
 
 .card {
-  background-color: #fdf5df !important;
-  border-radius: .20rem !important;
+  background-color: #ff5e6c !important;
+  border-radius: .50rem !important;
   border:1px solid white!important;
 }
 
 .users-header {
-color: white;
 margin-left: 30px !important;
 }
 
