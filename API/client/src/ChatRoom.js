@@ -12,6 +12,7 @@ class ChatRoom extends Component {
     this.state = {
       users: [],
       messages: [],
+      messagesTest: [],
       messageInput: "",
       isLoggedIn: true,
       sessionId: 0
@@ -30,7 +31,8 @@ class ChatRoom extends Component {
   getMessagesFromDatabase = () => {
     axios.get("/api/messages", {}).then(res => {
       this.setState({
-        messages: res.data
+        messages: res.data,
+        messagesTest: res.data
       });
     });
   };
@@ -88,13 +90,13 @@ class ChatRoom extends Component {
   };
 
   onKeyPress = e => {
-    if(e.which === 13) {
+    if (e.which === 13) {
       e.preventDefault();
       this.postNewMessage();
       this.getMessagesFromDatabase();
       this.clearInput();
     }
-  }
+  };
 
   clearInput = () => {
     this.setState({
@@ -102,14 +104,21 @@ class ChatRoom extends Component {
     });
   };
 
+
+
+
   render() {
-    console.log(this.state.messages);
+    console.log(this.testFunction);
+    const sortedDates = this.state.messages.sort((a, b) => {
+      console.log(typeof new Date(b.createdDate));
+      console.log(typeof new Date(a.createdDate));
+      return new Date(b.createDate) - new Date(a.createdDate);
+    });
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
-    const sortedDates = this.state.messages.sort((a, b) => b.this.state.messages.createDate - a.this.state.messages.createdDate)
+
     const userMessages = this.state.messages.map(message => {
-      console.log(sortedDates);
       return (
         <div
           className="card message-card"
@@ -123,7 +132,8 @@ class ChatRoom extends Component {
         </div>
       );
     });
-    console.log();
+
+    console.log(sortedDates)
     return (
       <div className="container">
         <div className="row h-100">
