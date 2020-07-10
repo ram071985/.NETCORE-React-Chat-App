@@ -107,9 +107,9 @@ class ChatRoom extends Component {
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
-
+    const sortedDates = this.state.messages.sort((a, b) => b.this.state.messages.createDate - a.this.state.messages.createdDate)
     const userMessages = this.state.messages.map(message => {
-      console.log(message.createdDate);
+      console.log(sortedDates);
       return (
         <div
           className="card message-card"
