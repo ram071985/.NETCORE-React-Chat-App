@@ -191,15 +191,14 @@ left: 0%;
 .messages-col {
   overflow: auto;
   margin-left: 20rem;
-  height: 80%;
-  max-height: 800px;
+  max-height: 775px;
   background-color: #fff5d7 !important;
 }
 
 .message-input {
   margin-left: 10rem;
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
 }
 
 .card {
