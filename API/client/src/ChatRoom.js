@@ -62,11 +62,14 @@ class ChatRoom extends Component {
         text: this.state.messageInput
       })
       .then(res => {
+        const messageDates = res.data.sort((a, b) => {
+          const message1 = new Date(b.createdDate);
+          const message2 = new Date(a.createdDate);
+          return message1 - message2;
+        });
         console.log(res.data);
-        this.setState(prevState => {
-          return {
-            messages: [...prevState.messages, addNewMessage]
-          };
+        this.setState({
+            messages: messageDates
         });
       });
   };
