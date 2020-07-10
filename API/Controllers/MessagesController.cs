@@ -14,10 +14,8 @@ namespace API.Controllers
     {
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<MessageModel> PostAsync([FromBody] MessageModel messageModel)
+        public async System.Threading.Tasks.Task<List<MessageModel>> PostAsync([FromBody] MessageModel messageModel)
         {
-
-            var message = new MessageModel();
 
             var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
 
@@ -42,7 +40,6 @@ namespace API.Controllers
             }
 
             
-
             using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
             {
                 messageInsertCommand.Parameters.AddWithValue("@userId", messageModel.SessionId);
@@ -61,8 +58,29 @@ namespace API.Controllers
                     }
 
                 }
+            } 
+
+            using (var messageInsertCommand = new NpgsqlCommand("SELECT u.username, m.text, m.created_date FROM messages m JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
+            {
+
+                await using (var reader = await messageInsertCommand.ExecuteReaderAsync())
+                {
+                    var messages = new List<MessageModel>();
+
+                    while (await reader.ReadAsync())
+                    {
+                        var message = new MessageModel();
+                        message.Username = reader[0].ToString();
+                        message.Text = reader[1].ToString();
+                        message.CreatedDate = (DateTime)reader[2];
+                        messages.Add(message);
+
+
+                    }
+                    return messages;
+                }
+
             }
-            return message;
         }
 
         [HttpGet]
