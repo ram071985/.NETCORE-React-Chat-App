@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 using System.Collections.Generic;
 using Npgsql;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
@@ -12,12 +13,19 @@ namespace API.Controllers
 
     public class MessagesController : ControllerBase
     {
+        private string _databaseUserName;
+        private string _databasePassword;
+
+        public MessagesController(IConfiguration configuration)
+        {
+
+        }
 
         [HttpPost]
         public async System.Threading.Tasks.Task<List<MessageModel>> PostAsync([FromBody] MessageModel messageModel)
         {
 
-            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
@@ -86,7 +94,7 @@ namespace API.Controllers
         [HttpGet]
         public async System.Threading.Tasks.Task<List<MessageModel>> GetMessages()
         {
-            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app"";
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
