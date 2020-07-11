@@ -5,17 +5,26 @@ using System.Collections.Generic;
 using API;
 using System.Linq;
 using Npgsql;
+using Microsoft.Extensions.Configuration;
 
 [ApiController]
 [Route("api/[controller]")]
 
 public class UsersController : ControllerBase
 {
+    private string _databaseUserName;
+    private string _databasePassword;
+
+    public UsersController(IConfiguration configuration)
+    {
+
+    }
+
 
     [HttpPost]
     public async System.Threading.Tasks.Task PostAsync(UserModel userModel)
     {
-        var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+        var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
 
         await using var conn = new NpgsqlConnection(connString);
         await conn.OpenAsync();
@@ -31,7 +40,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public UserModel GetUser(int id)
     {
-        var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+        var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
 
         using var conn = new NpgsqlConnection(connString);
         conn.Open();

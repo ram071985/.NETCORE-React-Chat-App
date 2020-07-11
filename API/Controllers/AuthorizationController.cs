@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Npgsql;
 using System.Net.Http;
 using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
@@ -13,7 +14,15 @@ namespace API.Controllers
 
     public class AuthorizationController : ControllerBase
     {
-        
+
+        private string _databaseUserName;
+        private string _databasePassword;
+
+        public AuthorizationController(IConfiguration configuration)
+        {
+
+        }
+
 
         [HttpPost]
         public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] AuthorizationModel authorizationModel)
@@ -28,7 +37,7 @@ namespace API.Controllers
                 throw new Exception("empty password");
             }
 
-            var connString = "Host=localhost;Username=reid;Password=Lucy07181985!;Database=chat_app";
+            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
 
 
             await using var conn = new NpgsqlConnection(connString);
