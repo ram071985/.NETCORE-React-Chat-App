@@ -94,7 +94,7 @@ namespace API.Controllers
         [HttpGet]
         public async System.Threading.Tasks.Task<List<MessageModel>> GetMessages()
         {
-            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app"";
+            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
 
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
