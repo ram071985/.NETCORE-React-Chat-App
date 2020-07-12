@@ -4,7 +4,7 @@ namespace Core.Services
 
     public interface IAuthorizeUserService
     {
-        AuthorizeUserService.Session GetSession(string username, string password);
+        Session GetSession(string username, string password);
     }
 
     public class AuthorizeUserService : IAuthorizeUserService
@@ -76,8 +76,8 @@ namespace Core.Services
                 }
             }
         }
-        
-        public class Session
+
+        public class SessionModel
         {
 
            public int Id { get; set; }
@@ -85,4 +85,6 @@ namespace Core.Services
 
         }
     }
+
+ 
 }
