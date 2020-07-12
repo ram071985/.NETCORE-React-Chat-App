@@ -16,23 +16,19 @@ namespace API.Controllers
     public class AuthorizationController : ControllerBase
     {
 
-        private string _databaseUserName;
-        private string _databasePassword;
 
         private IAuthorizeUserService _authorizeUserService;
 
         public AuthorizationController(IConfiguration configuration, IAuthorizeUserService authorizeUserService)
-        {
-            _databaseUserName = configuration["Database:Username"];
-            _databasePassword = configuration["Database:Password"];
+        {           
             _authorizeUserService = authorizeUserService;
         }
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<SessionModel> PostAsync([FromBody] AuthorizationModel authorizationModel)
+        public SessionModel Post([FromBody] AuthorizationModel authorizationModel)
         {
-            var session = _authorizeUserService.GetSession(authorizationModel.Username, authorizationModel.Password);
+            var session = _authorizeUserService.GetSession(authorizationModel.Id, authorizationModel.Username, authorizationModel.Password);
 
             return new SessionModel
             {

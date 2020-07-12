@@ -1,20 +1,32 @@
 ﻿using System;
+using Microsoft.Extensions.Configuration;
+using Npgsql;
+using static Core.Services.AuthorizeUserService;
+
 namespace Core.Services
 {
 
     public interface IAuthorizeUserService
     {
-        Session GetSession(string username, string password);
+        Session GetSession(int id, string username, string password);
     }
 
     public class AuthorizeUserService : IAuthorizeUserService
     {
-        public AuthorizeUserService()
+        private string _databaseUserName;
+        private string _databasePassword;
+
+        public AuthorizeUserService(IConfiguration configuration)
         {
+            _databaseUserName = configuration["Database:Username"];
+            _databasePassword = configuration["Database:Password"];
         }
 
-        public Session GetSession(string username, string password)
+        public Session GetSession(int id, string username, string password)
         {
+
+            var session = new Session();
+
             if (username == "")
             {
                 throw new Exception("empty username");
@@ -27,49 +39,50 @@ namespace Core.Services
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
 
-            await using var conn = new NpgsqlConnection(connString);
-            await conn.OpenAsync();
+            using var conn = new NpgsqlConnection(connString);
+            conn.Open();
 
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
             {
 
-                checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
-                checkUsernameCommand.Parameters.AddWithValue("@password", authorizationModel.Password);
+                checkUsernameCommand.Parameters.AddWithValue("@username", username);
+                checkUsernameCommand.Parameters.AddWithValue("@password", password);
 
-                await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
+                using (var reader = checkUsernameCommand.ExecuteReader())
                 {
 
-                    while (await reader.ReadAsync())
+                    while (reader.Read())
                     {
-                        authorizationModel.Id = (int)reader[0];
-                        authorizationModel.Username = reader[1].ToString();
-                        authorizationModel.Password = reader[2].ToString();
+                        id = (int)reader[0];
+                        username = reader[1].ToString();
+                        password = reader[2].ToString();
 
                     }
                 }
             }
 
-            if (authorizationModel.Id == 0)
+            if (id == 0)
             {
 
                 throw new Exception("false username");
 
             }
 
+            
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id, user_id", conn))
             {
 
-                sessionInsertCommand.Parameters.AddWithValue("@userId", authorizationModel.Id);
-                await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
+                sessionInsertCommand.Parameters.AddWithValue("@userId", id);
+                using (var reader = sessionInsertCommand.ExecuteReader())
                 {
 
-                    while (await reader.ReadAsync())
+                    while (reader.Read())
                     {
-                        var session = new Session();
+                        
 
                         session.Id = (int)reader[0];
                         session.UserId = (int)reader[1];
-
+                        
                     }
                     return session;
 
@@ -77,7 +90,7 @@ namespace Core.Services
             }
         }
 
-        public class SessionModel
+        public class Session
         {
 
            public int Id { get; set; }
