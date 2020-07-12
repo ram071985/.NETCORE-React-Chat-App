@@ -17,14 +17,15 @@ public class UsersController : ControllerBase
 
     public UsersController(IConfiguration configuration)
     {
-
+        _databaseUserName = configuration["Database:Username"];
+        _databasePassword = configuration["Database:Password"];
     }
 
 
     [HttpPost]
     public async System.Threading.Tasks.Task PostAsync(UserModel userModel)
     {
-        var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
+        var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
         await using var conn = new NpgsqlConnection(connString);
         await conn.OpenAsync();
@@ -40,7 +41,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public UserModel GetUser(int id)
     {
-        var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
+        var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
         using var conn = new NpgsqlConnection(connString);
         conn.Open();

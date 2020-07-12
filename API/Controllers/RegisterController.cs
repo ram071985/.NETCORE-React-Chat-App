@@ -20,7 +20,8 @@ namespace API.Controllers
 
         public RegisterController(IConfiguration configuration)
         {
-
+            _databaseUserName = configuration["Database:Username"];
+            _databasePassword = configuration["Database:Password"];
         }
 
         [HttpPost]
@@ -36,7 +37,7 @@ namespace API.Controllers
                 throw new Exception("empty password");
             }
 
-            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
+            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
             var user = new UserModel();
 
     
