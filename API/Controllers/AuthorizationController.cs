@@ -6,6 +6,7 @@ using Npgsql;
 using System.Net.Http;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
+using Core.Services;
 
 namespace API.Controllers
 {
@@ -18,78 +19,26 @@ namespace API.Controllers
         private string _databaseUserName;
         private string _databasePassword;
 
-        public AuthorizationController(IConfiguration configuration)
-        {
+        private IAuthorizeUserService _authorizeUserService;
 
+        public AuthorizationController(IConfiguration configuration, IAuthorizeUserService authorizeUserService)
+        {
+            _databaseUserName = configuration["Database:Username"];
+            _databasePassword = configuration["Database:Password"];
+            _authorizeUserService = authorizeUserService;
         }
 
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<List<SessionModel>> PostAsync([FromBody] AuthorizationModel authorizationModel)
+        public async System.Threading.Tasks.Task<SessionModel> PostAsync([FromBody] AuthorizationModel authorizationModel)
         {
+            var session = _authorizeUserService.GetSession(authorizationModel.Username, authorizationModel.Password);
 
-            if (authorizationModel.Username == "")
+            return new SessionModel
             {
-                throw new Exception("empty username");
-            }
-            if (authorizationModel.Password == "")
-            {
-                throw new Exception("empty password");
-            }
-
-            var connString = "Host=localhost;Username=" + _databaseUserName + "Password=" + _databasePassword + "Database=chat_app";
-
-
-            await using var conn = new NpgsqlConnection(connString);
-            await conn.OpenAsync();
-
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
-            {
-
-                checkUsernameCommand.Parameters.AddWithValue("@username", authorizationModel.Username);
-                checkUsernameCommand.Parameters.AddWithValue("@password", authorizationModel.Password);
-
-                await using (var reader = await checkUsernameCommand.ExecuteReaderAsync())
-                {
-
-                    while (await reader.ReadAsync())
-                    {
-                        authorizationModel.Id = (int)reader[0];
-                        authorizationModel.Username = reader[1].ToString();
-                        authorizationModel.Password = reader[2].ToString();
-
-                    }
-                }
-            }
-
-            if (authorizationModel.Id == 0)
-            {
-
-                throw new Exception("false username");
-
-            }
-            
-            using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id, user_id", conn))
-            {
-                var sessions = new List<SessionModel>();
-
-                sessionInsertCommand.Parameters.AddWithValue("@userId", authorizationModel.Id);
-                await using (var reader = await sessionInsertCommand.ExecuteReaderAsync())
-                {
-                 
-                    while (await reader.ReadAsync())
-                    {
-                        var session = new SessionModel();
-
-                        session.Id = (int)reader[0];
-                        session.UserId = (int)reader[1];
-                        sessions.Add(session);
-                    }
-                    return sessions;
-
-                }
-            }
-            
+                Id = session.Id,
+                UserId = session.UserId
+            };
         }
 
     }
