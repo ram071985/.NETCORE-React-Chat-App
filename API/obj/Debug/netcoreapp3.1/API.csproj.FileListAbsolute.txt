@@ -76,14 +76,11 @@
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Core.dll
-/Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Infrastructure.dll
-/Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Infrastructure.pdb
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Core.pdb
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.csprojAssemblyReference.cache
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.AssemblyInfoInputs.cache
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.AssemblyInfo.cs
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.csproj.CoreCompileInputs.cache
-/Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.MvcApplicationPartsAssemblyInfo.cs
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.MvcApplicationPartsAssemblyInfo.cache
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.RazorTargetAssemblyInfo.cache
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.csproj.CopyComplete
@@ -103,3 +100,4 @@
 /Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.RazorAssemblyInfo.cs
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/Npgsql.dll
 /Users/reid/Desktop/ChatApp/API/bin/Debug/netcoreapp3.1/mono_crash.1cfb5decbf.0.json
+/Users/reid/Desktop/ChatApp/API/obj/Debug/netcoreapp3.1/API.MvcApplicationPartsAssemblyInfo.cs

@@ -133,7 +133,15 @@ class ChatRoom extends Component {
       <div className="container">
         <div className="row h-100">
           <div className="col-xs h-100 w-25 users-col">
-            <h5 className="mt-5 users-header">Users</h5>
+                    <h5 className="mt-5 users-header">Users</h5>
+                    <Button
+                        onClick={this.handleClick}
+                        className="log-out-button"
+                        variant="secondary"
+                        size="sm"
+                    >
+                        Log Out
+            </Button>
             <hr />
             <br />
             {this.sortedDates}
