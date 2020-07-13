@@ -84,8 +84,8 @@ class LandingPage extends Component {
       })
         .then(res => {
           console.log(res.data);
-          localStorage.setItem("session_id", res.data[0].id);
-          localStorage.setItem("user_id", res.data[0].userId);
+          localStorage.setItem("session_id", res.data.id);
+          localStorage.setItem("user_id", res.data.userId);
         this.setState({
           toChatRoom: true
         })
@@ -108,11 +108,11 @@ class LandingPage extends Component {
               "The username you chose is already taken.  Please try another entry."
           });
         }
-        if (err.response.data.title === "false password") {
-          this.setState({
-            logInErrorMessage: "Incorrect password."
-          });
-        }
+          if (err.response.data.title === "wrong credentials") {
+              this.setState({
+                  logInErrorMessage: "Username or password are invalid."
+              });
+          }
       });
   };
 
