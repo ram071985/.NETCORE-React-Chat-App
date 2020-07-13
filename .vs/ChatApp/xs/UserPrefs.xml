@@ -1,24 +1,20 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Core.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/ErrorController.cs">
     <Files>
-      <File FileName="API/client/src/LandingPage.js" Line="55" Column="23" IsPinned="True" />
-      <File FileName="API/MessageModel.cs" />
-      <File FileName="API/AuthorizationModel.cs" />
-      <File FileName="API/Controllers/AuthorizationController.cs" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" />
-      <File FileName="Tests/AuthorizeUserTest.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Startup.cs" />
-      <File FileName="API/UserModel.cs" />
-      <File FileName="API/client/src/ChatRoom.js" />
-      <File FileName="API/UserInputUser.cs" />
-      <File FileName="API/SessionModel.cs" />
-      <File FileName="API/appsettings.Development.json" />
-      <File FileName="Tests/Class1.cs" />
-      <File FileName="API/Program.cs" />
-      <File FileName="API/API.csproj" />
-      <File FileName="Core/Core.csproj" Line="4" Column="4" />
+      <File FileName="API/client/src/LandingPage.js" Line="92" Column="9" IsPinned="True" />
+      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
+      <File FileName="API/AuthorizationModel.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="30" Column="1" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="67" Column="1" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="18" Column="15" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="116" Column="47" />
+      <File FileName="API/UserModel.cs" Line="1" Column="1" />
+      <File FileName="API/client/src/ChatRoom.js" Line="143" Column="32" />
+      <File FileName="API/UserInputUser.cs" Line="1" Column="1" />
+      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
+      <File FileName="API/Program.cs" Line="26" Column="2" />
+      <File FileName="API/Controllers/ErrorController.cs" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,9 +25,18 @@
                 <Node name="FrameworkReferences" expanded="True" />
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True" />
+                <Node name="package.json" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="ErrorController.cs" selected="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
-            <Node name="Core" expanded="True" selected="True">
+            <Node name="Core" expanded="True">
               <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Services" expanded="True" />

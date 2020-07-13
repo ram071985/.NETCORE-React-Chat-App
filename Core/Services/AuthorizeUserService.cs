@@ -64,11 +64,11 @@ namespace Core.Services
             if (id == 0)
             {
 
-                throw new Exception("false username");
+                throw new Exception("wrong credentials");
 
             }
 
-            
+
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id, user_id", conn))
             {
 
