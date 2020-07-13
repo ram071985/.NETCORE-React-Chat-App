@@ -4,6 +4,67 @@
     "/Users/reid/Desktop/ChatApp/Tests/Tests.csproj": {}
   },
   "projects": {
+    "/Users/reid/Desktop/ChatApp/Core/Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/reid/Desktop/ChatApp/Core/Core.csproj",
+        "projectName": "Core",
+        "projectPath": "/Users/reid/Desktop/ChatApp/Core/Core.csproj",
+        "packagesPath": "/Users/reid/.nuget/packages/",
+        "outputPath": "/Users/reid/Desktop/ChatApp/Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/reid/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[4.1.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/reid/Desktop/ChatApp/Tests/Tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -24,7 +85,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/reid/Desktop/ChatApp/Core/Core.csproj": {
+                "projectPath": "/Users/reid/Desktop/ChatApp/Core/Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -35,6 +100,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit.ConsoleRunner": {
+              "target": "Package",
+              "version": "[3.11.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
