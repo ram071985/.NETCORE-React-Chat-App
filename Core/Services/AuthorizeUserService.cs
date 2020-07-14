@@ -16,6 +16,10 @@ namespace Core.Services
         private string _databaseUserName;
         private string _databasePassword;
 
+        public AuthorizeUserService()
+        {
+        }
+
         public AuthorizeUserService(IConfiguration configuration)
         {
             _databaseUserName = configuration["Database:Username"];
@@ -95,11 +99,7 @@ namespace Core.Services
 
            public int Id { get; set; }
            public int UserId { get; set; }
-           public Session()
-            {
-                Id = Id;
-            }
-
+          
         }
     }
 
