@@ -134,3 +134,5 @@
 /Users/reid/Desktop/ChatApp/Tests/bin/Debug/netcoreapp3.1/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 /Users/reid/Desktop/ChatApp/Tests/bin/Debug/netcoreapp3.1/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 /Users/reid/Desktop/ChatApp/Tests/obj/Debug/netcoreapp3.1/Tests.genruntimeconfig.cache
+/Users/reid/Desktop/ChatApp/Tests/bin/Debug/netcoreapp3.1/Castle.Core.dll
+/Users/reid/Desktop/ChatApp/Tests/bin/Debug/netcoreapp3.1/NSubstitute.dll
