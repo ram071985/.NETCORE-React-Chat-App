@@ -20,25 +20,11 @@ namespace Tests
         }
 
         [Test]
-        public void should_users_table_id_column_is_equal_to_no_number_is_true()
-        {
-            
-            var session = _authorizeUserService.GetSession(1, "random-username", "random-password");
-
-            Assert.That(session.Id, Is.LessThan(1));
-        }
-
-        [Test]
         public void should_users_table_id_column_is_equal_to_no_number_is_false()
         {
             var session = _authorizeUserService.GetSession(1, "random-username", "random-password");
 
-            Assert.That(session.Id, Is.LessThan(1));
+            Assert.That(session.UserId, Is.GreaterThan(0));
         }
-
-
-
-
-
     }
 }
