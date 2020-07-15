@@ -36,6 +36,7 @@ namespace API
 
             services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
             services.AddScoped<ICreateMessageService, CreateMessageService>();
+            services.AddScoped<IGetMessagesService, GetMessagesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
