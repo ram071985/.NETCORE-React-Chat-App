@@ -6,7 +6,7 @@
       <File FileName="API/AuthorizationModel.cs" />
       <File FileName="API/Controllers/AuthorizationController.cs" />
       <File FileName="Core/Services/AuthorizeUserService.cs" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="35" Column="1" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="10" Column="35" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
       <File FileName="API/UserModel.cs" />

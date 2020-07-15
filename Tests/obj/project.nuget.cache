@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5HKlUtsG95Fhoxsfh8oHaPRQ9CPFsphdFCeq1Dxsqkp9tKM0641U18uvlpzDNSAM+7h81FeGOfAnQanIPma0dQ==",
+  "dgSpecHash": "6AAl38hWG2JSIgGn9tWZOdj39+S3R95jtHfwltJxdEDC+4Bh4nFHWkK9j7PY8Q9tdzdXk+iofIAMOk0yOZta+w==",
   "success": true,
   "projectFilePath": "/Users/reid/Desktop/ChatApp/Tests/Tests.csproj",
   "expectedPackageFiles": [
+    "/Users/reid/.nuget/packages/castle.core/4.4.0/castle.core.4.4.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.antiforgery/2.2.0/microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.authentication.core/2.2.0/microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -92,6 +93,7 @@
     "/Users/reid/.nuget/packages/newtonsoft.json/12.0.2/newtonsoft.json.12.0.2.nupkg.sha512",
     "/Users/reid/.nuget/packages/newtonsoft.json.bson/1.0.1/newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "/Users/reid/.nuget/packages/npgsql/4.1.3.1/npgsql.4.1.3.1.nupkg.sha512",
+    "/Users/reid/.nuget/packages/nsubstitute/4.2.2/nsubstitute.4.2.2.nupkg.sha512",
     "/Users/reid/.nuget/packages/nuget.frameworks/5.0.0/nuget.frameworks.5.0.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/nunit/3.12.0/nunit.3.12.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/nunit.consolerunner/3.11.1/nunit.consolerunner.3.11.1.nupkg.sha512",
@@ -131,6 +133,7 @@
     "/Users/reid/.nuget/packages/system.diagnostics.process/4.3.0/system.diagnostics.process.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.diagnostics.stacktrace/4.3.0/system.diagnostics.stacktrace.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.diagnostics.tools/4.3.0/system.diagnostics.tools.4.3.0.nupkg.sha512",
+    "/Users/reid/.nuget/packages/system.diagnostics.tracesource/4.3.0/system.diagnostics.tracesource.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.diagnostics.tracing/4.3.0/system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.dynamic.runtime/4.3.0/system.dynamic.runtime.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.globalization/4.3.0/system.globalization.4.3.0.nupkg.sha512",

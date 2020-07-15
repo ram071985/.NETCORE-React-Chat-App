@@ -16,9 +16,6 @@ namespace Core.Services
         private string _databaseUserName;
         private string _databasePassword;
 
-        public AuthorizeUserService()
-        {
-        }
 
         public AuthorizeUserService(IConfiguration configuration)
         {
