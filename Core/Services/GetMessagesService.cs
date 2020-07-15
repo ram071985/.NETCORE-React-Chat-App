@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Core.Services
 {
-    public class CreateMessageService
+    public class GetMessagesService
     {
-        public CreateMessageService()
+        public GetMessagesService()
         {
         }
     }
