@@ -21,7 +21,7 @@ namespace API.Controllers
         private ICreateMessageService _createMessageService;
         private IGetMessagesService _getMessagesService;
 
-        public MessagesController(IConfiguration configuration, ICreateMessageService createMessageService)
+        public MessagesController(ICreateMessageService createMessageService, IGetMessagesService getMessagesService)
         {
             _createMessageService = createMessageService;
             _getMessagesService = getMessagesService;
@@ -41,17 +41,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public System.Threading.Tasks.Task<List<MessageModel>> GetMessages(MessageModel messageModel)
+        public List<MessageModel> GetMessages(MessageModel messageModel)
         {
-            var messageList = new List<MessageModel>();
-            var messages = _getMessagesService.GetMessages(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
+            var messages = _getMessagesService.GetMessages(messageModel.Username, messageModel.Text, messageModel.CreatedDate);
 
-            return new List<Message>()
-            {
-            Username = messages.Username
-            
-            }
+            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text });
 
+            return messageModels.ToList();
         }
 
     }
