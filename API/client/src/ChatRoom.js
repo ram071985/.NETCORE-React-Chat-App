@@ -50,8 +50,7 @@ class ChatRoom extends Component {
   };
 
   postNewMessage = () => {
-    let parseId = parseInt(localStorage.getItem("session_id"));
-    
+    let parseId = parseInt(localStorage.getItem("session_id"));   
     axios
       .post("/api/messages", {
         sessionId: parseId,
@@ -63,7 +62,6 @@ class ChatRoom extends Component {
           const message2 = new Date(a.createdDate);
           return message1 - message2;
         });
-        console.log(res.data);
         this.setState({
             messages: messageDates
         });

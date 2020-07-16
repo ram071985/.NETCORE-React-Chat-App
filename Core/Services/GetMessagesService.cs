@@ -10,7 +10,7 @@ namespace Core.Services
 {
     public interface IGetMessagesService
     {
-        List<RetrieveMessage> GetMessages(string username, string text, DateTime createdDate);
+        List<RetrieveMessage> GetMessages();
     }
     public class GetMessagesService : IGetMessagesService
     {
@@ -24,7 +24,7 @@ namespace Core.Services
         }
 
 
-        public List<RetrieveMessage> GetMessages(string username, string text, DateTime createdDate)
+        public List<RetrieveMessage> GetMessages()
         {
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
