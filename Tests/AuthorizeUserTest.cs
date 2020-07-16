@@ -1,10 +1,7 @@
-﻿using System;
-using Core;
-using Core.Services;
+﻿using Core.Services;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
-using static Core.Services.AuthorizeUserService;
 
 namespace Tests
 {
