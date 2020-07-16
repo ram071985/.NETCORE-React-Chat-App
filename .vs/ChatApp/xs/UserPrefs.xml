@@ -1,14 +1,44 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/MessagesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/GetMessagesService.cs">
     <Files>
       <File FileName="Core/Services/AuthorizeUserService.cs" Line="22" Column="12" />
       <File FileName="API/Controllers/AuthorizationController.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="27" Column="54" />
+      <File FileName="API/Controllers/MessagesController.cs" />
       <File FileName="API/MessageModel.cs" Line="15" Column="50" NotebookId="1" />
       <File FileName="Core/Services/CreateMessageService.cs" NotebookId="1" />
-      <File FileName="Core/Services/GetMessagesService.cs" NotebookId="1" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="67" Column="2" NotebookId="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ChatApp" expanded="True">
+            <Node name="API" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True" />
+                <Node name="package.json" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+            <Node name="Core" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="GetMessagesService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Tests" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -16,6 +46,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/ChatApp/API/MessageModel.cs" relfile="API/MessageModel.cs" line="19" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/Core/Services/GetMessagesService.cs" relfile="Core/Services/GetMessagesService.cs" line="31" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

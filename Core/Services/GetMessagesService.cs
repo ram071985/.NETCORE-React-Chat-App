@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-using static Core.Services.AuthorizeUserService;
 
 
 
@@ -11,7 +10,7 @@ namespace Core.Services
 {
     public interface IGetMessagesService
     {
-        Message GetMessages(int sessionId, string text, DateTime createdDate);
+        RetrieveMessage GetMessages(string username, string text, DateTime createdDate);
     }
     public class GetMessagesService : IGetMessagesService
     {
@@ -25,7 +24,7 @@ namespace Core.Services
         }
 
 
-        public System.Threading.Tasks.Task<List<Message>> GetMessages(int sessionId, string text, DateTime createdDate)
+        public List<RetrieveMessage> GetMessages(string username, string text, DateTime createdDate)
         {
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
@@ -37,11 +36,11 @@ namespace Core.Services
 
                 using (var reader = messageInsertCommand.ExecuteReader())
                 {
-                    var messages = new List<Message>();
+                    var messages = new List<RetrieveMessage>();
 
                     while (reader.Read())
                     {
-                        var message = new Message();
+                        var message = new RetrieveMessage();
                         message.Username = reader[0].ToString();
                         message.Text = reader[1].ToString();
                         message.CreatedDate = (DateTime)reader[2];
@@ -53,15 +52,13 @@ namespace Core.Services
                 }
 
             }
-        }   
-
+        }
     }
 
-    public class Message
+    public class RetrieveMessage
     {
         public string Username { get; set; }
         public string Text { get; set; }
         public DateTime CreatedDate { get; set; }
-
     }
 }
