@@ -11,7 +11,7 @@ namespace Core.Services
 {
     public interface ICreateMessageService
     {
-        List<Message> GetBackMessage(int sessionId, string text, DateTime createdDate);
+        List<MessageList> GetBackMessage(int sessionId, string text, DateTime createdDate);
     }
     public class CreateMessageService : ICreateMessageService
     {
@@ -25,7 +25,7 @@ namespace Core.Services
         }
 
 
-        public List<Message> GetBackMessage(int sessionId, string text, DateTime createdDate)
+        public List<MessageList> GetBackMessage(int sessionId, string text, DateTime createdDate)
         {
 
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
@@ -84,11 +84,11 @@ namespace Core.Services
                 using (var reader = messageInsertCommand.ExecuteReader())
                 {
 
-                    var messages = new List<Message>();
+                    var messages = new List<MessageList>();
 
                     while (reader.Read())
                     {
-                        var message = new Message();
+                        var message = new MessageList();
                         message.Username = reader[0].ToString();
                         message.Text = reader[1].ToString();
                         message.CreatedDate = (DateTime)reader[2];
@@ -102,7 +102,7 @@ namespace Core.Services
 
     }
 
-    public class Message
+    public class MessageList
     {
         public string Username { get; set; }
         public string Text { get; set; }
