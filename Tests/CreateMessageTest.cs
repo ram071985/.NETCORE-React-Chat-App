@@ -19,9 +19,9 @@ namespace Tests
         [Test]
         public void should_message_text_not_be_empty()
         {
-            var message = _createMessageService.GetBackMessage(1, "random-text", DateTime.Now);
+            var messages = _createMessageService.GetBackMessage(1, "random-text", DateTime.Now);
 
-            Assert.That(message.Text, Is.Not.Empty);
+            Assert.That(messages[0].Text, Is.Not.Empty);
         }
     }
 }
