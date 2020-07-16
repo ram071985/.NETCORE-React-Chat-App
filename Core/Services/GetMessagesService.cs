@@ -10,7 +10,7 @@ namespace Core.Services
 {
     public interface IGetMessagesService
     {
-        RetrieveMessage GetMessages(string username, string text, DateTime createdDate);
+        List<RetrieveMessage> GetMessages(string username, string text, DateTime createdDate);
     }
     public class GetMessagesService : IGetMessagesService
     {

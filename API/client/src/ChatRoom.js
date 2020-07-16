@@ -31,7 +31,7 @@ class ChatRoom extends Component {
     axios.get("/api/messages", {}).then(res => {     
       const messageDates = res.data.sort((a, b) => {
         const message1 = new Date(b.createdDate);
-        const message2 = new Date(a.createdDate);
+          const message2 = new Date(a.createdDate);
         return message1 - message2;
       });
       this.setState({
@@ -108,7 +108,7 @@ class ChatRoom extends Component {
   };
 
   render() {
-
+      console.log(this.state.messages);
    
 
     if (this.state.isLoggedIn === false) {
