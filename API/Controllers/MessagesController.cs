@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -45,7 +46,7 @@ namespace API.Controllers
         {
             var messages = _getMessagesService.GetMessages(messageModel.Username, messageModel.Text, messageModel.CreatedDate);
 
-            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text });
+            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
             return messageModels.ToList();
         }

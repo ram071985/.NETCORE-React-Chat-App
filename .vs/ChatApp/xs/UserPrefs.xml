@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/GetMessagesService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
     <Files>
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="22" Column="12" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="104" Column="2" />
       <File FileName="API/Controllers/AuthorizationController.cs" />
-      <File FileName="API/Startup.cs" />
-      <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/MessageModel.cs" Line="15" Column="50" NotebookId="1" />
-      <File FileName="Core/Services/CreateMessageService.cs" NotebookId="1" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="67" Column="2" NotebookId="1" />
+      <File FileName="API/Startup.cs" Line="53" Column="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="51" Column="43" />
+      <File FileName="API/MessageModel.cs" Line="15" Column="50" />
+      <File FileName="Core/Services/CreateMessageService.cs" Line="94" Column="36" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="49" Column="1" />
+      <File FileName="API/client/src/ChatRoom.js" Line="17" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,16 +20,16 @@
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="client" expanded="True">
-                <Node name="src" expanded="True" />
+                <Node name="src" expanded="True">
+                  <Node name="ChatRoom.js" selected="True" />
+                </Node>
                 <Node name="package.json" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="Core" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="GetMessagesService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
               <Node name="Dependencies" expanded="True">
@@ -47,6 +48,7 @@
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/ChatApp/API/MessageModel.cs" relfile="API/MessageModel.cs" line="19" column="1" />
       <Breakpoint file="/Users/reid/Desktop/ChatApp/Core/Services/GetMessagesService.cs" relfile="Core/Services/GetMessagesService.cs" line="31" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/ChatApp/Core/Services/GetMessagesService.cs" relfile="Core/Services/GetMessagesService.cs" line="6" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
