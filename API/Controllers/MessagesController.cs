@@ -16,9 +16,6 @@ namespace API.Controllers
     public class MessagesController : ControllerBase
     {
 
-        private string _databaseUserName;
-        private string _databasePassword;
-
         private ICreateMessageService _createMessageService;
         private IGetMessagesService _getMessagesService;
 
@@ -29,22 +26,19 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public MessageModel Post([FromBody] MessageModel messageModel)
+        public List<MessageModel> Post([FromBody] MessageModel messageModel)
         {
 
-          var message = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
+          var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
+          var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
-            return new MessageModel
-            {
-                Text = message.Text,
-                CreatedDate = message.CreatedDate
-            };
+            return messageModels.ToList();
         }
 
         [HttpGet]
-        public List<MessageModel> GetMessages(MessageModel messageModel)
+        public List<MessageModel> GetMessages()
         {
-            var messages = _getMessagesService.GetMessages(messageModel.Username, messageModel.Text, messageModel.CreatedDate);
+            var messages = _getMessagesService.GetMessages();
 
             var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
