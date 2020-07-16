@@ -46,11 +46,11 @@ namespace API.Controllers
             var messageList = new List<MessageModel>();
             var messages = _getMessagesService.GetMessages(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
 
-            return new List<MessageModel>()
+            return new List<Message>()
             {
             Username = messages.Username
             
-           }
+            }
 
         }
 
