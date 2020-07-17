@@ -2,19 +2,19 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersController.cs">
     <Files>
       <File FileName="Core/Services/AuthorizeUserService.cs" Line="104" Column="2" />
-      <File FileName="API/Startup.cs" Line="41" Column="69" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="16" Column="53" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="1" Column="1" />
-      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
-      <File FileName="API/client/src/ChatRoom.js" Line="47" Column="30" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="25" Column="10" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="105" Column="6" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="32" Column="1" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="31" Column="69" />
-      <File FileName="Core/Services/GetUsersService.cs" Line="9" Column="56" />
-      <File FileName="API/Controllers/UsersController.cs" Line="37" Column="10" />
-      <File FileName="API/UserModel.cs" Line="1" Column="1" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="Core/Services/GetMessagesService.cs" />
+      <File FileName="API/MessageModel.cs" />
+      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="Tests/AuthorizeUserTest.cs" />
+      <File FileName="Core/Services/CreateMessageService.cs" />
+      <File FileName="Tests/CreateMessageTest.cs" />
+      <File FileName="API/Controllers/AuthorizationController.cs" />
+      <File FileName="Core/Services/CreateNewUserService.cs" />
+      <File FileName="Core/Services/GetUsersService.cs" />
+      <File FileName="API/Controllers/UsersController.cs" Line="45" Column="41" />
+      <File FileName="API/UserModel.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
