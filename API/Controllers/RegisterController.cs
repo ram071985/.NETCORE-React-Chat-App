@@ -98,6 +98,7 @@ namespace API.Controllers
                     {
                
                         session.Id = (int)reader[0];
+                        session.UserId = (int)reader[1];
 
                     }
                     
