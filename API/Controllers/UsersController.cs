@@ -16,10 +16,12 @@ namespace API.Controllers
     public class UsersController : ControllerBase
     {
         private ICreateNewUserService _createNewUserService;
+        private IGetUsersService _getUsersService;
 
-        public UsersController(IConfiguration configuration, ICreateNewUserService createNewUserService)
+        public UsersController(IConfiguration configuration, ICreateNewUserService createNewUserService, IGetUsersService getUsersService)
         {
             _createNewUserService = createNewUserService;
+            _getUsersService =getUsersService;
         }
 
         [HttpPost]
@@ -35,31 +37,14 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public UserModel GetUser(int id)
+        public GetUser GetUserObject(int id, string username)
         {
-            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
-
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-
-            // Retrieve all rows
-            using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+            var user = _getUsersService.GetUserObject(id, username);
+            return new GetUser
             {
-                cmd.Parameters.AddWithValue("@id", id);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    var user = new UserModel();
-
-                    while (reader.Read())
-                    {
-
-                        user.Username = reader[0].ToString();
-
-                    }
-                    return user;
-
-                }
-            }
+                Username = user.Username
+             
+            };
 
         }
     }
