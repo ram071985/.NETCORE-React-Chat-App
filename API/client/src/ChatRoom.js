@@ -40,12 +40,12 @@ class ChatRoom extends Component {
     });
   };
 
-  getUsers = () => {
-    let id = localStorage.getItem("user_id");
-    axios.get(`/api/users/${id}`, {}).then(res => {
-      this.setState({
-        users: res.data
-      });
+    getUsers = () => {
+    let parseId = parseInt(localStorage.getItem("user_id"));
+      axios.get(`/api/users/${parseId}`, {}).then(res => {
+          this.setState({
+              users: res.data
+          });
     });
   };
 
@@ -105,8 +105,9 @@ class ChatRoom extends Component {
     });
   };
 
-  render() {
-      console.log(this.state.messages);
+    render() {
+        let id = localStorage.getItem("user_id");
+      console.log(id);
    
 
     if (this.state.isLoggedIn === false) {
