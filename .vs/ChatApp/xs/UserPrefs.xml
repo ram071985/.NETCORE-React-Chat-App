@@ -1,17 +1,19 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/CreateMessageService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersController.cs">
     <Files>
       <File FileName="Core/Services/AuthorizeUserService.cs" Line="104" Column="2" />
-      <File FileName="API/Controllers/AuthorizationController.cs" />
       <File FileName="API/Startup.cs" />
       <File FileName="API/Controllers/MessagesController.cs" Line="48" Column="6" />
-      <File FileName="Core/Services/GetMessagesService.cs" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="1" Column="1" />
       <File FileName="API/MessageModel.cs" />
       <File FileName="API/client/src/ChatRoom.js" />
       <File FileName="Tests/AuthorizeUserTest.cs" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="1" Column="1" />
-      <File FileName="Tests/CreateMessageTest.cs" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="1" Column="1" />
+      <File FileName="Core/Services/CreateMessageService.cs" Line="105" Column="6" />
+      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="37" Column="15" />
+      <File FileName="Core/Services/CreateNewUserService.cs" Line="34" Column="57" />
+      <File FileName="API/Controllers/UsersController.cs" Line="30" Column="33" />
+      <File FileName="API/UserModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,13 +28,13 @@
                 <Node name="src" expanded="True" />
                 <Node name="package.json" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UsersController.cs" selected="True" />
+              </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="Core" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="CreateMessageService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
               <Node name="Dependencies" expanded="True">

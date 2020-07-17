@@ -6,65 +6,61 @@ using API;
 using System.Linq;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
+using Core.Services;
 
-[ApiController]
-[Route("api/[controller]")]
-
-public class UsersController : ControllerBase
+namespace API.Controllers
 {
-    private string _databaseUserName;
-    private string _databasePassword;
+    [ApiController]
+    [Route("api/[controller]")]
 
-    public UsersController(IConfiguration configuration)
+    public class UsersController : ControllerBase
     {
-        _databaseUserName = configuration["Database:Username"];
-        _databasePassword = configuration["Database:Password"];
-    }
+        private ICreateNewUserService _createNewUserService;
 
-
-    [HttpPost]
-    public async System.Threading.Tasks.Task PostAsync(UserModel userModel)
-    {
-        var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
-
-        await using var conn = new NpgsqlConnection(connString);
-        await conn.OpenAsync();
-        using (var cmd = new NpgsqlCommand("INSERT INTO users (user_name, created_date) VALUES (@user_name, @created_date)", conn))
+        public UsersController(IConfiguration configuration, ICreateNewUserService createNewUserService)
         {
-            var random = new Random();
-            cmd.Parameters.AddWithValue("@user_name", userModel.Username);
-            cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
-            cmd.ExecuteNonQuery();
+            _createNewUserService = createNewUserService;
         }
-    }
 
-    [HttpGet("{id}")]
-    public UserModel GetUser(int id)
-    {
-        var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+        [HttpPost]
 
-        using var conn = new NpgsqlConnection(connString);
-        conn.Open();
-
-        // Retrieve all rows
-        using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+        public Users CreateUser([FromBody] UserModel userModel)
         {
-            cmd.Parameters.AddWithValue("@id", id);
-            using (var reader = cmd.ExecuteReader())
+            var user = _createNewUserService.CreateUser(userModel.Username, userModel.CreatedDate);
+            return new Users
             {
-                var user = new UserModel();
+                Username = user.Username,
+                CreatedDate = user.CreatedDate
+            };
+        }
 
-                while (reader.Read())
+        [HttpGet("{id}")]
+        public UserModel GetUser(int id)
+        {
+            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+
+            using var conn = new NpgsqlConnection(connString);
+            conn.Open();
+
+            // Retrieve all rows
+            using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
                 {
+                    var user = new UserModel();
 
-                    user.Username = reader[0].ToString();
+                    while (reader.Read())
+                    {
+
+                        user.Username = reader[0].ToString();
+
+                    }
+                    return user;
 
                 }
-                return user;
-
             }
-        }
 
+        }
     }
 }
-
