@@ -28,10 +28,10 @@ class ChatRoom extends Component {
   }
 
   getMessagesFromDatabase = () => {
-    axios.get("/api/messages", {}).then(res => {     
+    axios.get("/api/messages", {}).then(res => {
       const messageDates = res.data.sort((a, b) => {
         const message1 = new Date(b.createdDate);
-          const message2 = new Date(a.createdDate);
+        const message2 = new Date(a.createdDate);
         return message1 - message2;
       });
       this.setState({
@@ -40,31 +40,29 @@ class ChatRoom extends Component {
     });
   };
 
-    getUsers = () => {
+  getUsers = () => {
     let parseId = parseInt(localStorage.getItem("user_id"));
-      axios.get(`/api/users/${parseId}`, {}).then(res => {
-          this.setState({
-              users: res.data
-          });
+    axios.get(`/api/users/${parseId}`, {}).then(res => {
+      this.setState({
+        users: res.data
+      });
     });
   };
 
-
   putNewUserName = () => {
-      let parseId = parseInt(localStorage.getItem("user_id"));
-      axios
-          .put("/api/users", {
-              userId: parseId,
-              newUsername: this.state.newUsername
-          })
-          .then(res => {
-              this.getUsers();
-              });
-          });
-   };
-
+    let parseId = parseInt(localStorage.getItem("user_id"));
+    axios
+      .put("/api/users", {
+        userId: parseId,
+        newUsername: this.state.newUsername
+      })
+      .then(res => {
+        console.log(res);
+        this.getUsers();
+      });
+  };
   postNewMessage = () => {
-    let parseId = parseInt(localStorage.getItem("session_id"));   
+    let parseId = parseInt(localStorage.getItem("session_id"));
     axios
       .post("/api/messages", {
         sessionId: parseId,
@@ -77,7 +75,7 @@ class ChatRoom extends Component {
           return message1 - message2;
         });
         this.setState({
-            messages: messageDates
+          messages: messageDates
         });
       });
   };
@@ -98,6 +96,7 @@ class ChatRoom extends Component {
 
   handleClick = () => {
     localStorage.removeItem("session_id");
+    localStorage.removeItem("user_id");
     this.setState({
       isLoggedIn: false
     });
@@ -112,17 +111,15 @@ class ChatRoom extends Component {
     }
   };
 
-
   clearInput = () => {
     this.setState({
       messageInput: ""
     });
   };
 
-    render() {
-        let id = localStorage.getItem("user_id");
-      console.log(id);
-   
+  render() {
+    let id = localStorage.getItem("user_id");
+    console.log(id);
 
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
@@ -146,16 +143,17 @@ class ChatRoom extends Component {
       <div className="container">
         <div className="row h-100">
           <div className="col-xs h-100 w-25 users-col">
-                    <h5 className="mt-5 users-header">Users</h5>
-                    <Button
-                        onClick={this.handleClick}
-                        className="log-out-button"
-                        variant="secondary"
-                        size="sm"
-                    >
-                        Log Out
-            </Button>
-            <hr />
+            <h5 className="d-inline-block users-header">Users</h5>
+            <a
+              href=""
+              onClick={this.handleClick}
+              className="d-inline-block justify-content-right log-out-button"
+              variant="secondary"
+              size="sm"
+            >
+              Log Out
+            </a>
+            <hr className="users-border" />
             <br />
             {this.sortedDates}
             <Circle
@@ -166,33 +164,30 @@ class ChatRoom extends Component {
             />
             <h6 className="d-inline ml-2">{this.state.users.username}</h6>
           </div>
-          <div className="col-xs h-100 messages-col mt-5">{userMessages}</div>
-          <div className="col-xs message-input">
-            <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
-              <InputGroup className="messgae-input-group">
-                <FormControl
-                  style={{ width: "37rem" }}
-                  className="message-input"
-                  placeholder="Message"
-                  aria-label="Recipient's message"
-                  aria-describedby="basic-addon2"
-                  name="messageInput"
-                  value={this.state.messageInput}
-                  type="input"
-                  onChange={this.handleChange}
-                />
-                <InputGroup.Append>
-                  <Button
-                    className="submit-button"
-                    variant="outline-secondary"
-                    type="submit"
-                  >
-                    Send
-                  </Button>
-                </InputGroup.Append>
-              </InputGroup>
-            </form>
-          </div>
+          <div className="h-100 messages-col mt-5">{userMessages}</div>
+          <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
+            <InputGroup className="message-input-group">
+              <FormControl
+                className="message-input"
+                placeholder="Message"
+                aria-label="Recipient's message"
+                aria-describedby="basic-addon2"
+                name="messageInput"
+                value={this.state.messageInput}
+                type="input"
+                onChange={this.handleChange}
+              />
+              <InputGroup.Append>
+                <Button
+                  className="submit-button"
+                  variant="outline-secondary"
+                  type="submit"
+                >
+                  Send
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </form>
         </div>
       </div>
     );

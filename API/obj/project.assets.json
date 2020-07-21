@@ -7964,7 +7964,7 @@
       "outputPath": "/Users/reid/Desktop/ChatApp/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.config/NuGet/NuGet.Config"
+        "/Users/reid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
