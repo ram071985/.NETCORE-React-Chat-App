@@ -7,7 +7,7 @@ namespace Core.Services
 {
     public interface ICreateNewUserService
     {
-        Users CreateUser(string username, DateTime createdDate);
+        UserRegister PostNewUser(int id, int userId, string username, string password, DateTime createdDate);
     }
     public class CreateNewUserService : ICreateNewUserService
     {
@@ -20,39 +20,92 @@ namespace Core.Services
             _databasePassword = configuration["Database:Password"];
         }
 
-        public Users CreateUser(string username, DateTime createdDate)
+        public UserRegister PostNewUser(int id, int userId, string username, string password, DateTime createdDate)
         {
+            if (username == "")
+            {
+                throw new Exception("empty username");
+            }
+            if (password == "")
+            {
+                throw new Exception("empty password");
+            }
+
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
-            using (var cmd = new NpgsqlCommand("INSERT INTO users (user_name, created_date) VALUES (@user_name, @created_date)", conn))
-            {
-                cmd.Parameters.AddWithValue("@user_name", username);
-                cmd.Parameters.AddWithValue("@created_date", DateTime.Now);
 
-                using (var reader = cmd.ExecuteReader())
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
+            {
+
+                checkUsernameCommand.Parameters.AddWithValue("@username", username);
+
+
+                using (var reader = checkUsernameCommand.ExecuteReader())
                 {
-                    var user = new Users();
+
+                    while (reader.Read())
+                    {
+                        username = reader[1].ToString();
+                        if (username != "")
+                        {
+
+                            throw new Exception("redundant username");
+
+                        }
+                    }
+                }
+            }
+
+
+            using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
+            {
+
+                userInsertCommand.Parameters.AddWithValue("@username", username);
+                userInsertCommand.Parameters.AddWithValue("@password", password);
+                userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
+
+                using (var reader = userInsertCommand.ExecuteReader())
+                {
 
                     while (reader.Read())
                     {
 
-                        user.Username = reader[0].ToString();
+                        id = (int)reader[0];
 
                     }
-                    return user;
+                }
+            }
+
+            using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
+            {
+                sessionInsertCommand.Parameters.AddWithValue("@userId", id);
+                using (var reader = sessionInsertCommand.ExecuteReader())
+                {
+                    var newSession = new UserRegister();
+
+                    while (reader.Read())
+                    {
+
+                        newSession.Id = (int)reader[0];
+   
+
+                    }
+                    return newSession;
 
                 }
-
             }
         }
+
     }
 
-    public class Users
+    public class UserRegister
     {
-        public string Username { get; set; }
-        public DateTime CreatedDate { get; set; }
-
+      public int Id { get; set; }
+      public int UserId { get; set; }
+      public string Username { get; set; }
+      public string Password { get; set; }
+      public DateTime CreatedDate { get; set; }
     }
 }

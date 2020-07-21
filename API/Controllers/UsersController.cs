@@ -15,25 +15,11 @@ namespace API.Controllers
 
     public class UsersController : ControllerBase
     {
-        private ICreateNewUserService _createNewUserService;
         private IGetUsersService _getUsersService;
 
-        public UsersController(IConfiguration configuration, ICreateNewUserService createNewUserService, IGetUsersService getUsersService)
+        public UsersController(IConfiguration configuration, IGetUsersService getUsersService)
         {
-            _createNewUserService = createNewUserService;
             _getUsersService =getUsersService;
-        }
-
-        [HttpPost]
-
-        public Users CreateUser([FromBody] UserModel userModel)
-        {
-            var user = _createNewUserService.CreateUser(userModel.Username, userModel.CreatedDate);
-            return new Users
-            {
-                Username = user.Username,
-                CreatedDate = user.CreatedDate
-            };
         }
 
         [HttpGet("{id}")]
