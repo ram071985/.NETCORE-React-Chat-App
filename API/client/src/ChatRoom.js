@@ -49,6 +49,20 @@ class ChatRoom extends Component {
     });
   };
 
+
+  putNewUserName = () => {
+      let parseId = parseInt(localStorage.getItem("user_id"));
+      axios
+          .put("/api/users", {
+              userId: parseId,
+              newUsername: this.state.newUsername
+          })
+          .then(res => {
+              this.getUsers();
+              });
+          });
+   };
+
   postNewMessage = () => {
     let parseId = parseInt(localStorage.getItem("session_id"));   
     axios

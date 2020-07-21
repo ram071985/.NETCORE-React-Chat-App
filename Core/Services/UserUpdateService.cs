@@ -6,7 +6,7 @@ namespace Core.Services
 {
     public interface IUserUpdateService
     {
-        UserUpdate GetUserObject(int id, string username);
+        UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate);
     }
     public class UserUpdateService : IUserUpdateService
     {
@@ -19,7 +19,7 @@ namespace Core.Services
             _databasePassword = configuration["Database:Password"];
         }
 
-        public UserUpdate GetUserObject(int id, string username)
+        public UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
         {
 
 
@@ -28,18 +28,41 @@ namespace Core.Services
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+            using (var getUsernameCommand = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
             {
 
-                cmd.Parameters.AddWithValue("@id", id);
+                getUsernameCommand.Parameters.AddWithValue("@id", userId);
+
+
+                using (var reader = getUsernameCommand.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        username = reader[0].ToString();
+                       
+                    }
+                }
+            }
+
+            using (var cmd = new NpgsqlCommand("UPDATE users SET username = @newUsername WHERE username = @username RETURNING username", conn))
+            {
+                cmd.Parameters.AddWithValue("@newUsername", newUsername);
+                cmd.Parameters.AddWithValue("@username", username);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    var user = new GetUser();
+                    var user = new UserUpdate();
 
                     while (reader.Read())
                     {
 
                         user.Username = reader[0].ToString();
+                        if (username == newUsername)
+                        {
+
+                            throw new Exception("redundant username");
+
+                        }
 
                     }
                     return user;
@@ -51,7 +74,10 @@ namespace Core.Services
 
     public class UserUpdate
     {
+        public int UserId { get; set; }
+        public string NewUsername { get; set; }
         public string Username { get; set; }
+        public DateTime CreatedDate { get; set; }
 
     }
 }

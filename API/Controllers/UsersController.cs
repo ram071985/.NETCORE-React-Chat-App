@@ -15,11 +15,13 @@ namespace API.Controllers
 
     public class UsersController : ControllerBase
     {
+        private IUserUpdateService _userUpdateService;
         private IGetUsersService _getUsersService;
 
-        public UsersController(IConfiguration configuration, IGetUsersService getUsersService)
+        public UsersController(IConfiguration configuration, IUserUpdateService userUpdateService, IGetUsersService getUsersService)
         {
-            _getUsersService =getUsersService;
+            _userUpdateService = userUpdateService;
+            _getUsersService = getUsersService;
         }
 
         [HttpGet("{id}")]
@@ -30,6 +32,18 @@ namespace API.Controllers
             {
                 Username = user.Username
              
+            };
+
+        }
+
+        [HttpPut]
+        public UserUpdate PutNewUsername([FromBody] UserModel userModel)
+        {
+            var user = _userUpdateService.PutNewUsername(userModel.UserId, userModel.Username, userModel.NewUsername, userModel.CreatedDate);
+            return new UserUpdate
+            {
+                Username = user.Username
+
             };
 
         }
