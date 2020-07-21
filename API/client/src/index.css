@@ -44,7 +44,6 @@ body {
   background-color: #fff5d7;
 }
 
-
 #log-out.col {
   display: inline !important;
 }
@@ -183,31 +182,68 @@ body {
 }
 
 .users-col {
-background-color: #ff5e6c;
-position: absolute;
-left: 0%;
+  max-width: 300px;
+  min-width: 250px;
+  margin-right: 15px !important;
+  background-color: #ff5e6c;
+  position: absolute;
+  left: 0%;
+  padding-top: 5px;
 }
 
 .messages-col {
   overflow: auto;
-  margin-left: 20rem;
+  margin-left: 15rem;
   max-height: 775px;
+
   background-color: #fff5d7 !important;
 }
 
-.message-input {
-  margin-left: 10rem;
+.form-control.message-input {
+  margin-left: 18rem;
   position: absolute;
   bottom: 10%;
+  width: 30rem !important;
 }
 
 .card {
   background-color: #ff5e6c !important;
-  border-radius: .50rem !important;
-  border:1px solid white!important;
+  border-radius: 0.5rem !important;
+  border: 1px solid white !important;
 }
 
 .users-header {
-margin-left: 30px !important;
+  margin-left: 30px !important;
+  margin-right: 100px;
+  margin-bottom: 0;
 }
+
+a.log-out-button {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 30px !important;
+  opacity: 0.8;
+  color: black;
+}
+
+a.log-out-button:hover {
+  color: rgb(48, 48, 48);
+}
+
+.users-border {
+  margin: 5px;
+}
+
+.form-control {
+  width: 20rem !important;
+}
+
+.message-row {
+  margin-left: 20px;
+}
+
+.message-input-group {
+  margin-bottom: 6rem;
+}
+
 
