@@ -19,6 +19,29 @@ namespace Core.Services
             _databasePassword = configuration["Database:Password"];
         }
 
+        public UpdateLastActive List<UserUpdate>(int sessionId, string username)
+        {
+            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+
+            using var conn = new NpgsqlConnection(connString);
+            conn.Open();
+
+            using (var getUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at < NOW()- 20", conn))
+            {
+                using (var reader = getUsernameCommand.ExecuteReader())
+                {
+                    var user = new UserUpdate();
+                    while (reader.Read())
+                    {
+                        user.Username = reader[0].ToString();
+
+                    }
+                    return user;
+                }
+               
+            }
+        }
+
         public UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
         {
 
@@ -77,6 +100,7 @@ namespace Core.Services
         public int UserId { get; set; }
         public string NewUsername { get; set; }
         public string Username { get; set; }
+        public int LastActiveAt { get; set; }
         public DateTime CreatedDate { get; set; }
 
     }
