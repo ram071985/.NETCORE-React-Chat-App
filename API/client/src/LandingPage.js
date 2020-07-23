@@ -124,10 +124,10 @@ class LandingPage extends Component {
     } 
 
     return (
-      <div>
+      <div className="main-container">
         <Container className="top-container" fluid>
           <Row className="h-100">
-            <Col>
+            <Col className="gab-column">
               <h1 className="gab-logo">
                 <span className="purple-gab">The Gab</span> Chat Room
               </h1>
@@ -135,7 +135,7 @@ class LandingPage extends Component {
             <Col>
               <Form className="sign-in-form" onSubmit={this.handleLogInSubmit}>
                 <Form.Row className="sign-in-row">
-                  <Col className="col-lg-4 username-col">
+                  <Col className="col-xs-5 username-col">
                     <Form.Label className="top-form-label">Username</Form.Label>
                     <Form.Control
                       type="input"
@@ -144,7 +144,7 @@ class LandingPage extends Component {
                       name="existingUsername"
                     />
                   </Col>
-                  <Col className="col-lg-4 password-col">
+                  <Col className="col-xs-5 password-col">
                     <Form.Label className="top-form-label">Password</Form.Label>
                     <Form.Control
                       type="input"
@@ -153,12 +153,12 @@ class LandingPage extends Component {
                       name="existingPassword"
                     />
                   </Col>
-                  <Col>
+              
                     <Button className="login-btn" variant="dark" type="submit">
-                    <h6 className="login-text">Log In</h6>
+                    <h6 className="text-center login-text">Log In</h6>
                     </Button>
                     <h6>{this.state.logInErrorMessage}</h6>
-                  </Col>
+            
                 </Form.Row>
               </Form>
             </Col>
@@ -210,7 +210,7 @@ class LandingPage extends Component {
           <div className="container-fluid footer-container">
             <footer>
               <h6 className="text-center footer-text mt-2">
-                Created by Reid Muchow
+                Copyright Reid Muchow 2020
               </h6>
             </footer>
           </div>

@@ -2,24 +2,24 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
     <Files>
       <File FileName="API/Startup.cs" Line="63" Column="1" IsPinned="True" />
-      <File FileName="API/client/src/ChatRoom.js" Line="63" Column="13" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="14" Column="62" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="7" Column="1" />
-      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
+      <File FileName="API/client/src/ChatRoom.js" Line="63" Column="5" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" />
+      <File FileName="Core/Services/GetMessagesService.cs" />
+      <File FileName="API/MessageModel.cs" />
       <File FileName="Tests/AuthorizeUserTest.cs" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="42" Column="1" />
-      <File FileName="API/UserModel.cs" Line="6" Column="36" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="1" Column="1" />
-      <File FileName="Core/Services/GetUsersService.cs" Line="17" Column="10" />
-      <File FileName="API/client/src/LandingPage.js" Line="1" Column="1" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="91" Column="56" />
-      <File FileName="Tests/CreateNewUserTest.cs" Line="41" Column="47" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/UsersController.cs" Line="45" Column="41" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="68" Column="1" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="35" Column="25" />
+      <File FileName="API/Controllers/AuthorizationController.cs" />
+      <File FileName="API/UserModel.cs" />
+      <File FileName="API/Controllers/RegisterController.cs" />
+      <File FileName="Core/Services/GetUsersService.cs" />
+      <File FileName="API/client/src/LandingPage.js" />
+      <File FileName="Tests/CreateMessageTest.cs" />
+      <File FileName="Core/Services/CreateNewUserService.cs" />
+      <File FileName="Tests/CreateNewUserTest.cs" />
+      <File FileName="Core/Services/CreateMessageService.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="API/Controllers/UsersController.cs" />
+      <File FileName="Core/Services/UserUpdateService.cs" />
+      <File FileName="Tests/UserUpdateTest.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -52,9 +52,7 @@
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="ChatApp" expanded="True" selected="True">
-            <Node name="Tests" expanded="True" />
-          </Node>
+          <Node name="ChatApp" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
