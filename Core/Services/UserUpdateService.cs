@@ -27,34 +27,19 @@ namespace Core.Services
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var lastActiveInsert = new NpgsqlCommand("SELECT * FROM users WHERE userId = @userId RETURNING * ", conn))
+            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE userId = @userId", conn))
             {
                 lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
+                lastActiveInsert.Parameters.AddWithValue("@userId", userId);
                 using (var reader = lastActiveInsert.ExecuteReader())
                 {
-                    var userRow = new UserUpdate();
+                    var lastActive = new UserUpdate();
                     while (reader.Read())
                     {
-                        userRow.UserId = (int)reader[3];
-                        userRow.Username = reader[2].ToString();
+                      
 
                     }
-                  
-                }
-
-            }
-
-
-            using (var lastActiveInsert = new NpgsqlCommand("INSERT INTO users (last_active_at) VALUES (@lastActiveAt)", conn))
-            {
-                lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
-                using (var reader = lastActiveInsert.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                    
-
-                    }
+                    return lastActive;
                 }
       
             }   
