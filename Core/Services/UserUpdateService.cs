@@ -7,6 +7,7 @@ namespace Core.Services
     public interface IUserUpdateService
     {
         UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate);
+        UserUpdate UpdateLastActive(int userId, DateTime lastActiveAt);
     }
     public class UserUpdateService : IUserUpdateService
     {
@@ -19,27 +20,44 @@ namespace Core.Services
             _databasePassword = configuration["Database:Password"];
         }
 
-        public UpdateLastActive List<UserUpdate>(int sessionId, string username)
+        public UserUpdate UpdateLastActive(int userId, DateTime lastActiveAt)
         {
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var getUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at < NOW()- 20", conn))
+            using (var lastActiveInsert = new NpgsqlCommand("SELECT * FROM users WHERE userId = @userId RETURNING * ", conn))
             {
-                using (var reader = getUsernameCommand.ExecuteReader())
+                lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
+                using (var reader = lastActiveInsert.ExecuteReader())
                 {
-                    var user = new UserUpdate();
+                    var userRow = new UserUpdate();
                     while (reader.Read())
                     {
-                        user.Username = reader[0].ToString();
+                        userRow.UserId = (int)reader[3];
+                        userRow.Username = reader[2].ToString();
 
                     }
-                    return user;
+                  
                 }
-               
+
             }
+
+
+            using (var lastActiveInsert = new NpgsqlCommand("INSERT INTO users (last_active_at) VALUES (@lastActiveAt)", conn))
+            {
+                lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
+                using (var reader = lastActiveInsert.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                    
+
+                    }
+                }
+      
+            }   
         }
 
         public UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
@@ -100,7 +118,7 @@ namespace Core.Services
         public int UserId { get; set; }
         public string NewUsername { get; set; }
         public string Username { get; set; }
-        public int LastActiveAt { get; set; }
+        public DateTime LastActiveAt { get; set; }
         public DateTime CreatedDate { get; set; }
 
     }
