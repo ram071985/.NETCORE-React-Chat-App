@@ -18,17 +18,19 @@ namespace API.Controllers
 
         private ICreateMessageService _createMessageService;
         private IGetMessagesService _getMessagesService;
+        private IUserUpdateService _userUpdateService;
 
-        public MessagesController(ICreateMessageService createMessageService, IGetMessagesService getMessagesService)
+        public MessagesController(ICreateMessageService createMessageService, IGetMessagesService getMessagesService, IUserUpdateService userUpdateService)
         {
             _createMessageService = createMessageService;
             _getMessagesService = getMessagesService;
+            _userUpdateService = userUpdateService;
         }
 
         [HttpPost]
-        public List<MessageModel> Post([FromBody] MessageModel messageModel)
+        public List<MessageModel> Post([FromBody] int userId, DateTime lastActiveAt, MessageModel messageModel)
         {
-
+          _userUpdateService.UpdateLastActive(userId, lastActiveAt);
           var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
           var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
@@ -38,12 +40,12 @@ namespace API.Controllers
         [HttpGet]
         public List<MessageModel> GetMessages()
         {
+
             var messages = _getMessagesService.GetMessages();
 
             var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
             return messageModels.ToList();
         }
-
     }
 }
