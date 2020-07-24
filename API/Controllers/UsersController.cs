@@ -38,10 +38,10 @@ namespace API.Controllers
         [HttpPut("last_active")]
         public UserUpdate UpdateLastActive(int userId, UserModel userModel)
         {
-            var user = _userUpdateService.UpdateLastActive(userModel.UserId, userModel.LastActiveAt);
+            var user = _userUpdateService.UpdateLastActive(userModel.UserId);
             return new UserUpdate
             {
-                LastActiveAt = user.LastActiveAt
+               UserId = user.UserId
             };
         }
 
