@@ -20,6 +20,7 @@ class ChatRoom extends Component {
 
   componentDidMount() {
     let id = localStorage.getItem("session_id");
+    this.addLastActive();
     this.getMessagesFromDatabase();
     this.getUsers();
     this.setState({
@@ -90,8 +91,9 @@ class ChatRoom extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.postNewMessage();
-    this.getMessagesFromDatabase();
+      this.postNewMessage();
+      this.addLastActive();
+      this.getMessagesFromDatabase();
     this.clearInput();
   };
 
@@ -117,6 +119,17 @@ class ChatRoom extends Component {
       messageInput: ""
     });
   };
+
+    addLastActive = () => {
+        let parseId = parseInt(localStorage.getItem("user_id"));
+        axios
+            .put("/api/users/last_active", {
+                userId: parseId
+            })
+            .then(res => {
+                console.log(res);
+            });
+    }
 
   render() {
     let id = localStorage.getItem("user_id");
