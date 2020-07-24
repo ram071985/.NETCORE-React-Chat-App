@@ -30,13 +30,20 @@ namespace API.Controllers
             var user = _getUsersService.GetUserObject(id, username);
             return new GetUser
             {
-                Username = user.Username             
+                Username = user.Username
             };
 
         }
 
         [HttpPut("last_active")]
-
+        public UserUpdate UpdateLastActive(int userId, UserModel userModel)
+        {
+            var user = _userUpdateService.UpdateLastActive(userModel.UserId, userModel.LastActiveAt);
+            return new UserUpdate
+            {
+                LastActiveAt = user.LastActiveAt
+            };
+        }
 
         [HttpPut]
         public UserUpdate PutNewUsername([FromBody] UserModel userModel)
