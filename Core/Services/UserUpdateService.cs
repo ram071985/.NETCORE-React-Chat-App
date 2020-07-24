@@ -7,7 +7,7 @@ namespace Core.Services
     public interface IUserUpdateService
     {
         UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate);
-        UserUpdate UpdateLastActive(int userId, DateTime lastActiveAt);
+        UserUpdate UpdateLastActive(int userId);
     }
     public class UserUpdateService : IUserUpdateService
     {
@@ -20,17 +20,17 @@ namespace Core.Services
             _databasePassword = configuration["Database:Password"];
         }
 
-        public UserUpdate UpdateLastActive(int userId, DateTime lastActiveAt)
+        public UserUpdate UpdateLastActive(int userId)
         {
             var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
 
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE userId = @userId", conn))
+            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE id = @id", conn))
             {
                 lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
-                lastActiveInsert.Parameters.AddWithValue("@userId", userId);
+                lastActiveInsert.Parameters.AddWithValue("@id", userId);
                 using (var reader = lastActiveInsert.ExecuteReader())
                 {
                     var lastActive = new UserUpdate();

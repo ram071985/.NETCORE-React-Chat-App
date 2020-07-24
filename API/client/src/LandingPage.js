@@ -118,11 +118,14 @@ class LandingPage extends Component {
   };
 
     addLastActive = () => {
+        let parseId = parseInt(localStorage.getItem("user_id"));
         axios
-            .put("/api/users", {
-                username: this.state.existingUsername,
-                password: this.state.existingPassword
+            .put("/api/users/last_active", {
+                userId: parseId
             })
+            .then(res => {
+                console.log(res);
+            });
     }
 
     render() {

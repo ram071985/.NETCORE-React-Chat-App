@@ -27,10 +27,22 @@ namespace API.Controllers
             _userUpdateService = userUpdateService;
         }
 
-        [HttpPost]
-        public List<MessageModel> Post([FromBody] int userId, DateTime lastActiveAt, MessageModel messageModel)
+        [HttpPut("last_active")]
+        public UserUpdate UpdateLastActive(int userId, UserModel userModel)
         {
-          _userUpdateService.UpdateLastActive(userId, lastActiveAt);
+            var user = _userUpdateService.UpdateLastActive(userModel.UserId);
+            return new UserUpdate
+            {
+                UserId = user.UserId
+            };
+        }
+
+
+
+        [HttpPost]
+        public List<MessageModel> Post([FromBody] MessageModel messageModel)
+        {
+        
           var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
           var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 

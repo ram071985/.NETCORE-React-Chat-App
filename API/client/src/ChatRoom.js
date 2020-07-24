@@ -61,6 +61,7 @@ class ChatRoom extends Component {
         this.getUsers();
       });
   };
+
   postNewMessage = () => {
     let parseId = parseInt(localStorage.getItem("session_id"));
     axios
