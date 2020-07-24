@@ -35,7 +35,7 @@ class LandingPage extends Component {
 
   handleLogInSubmit = e => {
     e.preventDefault();
-    this.logInUser();
+      this.logInUser();
 
   };
 
@@ -116,17 +116,6 @@ class LandingPage extends Component {
           }
       });
   };
-
-    addLastActive = () => {
-        let parseId = parseInt(localStorage.getItem("user_id"));
-        axios
-            .put("/api/users/last_active", {
-                userId: parseId
-            })
-            .then(res => {
-                console.log(res);
-            });
-    }
 
     render() {
       console.log(this.state.toChatRoom)

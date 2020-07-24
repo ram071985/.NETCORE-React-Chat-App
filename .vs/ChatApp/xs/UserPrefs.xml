@@ -3,7 +3,7 @@
     <Files>
       <File FileName="API/Startup.cs" Line="63" Column="1" IsPinned="True" />
       <File FileName="API/UserModel.cs" />
-      <File FileName="API/client/src/ChatRoom.js" Line="62" Column="10" />
+      <File FileName="API/client/src/ChatRoom.js" />
       <File FileName="Core/Services/AuthorizeUserService.cs" />
       <File FileName="Core/Services/GetMessagesService.cs" />
       <File FileName="API/MessageModel.cs" />
@@ -11,15 +11,15 @@
       <File FileName="API/Controllers/AuthorizationController.cs" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="Core/Services/GetUsersService.cs" />
-      <File FileName="API/client/src/LandingPage.js" Line="124" Column="32" />
+      <File FileName="API/client/src/LandingPage.js" />
       <File FileName="Tests/CreateMessageTest.cs" />
       <File FileName="Core/Services/CreateNewUserService.cs" />
       <File FileName="Tests/CreateNewUserTest.cs" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="36" Column="37" />
-      <File FileName="API/Controllers/UsersController.cs" Line="44" Column="36" />
+      <File FileName="Core/Services/CreateMessageService.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="API/Controllers/UsersController.cs" />
       <File FileName="Core/Services/UserUpdateService.cs" Line="34" Column="1" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="15" Column="10" />
+      <File FileName="Tests/UserUpdateTest.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
