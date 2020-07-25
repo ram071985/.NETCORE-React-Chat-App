@@ -27,17 +27,6 @@ namespace API.Controllers
             _userUpdateService = userUpdateService;
         }
 
-        [HttpPut("last_active")]
-        public UserUpdate UpdateLastActive(int userId, UserModel userModel)
-        {
-            var user = _userUpdateService.UpdateLastActive(userModel.UserId);
-            return new UserUpdate
-            {
-                UserId = user.UserId
-            };
-        }
-
-
 
         [HttpPost]
         public List<MessageModel> Post([FromBody] MessageModel messageModel)
@@ -45,6 +34,8 @@ namespace API.Controllers
         
           var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
           var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
+
+           _userUpdateService.UpdateLastActive(messageModel.UserId);
 
             return messageModels.ToList();
         }

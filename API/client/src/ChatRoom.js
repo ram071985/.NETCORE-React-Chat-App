@@ -64,10 +64,12 @@ class ChatRoom extends Component {
   };
 
   postNewMessage = () => {
-    let parseId = parseInt(localStorage.getItem("session_id"));
+      let parseId = parseInt(localStorage.getItem("session_id"));
+      let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
       .post("/api/messages", {
-        sessionId: parseId,
+          sessionId: parseId,
+          userId: parseUserId,
         text: this.state.messageInput
       })
       .then(res => {
