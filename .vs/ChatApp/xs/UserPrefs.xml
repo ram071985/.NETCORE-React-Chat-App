@@ -1,20 +1,21 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/RegisterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/AuthorizeUserTest.cs">
     <Files>
       <File FileName="API/client/src/LandingPage.js" Line="55" Column="23" IsPinned="True" />
-      <File FileName="API/MessageModel.cs" Line="1" Column="1" />
-      <File FileName="API/AuthorizationModel.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="39" Column="33" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="77" Column="36" />
+      <File FileName="API/MessageModel.cs" />
+      <File FileName="API/AuthorizationModel.cs" />
+      <File FileName="API/Controllers/AuthorizationController.cs" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="99" Column="10" />
       <File FileName="API/Controllers/RegisterController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="13" Column="1" />
-      <File FileName="API/Startup.cs" Line="24" Column="10" />
-      <File FileName="API/UserModel.cs" Line="1" Column="1" />
-      <File FileName="API/client/src/ChatRoom.js" Line="56" Column="31" />
-      <File FileName="API/UserInputUser.cs" Line="1" Column="1" />
-      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
-      <File FileName="API/appsettings.Development.json" Line="11" Column="32" />
-      <File FileName="Tests/Class1.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="116" Column="47" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="API/UserModel.cs" />
+      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="API/UserInputUser.cs" />
+      <File FileName="API/SessionModel.cs" />
+      <File FileName="API/appsettings.Development.json" />
+      <File FileName="Tests/Class1.cs" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="2" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,9 +29,7 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="RegisterController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="Core" expanded="True">
               <Node name="Dependencies" expanded="True">
@@ -38,7 +37,7 @@
               </Node>
               <Node name="Services" expanded="True" />
             </Node>
-            <Node name="Tests" expanded="True" />
+            <Node name="Tests" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
