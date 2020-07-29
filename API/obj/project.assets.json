@@ -7957,14 +7957,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/reid/Desktop/ChatApp/API/API.csproj",
+      "projectUniqueName": "/Users/reid/Desktop/Chat-App/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/Users/reid/Desktop/ChatApp/API/API.csproj",
+      "projectPath": "/Users/reid/Desktop/Chat-App/API/API.csproj",
       "packagesPath": "/Users/reid/.nuget/packages/",
-      "outputPath": "/Users/reid/Desktop/ChatApp/API/obj/",
+      "outputPath": "/Users/reid/Desktop/Chat-App/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.config/NuGet/NuGet.Config"
+        "/Users/reid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -7975,8 +7975,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/reid/Desktop/ChatApp/Core/Core.csproj": {
-              "projectPath": "/Users/reid/Desktop/ChatApp/Core/Core.csproj"
+            "/Users/reid/Desktop/Chat-App/Core/Core.csproj": {
+              "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj"
             }
           }
         }

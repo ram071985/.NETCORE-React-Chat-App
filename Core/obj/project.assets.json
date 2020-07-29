@@ -7936,14 +7936,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/reid/Desktop/ChatApp/Core/Core.csproj",
+      "projectUniqueName": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
       "projectName": "Core",
-      "projectPath": "/Users/reid/Desktop/ChatApp/Core/Core.csproj",
+      "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
       "packagesPath": "/Users/reid/.nuget/packages/",
-      "outputPath": "/Users/reid/Desktop/ChatApp/Core/obj/",
+      "outputPath": "/Users/reid/Desktop/Chat-App/Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.config/NuGet/NuGet.Config"
+        "/Users/reid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

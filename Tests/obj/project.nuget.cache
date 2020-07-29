@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XIJGHvQeoarIdAytOBITX726Vm5LFxf5LiuVQRtPYPquZCFAXySBE6CNaZE7+RQuxBQfy8PTZvpDNxa0KCNNwg==",
+  "dgSpecHash": "xdac6bRGNsgm0Qf0+CgC/Ud8BnMddR2nvjHQUmaWurjZCqc110UZubItxS+6Y4k7FBQCh6K8ckU85ROeUaKacw==",
   "success": true,
-  "projectFilePath": "/Users/reid/Desktop/ChatApp/Tests/Tests.csproj",
+  "projectFilePath": "/Users/reid/Desktop/Chat-App/Tests/Tests.csproj",
   "expectedPackageFiles": [
     "/Users/reid/.nuget/packages/castle.core/4.4.0/castle.core.4.4.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.antiforgery/2.2.0/microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

@@ -7,3 +7,12 @@
 /Users/reid/Desktop/ChatApp/Core/obj/Debug/netcoreapp3.1/Core.csproj.CoreCompileInputs.cache
 /Users/reid/Desktop/ChatApp/Core/obj/Debug/netcoreapp3.1/Core.dll
 /Users/reid/Desktop/ChatApp/Core/obj/Debug/netcoreapp3.1/Core.pdb
+/Users/reid/Desktop/Chat-App/Core/bin/Debug/netcoreapp3.1/Core.deps.json
+/Users/reid/Desktop/Chat-App/Core/bin/Debug/netcoreapp3.1/Core.dll
+/Users/reid/Desktop/Chat-App/Core/bin/Debug/netcoreapp3.1/Core.pdb
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.csprojAssemblyReference.cache
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.AssemblyInfoInputs.cache
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.AssemblyInfo.cs
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.csproj.CoreCompileInputs.cache
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.dll
+/Users/reid/Desktop/Chat-App/Core/obj/Debug/netcoreapp3.1/Core.pdb
