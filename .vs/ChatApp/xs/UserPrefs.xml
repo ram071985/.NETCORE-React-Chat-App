@@ -1,16 +1,13 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/CreateNewUserService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/CreateMessageService.cs">
     <Files>
-      <File FileName="API/client/src/ChatRoom.js" Line="1" Column="1" />
-      <File FileName="API/client/src/LandingPage.js" Line="1" Column="1" />
-      <File FileName="API/Startup.cs" Line="61" Column="44" />
-      <File FileName="API/UserModel.cs" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="27" Column="1" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="37" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" />
-      <File FileName="API/appsettings.Development.json" Line="8" Column="5" />
+      <File FileName="Core/Services/CreateNewUserService.cs" Line="22" Column="68" />
+      <File FileName="API/appsettings.Development.json" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="45" Column="42" />
+      <File FileName="Core/Services/GetUsersService.cs" Line="26" Column="62" />
+      <File FileName="Core/Services/UserUpdateService.cs" Line="15" Column="42" />
+      <File FileName="Core/Services/CreateMessageService.cs" Line="31" Column="156" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="45" Column="156" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,16 +28,11 @@
             </Node>
             <Node name="Core" expanded="True">
               <Node name="Services" expanded="True">
-                <Node name="CreateNewUserService.cs" selected="True" />
+                <Node name="CreateMessageService.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Tests" expanded="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="ChatApp" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -53,7 +45,6 @@
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Chat-App/API/MessageModel.cs" relfile="API/MessageModel.cs" line="19" column="1" />
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Chat-App/Core/Services/GetMessagesService.cs" relfile="Core/Services/GetMessagesService.cs" line="6" column="1" />
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Chat-App/Core/Services/GetUsersService.cs" relfile="Core/Services/GetUsersService.cs" line="46" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Chat-App/Core/Services/CreateNewUserService.cs" relfile="Core/Services/CreateNewUserService.cs" line="81" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Chat-App/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="25" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

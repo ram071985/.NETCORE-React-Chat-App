@@ -13,16 +13,21 @@ namespace Core.Services
     {
         private string _databaseUserName;
         private string _databasePassword;
+        private string _databaseHost;
+        private string _databaseName;
 
         public UserUpdateService(IConfiguration configuration)
         {
             _databaseUserName = configuration["Database:Username"];
             _databasePassword = configuration["Database:Password"];
+            _databaseHost = configuration["Database:Host"];
+            _databaseName = configuration["Database:Name"];
+
         }
 
         public UserUpdate UpdateLastActive(int userId)
         {
-            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
@@ -49,7 +54,7 @@ namespace Core.Services
         {
 
 
-            var connString = "Host=localhost;Username=" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
             using var conn = new NpgsqlConnection(connString);
             conn.Open();

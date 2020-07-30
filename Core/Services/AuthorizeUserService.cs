@@ -16,6 +16,7 @@ namespace Core.Services
         private string _databaseUserName;
         private string _databasePassword;
         private string _databaseHost;
+        private string _databaseName;
 
 
         public AuthorizeUserService(IConfiguration configuration)
@@ -23,6 +24,8 @@ namespace Core.Services
             _databaseUserName = configuration["Database:Username"];
             _databasePassword = configuration["Database:Password"];
             _databaseHost = configuration["Database:Host"];
+            _databaseName = configuration["Database:Name"];
+
         }
 
         public Session GetSession(int id, string username, string password)
@@ -39,7 +42,7 @@ namespace Core.Services
                 throw new Exception("empty password");
             }
 
-            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=chat_app";
+            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
 
             using var conn = new NpgsqlConnection(connString);
