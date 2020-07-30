@@ -79,7 +79,7 @@ class LandingPage extends Component {
 
   logInUser = () => {
     axios
-      .post("/api/authorize", {
+      .post("/build/api/authorize", {
         username: this.state.existingUsername,
         password: this.state.existingPassword
       })

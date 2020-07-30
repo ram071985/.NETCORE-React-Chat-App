@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/CreateMessageService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorizationController.cs">
     <Files>
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="22" Column="68" />
+      <File FileName="Core/Services/CreateNewUserService.cs" Line="21" Column="68" />
       <File FileName="API/appsettings.Development.json" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="45" Column="42" />
-      <File FileName="Core/Services/GetUsersService.cs" Line="26" Column="62" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="15" Column="42" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="31" Column="156" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="45" Column="156" NotebookId="1" />
+      <File FileName="Core/Services/GetMessagesService.cs" />
+      <File FileName="Core/Services/GetUsersService.cs" />
+      <File FileName="Core/Services/UserUpdateService.cs" />
+      <File FileName="Core/Services/CreateMessageService.cs" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="40" Column="32" NotebookId="1" />
+      <File FileName="API/client/src/LandingPage.js" Line="118" Column="5" NotebookId="1" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,23 +17,15 @@
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
-                <Node name="build" expanded="True">
-                  <Node name="static" expanded="True">
-                    <Node name="css" expanded="True" />
-                    <Node name="js" expanded="True" />
-                  </Node>
-                </Node>
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-            <Node name="Core" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="CreateMessageService.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AuthorizationController.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="Tests" expanded="True" />
+            <Node name="Core" expanded="True">
+              <Node name="Services" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
