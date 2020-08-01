@@ -1,6 +1,13 @@
 ﻿import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Button, InputGroup, FormControl } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  InputGroup,
+  FormControl
+} from "react-bootstrap";
 import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
@@ -64,12 +71,12 @@ class ChatRoom extends Component {
   };
 
   postNewMessage = () => {
-      let parseId = parseInt(localStorage.getItem("session_id"));
-      let parseUserId = parseInt(localStorage.getItem("user_id"));
+    let parseId = parseInt(localStorage.getItem("session_id"));
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
       .post("/api/messages", {
-          sessionId: parseId,
-          userId: parseUserId,
+        sessionId: parseId,
+        userId: parseUserId,
         text: this.state.messageInput
       })
       .then(res => {
@@ -93,9 +100,9 @@ class ChatRoom extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-      this.postNewMessage();
-      this.addLastActive();
-      this.getMessagesFromDatabase();
+    this.postNewMessage();
+    this.addLastActive();
+    this.getMessagesFromDatabase();
     this.clearInput();
   };
 
@@ -122,16 +129,16 @@ class ChatRoom extends Component {
     });
   };
 
-    addLastActive = () => {
-        let parseId = parseInt(localStorage.getItem("user_id"));
-        axios
-            .put("/api/users/last_active", {
-                userId: parseId
-            })
-            .then(res => {
-                console.log(res);
-            });
-    }
+  addLastActive = () => {
+    let parseId = parseInt(localStorage.getItem("user_id"));
+    axios
+      .put("/api/users/last_active", {
+        userId: parseId
+      })
+      .then(res => {
+        console.log(res);
+      });
+  };
 
   render() {
     let id = localStorage.getItem("user_id");
@@ -157,7 +164,7 @@ class ChatRoom extends Component {
     });
     return (
       <div className="container">
-        <div className="row h-100">
+        <div className="row justify-content-center h-100">
           <div className="col-xs h-100 w-25 users-col">
             <h5 className="d-inline-block users-header">Users</h5>
             <a
@@ -181,29 +188,32 @@ class ChatRoom extends Component {
             <h6 className="d-inline ml-2">{this.state.users.username}</h6>
           </div>
           <div className="h-100 messages-col mt-5">{userMessages}</div>
-          <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
-            <InputGroup className="message-input-group">
-              <FormControl
-                className="message-input"
-                placeholder="Message"
-                aria-label="Recipient's message"
-                aria-describedby="basic-addon2"
-                name="messageInput"
-                value={this.state.messageInput}
-                type="input"
-                onChange={this.handleChange}
-              />
-              <InputGroup.Append>
-                <Button
-                  className="submit-button"
-                  variant="outline-secondary"
-                  type="submit"
+          <Row className="justify-content-center submit-row">
+            <Col className="col-8">
+                <Form.Group
+                onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}
+                  controlId="exampleForm.ControlTextarea1"
+                  className="textarea-form"
                 >
-                  Send
+                  <Form.Control
+                    value={this.state.messageInput}
+                    type="input"
+                    onChange={this.handleChange}
+                    name="messageInput"
+                    placeholder="Type Message Here"
+                    as="textarea"
+                    rows="3"
+                  />
+                </Form.Group>
+                <Button
+                  className="ml-auto d-block"
+                  type="submit"
+                  variant="outline-dark"
+                >
+                  Submit{" "}
                 </Button>
-              </InputGroup.Append>
-            </InputGroup>
-          </form>
+            </Col>
+          </Row>
         </div>
       </div>
     );

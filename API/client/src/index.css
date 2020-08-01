@@ -29,7 +29,6 @@ hr {
 html,
 body {
   height: 100%;
-  width: 100%;
   margin: 0px;
   font-size: 16px;
 }
@@ -251,11 +250,27 @@ a.log-out-button:hover {
 }
 
 .message-input-group {
-  margin-bottom: 6rem;
+
 }
 
 .card-body {
 width: 100% !important;
+}
+
+.submit-row {
+
+}
+.col-8 {
+position: absolute;
+bottom: 100px;
+margin-left: 250px;
+height: 25% !important;
+width: 400px !important;
+}
+
+
+.text-area-form {
+
 }
 
 
