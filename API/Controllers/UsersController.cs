@@ -25,14 +25,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public GetUser GetUserObject(int id, string username)
+        public List<UserModel> GetUserObject(string username)
         {
-            var user = _getUsersService.GetUserObject(id, username);
-            return new GetUser
-            {
-                Username = user.Username
-            };
+            var users = _getUsersService.GetUserObject(username);
 
+            var userModels = users.Select(user => new UserModel { Username = user.Username });
+
+            return userModels.ToList();
+   
         }
 
         [HttpPut("last_active")]

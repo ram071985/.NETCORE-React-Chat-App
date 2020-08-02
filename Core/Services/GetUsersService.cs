@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
@@ -6,7 +7,7 @@ namespace Core.Services
 {
     public interface IGetUsersService
     {
-        GetUser GetUserObject(int id, string username);
+        List<GetUser> GetUserObject(string username);
     }
     public class GetUsersService : IGetUsersService
     {
@@ -23,7 +24,7 @@ namespace Core.Services
             _databaseName = configuration["Database:Name"];
         }
 
-        public GetUser GetUserObject(int id, string username)
+        public List<GetUser> GetUserObject(string username)
         {
 
 
@@ -34,18 +35,21 @@ namespace Core.Services
 
             using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at < NOW() - 20", conn))
             {
+               
 
                 using (var reader = cmd.ExecuteReader())
                 {
-                    var user = new GetUser();
+
+                    var users = new List<GetUser>();
 
                     while (reader.Read())
                     {
-
+                        var user = new GetUser();
                         user.Username = reader[0].ToString();
+                        users.Add(user);
 
                     }
-                    return user;
+                    return users;
 
                 }
             }
