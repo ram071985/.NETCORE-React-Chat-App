@@ -24,7 +24,7 @@ namespace API.Controllers
             _getUsersService = getUsersService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public GetUser GetUserObject(int id, string username)
         {
             var user = _getUsersService.GetUserObject(id, username);

@@ -1,10 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
-using Npgsql;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
 using Core.Services;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace API.Controllers
 {
@@ -20,7 +17,7 @@ namespace API.Controllers
         private IUserUpdateService _userUpdateService;
 
         public MessagesController(ICreateMessageService createMessageService, IGetMessagesService getMessagesService, IUserUpdateService userUpdateService)
-        {
+        { 
             _createMessageService = createMessageService;
             _getMessagesService = getMessagesService;
             _userUpdateService = userUpdateService;
@@ -28,7 +25,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public List<MessageModel> Post([FromBody] MessageModel messageModel)
+        public List<MessageModel> GetBackMessage([FromBody] MessageModel messageModel)
         {
 
             var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);

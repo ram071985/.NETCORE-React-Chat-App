@@ -32,10 +32,9 @@ namespace Core.Services
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+            using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at < NOW() - 20", conn))
             {
 
-                cmd.Parameters.AddWithValue("@id", id);
                 using (var reader = cmd.ExecuteReader())
                 {
                     var user = new GetUser();
