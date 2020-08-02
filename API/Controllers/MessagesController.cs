@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
-using System.Collections.Generic;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
@@ -31,11 +30,11 @@ namespace API.Controllers
         [HttpPost]
         public List<MessageModel> Post([FromBody] MessageModel messageModel)
         {
-        
-          var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
-          var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
-           _userUpdateService.UpdateLastActive(messageModel.UserId);
+            var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
+            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
+
+            _userUpdateService.UpdateLastActive(messageModel.UserId);
 
             return messageModels.ToList();
         }

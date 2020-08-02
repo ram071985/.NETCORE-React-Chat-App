@@ -41,7 +41,7 @@ namespace API.Controllers
             var user = _userUpdateService.UpdateLastActive(userModel.UserId);
             return new UserUpdate
             {
-               UserId = user.UserId
+                UserId = user.UserId
             };
         }
 

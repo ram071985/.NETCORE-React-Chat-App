@@ -25,7 +25,7 @@ namespace Core.Services
 
         public GetUser GetUserObject(int id, string username)
         {
-            
+
 
             var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
@@ -34,7 +34,7 @@ namespace Core.Services
 
             using (var cmd = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
             {
-                
+
                 cmd.Parameters.AddWithValue("@id", id);
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -42,7 +42,7 @@ namespace Core.Services
 
                     while (reader.Read())
                     {
-                        
+
                         user.Username = reader[0].ToString();
 
                     }
@@ -56,6 +56,6 @@ namespace Core.Services
     public class GetUser
     {
         public string Username { get; set; }
-        
+
     }
 }
