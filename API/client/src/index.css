@@ -206,16 +206,11 @@ body {
 .messages-col {
   overflow: auto;
   margin-left: 20rem;
-  max-height: 775px;
+  max-height: 680px;
   background-color: #fff5d7 !important;
 }
 
-.form-control.message-input {
-  margin-left: 23rem;
-  position: absolute;
-  bottom: 10%;
-  width: 30rem !important;
-}
+
 
 .card {
   background-color: #ff5e6c !important;
@@ -262,15 +257,10 @@ width: 100% !important;
 }
 .col-8 {
 position: absolute;
-bottom: 100px;
+bottom: 20px;
 margin-left: 250px;
 height: 25% !important;
 width: 400px !important;
-}
-
-
-.text-area-form {
-
 }
 
 

@@ -1,13 +1,6 @@
 ﻿import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Form,
-  Row,
-  Col,
-  Button,
-  InputGroup,
-  FormControl
-} from "react-bootstrap";
+import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
@@ -49,8 +42,8 @@ class ChatRoom extends Component {
   };
 
   getUsers = () => {
-    let parseId = parseInt(localStorage.getItem("user_id"));
-    axios.get(`/api/users/${parseId}`, {}).then(res => {
+    axios.get("/api/users", {}).then(res => {
+      console.log(res);
       this.setState({
         users: res.data
       });
@@ -141,12 +134,27 @@ class ChatRoom extends Component {
   };
 
   render() {
+    console.log(this.state.users);
     let id = localStorage.getItem("user_id");
     console.log(id);
 
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
     }
+
+    const userList = this.state.users.map((user, index) => {
+      return (
+        <div key={index}>
+          <Circle
+            className="ml-2 d-inline-block"
+            color="white"
+            width="12"
+            height="12"
+          />
+          <h6 className="d-inline-block ml-2">{user.username}</h6>
+        </div>
+      );
+    });
 
     const userMessages = this.state.messages.map(message => {
       return (
@@ -179,19 +187,13 @@ class ChatRoom extends Component {
             <hr className="users-border" />
             <br />
             {this.sortedDates}
-            <Circle
-              className="d-inline-block ml-3 mb-1"
-              color="white"
-              width="12"
-              height="12"
-            />
-            <h6 className="d-inline ml-2">{this.state.users.username}</h6>
+            {userList}
           </div>
           <div className="h-100 messages-col mt-5">{userMessages}</div>
           <Row className="justify-content-center submit-row">
             <Col className="col-8">
+              <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
                 <Form.Group
-                onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}
                   controlId="exampleForm.ControlTextarea1"
                   className="textarea-form"
                 >
@@ -204,14 +206,16 @@ class ChatRoom extends Component {
                     as="textarea"
                     rows="3"
                   />
+
+                  <Button
+                    className="mt-1 ml-auto d-block"
+                    type="submit"
+                    variant="outline-dark"
+                  >
+                    Submit
+                  </Button>
                 </Form.Group>
-                <Button
-                  className="ml-auto d-block"
-                  type="submit"
-                  variant="outline-dark"
-                >
-                  Submit{" "}
-                </Button>
+              </form>
             </Col>
           </Row>
         </div>

@@ -160,7 +160,4 @@
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/manifest.json
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/index.html
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/2.af3c1da9.chunk.css
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/main.15060e0d.chunk.css
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/2.8a20e2f8.chunk.js
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/main.582f2d20.chunk.js
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/runtime-main.8c40394c.js

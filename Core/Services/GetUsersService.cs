@@ -33,7 +33,7 @@ namespace Core.Services
             using var conn = new NpgsqlConnection(connString);
             conn.Open();
 
-            using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at < NOW() - 20", conn))
+            using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at > NOW() - interval '20 minutes'", conn))
             {
                
 
@@ -45,7 +45,7 @@ namespace Core.Services
                     while (reader.Read())
                     {
                         var user = new GetUser();
-                        user.Username = reader[0].ToString();
+                        user.Username = reader[1].ToString();
                         users.Add(user);
 
                     }
