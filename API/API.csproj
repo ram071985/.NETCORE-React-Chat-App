@@ -16,22 +16,7 @@
     <Content Remove="client\build\asset-manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="client\build\index.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="client\build\static\css\2.af3c1da9.chunk.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="client\build\static\css\main.15060e0d.chunk.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="client\build\static\js\2.8a20e2f8.chunk.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="client\build\static\js\main.582f2d20.chunk.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="client\build\static\js\runtime-main.8c40394c.js">
+    <None Update="client\build\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

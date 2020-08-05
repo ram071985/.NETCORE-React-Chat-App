@@ -204,17 +204,18 @@ body {
 }
 
 .messages-col {
-  overflow: auto;
+  position: absolute;
+  max-height: 500px !important;
   margin-left: 20rem;
-  max-height: 680px;
   background-color: #fff5d7 !important;
+  max-width: 660px !important;
+  min-width: 6px !important;
 }
 
 
 
 .card {
   background-color: #ff5e6c !important;
-  border-radius: 0.5rem !important;
   border: 1px solid white !important;
 }
 
@@ -240,27 +241,27 @@ a.log-out-button:hover {
   margin: 5px;
 }
 
-.form-control.message-input {
-  width: 20rem !important;
-}
-
-.message-input-group {
-
-}
-
 .card-body {
 width: 100% !important;
 }
 
-.submit-row {
-
-}
 .col-8 {
 position: absolute;
 bottom: 20px;
-margin-left: 250px;
-height: 25% !important;
-width: 400px !important;
+height: 100% !important;
+width: 100% !important;
+}
+
+.form-control {
+width: 20rem !important
+}
+
+.css-1qyrjaz {
+  display: none !important;
+}
+
+.messages-submit {
+  margin-left: 240px;
 }
 
 
@@ -279,4 +280,6 @@ width: 400px !important;
     font-size: 2.1rem;
     width: 300px;
   }
+
+
 }

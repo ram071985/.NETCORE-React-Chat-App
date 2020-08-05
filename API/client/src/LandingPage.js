@@ -4,6 +4,7 @@ import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import * as Scroll from 'react-scroll';
 
 class LandingPage extends Component {
   constructor() {

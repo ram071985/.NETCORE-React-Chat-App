@@ -5,6 +5,8 @@ import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { animateScroll } from "react-scroll";
+import ScrollToBottom, { useScrollToBottom } from "react-scroll-to-bottom";
 
 class ChatRoom extends Component {
   constructor() {
@@ -21,7 +23,9 @@ class ChatRoom extends Component {
   componentDidMount() {
     let id = localStorage.getItem("session_id");
     this.addLastActive();
-    this.getMessagesFromDatabase();
+    setInterval(() => {
+      this.getMessagesFromDatabase();
+    }, 5000);
     this.getUsers();
     this.setState({
       sessionId: id
@@ -33,7 +37,7 @@ class ChatRoom extends Component {
       const messageDates = res.data.sort((a, b) => {
         const message1 = new Date(b.createdDate);
         const message2 = new Date(a.createdDate);
-        return message1 - message2;
+        return message1 + message2;
       });
       this.setState({
         messages: messageDates
@@ -76,7 +80,7 @@ class ChatRoom extends Component {
         const messageDates = res.data.sort((a, b) => {
           const message1 = new Date(b.createdDate);
           const message2 = new Date(a.createdDate);
-          return message1 - message2;
+          return message1 + message2;
         });
         this.setState({
           messages: messageDates
@@ -134,9 +138,8 @@ class ChatRoom extends Component {
   };
 
   render() {
-    console.log(this.state.users);
+    console.log(this.getMessagesFromDatabase);
     let id = localStorage.getItem("user_id");
-    console.log(id);
 
     if (this.state.isLoggedIn === false) {
       return <Redirect to="/login" />;
@@ -189,7 +192,9 @@ class ChatRoom extends Component {
             {this.sortedDates}
             {userList}
           </div>
-          <div className="h-100 messages-col mt-5">{userMessages}</div>
+          <ScrollToBottom className="h-100 messages-col mt-5">
+            {userMessages}
+          </ScrollToBottom>
           <Row className="justify-content-center submit-row">
             <Col className="col-8">
               <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
@@ -208,7 +213,7 @@ class ChatRoom extends Component {
                   />
 
                   <Button
-                    className="mt-1 ml-auto d-block"
+                    className="mt-1 d-block messages-submit"
                     type="submit"
                     variant="outline-dark"
                   >
