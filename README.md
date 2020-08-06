@@ -8,7 +8,7 @@ See my deployed version on Azure - [HERE](https://reidchatapp.azurewebsites.net)
 
 ## Summary
 
-Over the span of a couple months I built this app to increase my knowledge of the C# framework .NET Core, client/server-side relationships and management/utilization of a relational SQL database in which I chose the powerful PostgreSQL.  I also have always been fasinated with how chat applicatiions work since my earliest internet experience with AOL chat rooms.   
+Over the span of a couple months I built this app to increase my knowledge of the C# framework .NET Core, client/server-side relationships and management/utilization of a relational SQL database.  I also have always been fasinated with how chat applicatiions work since my earliest internet experience with AOL chat rooms.   
 
 I used React.js to handle the client-side and React-Router library for handling routhing between React components.  When it came to styling this app, I chose a mix of css and Bootstrap because Bootstrap's library creates a very conveinant solution to screen responsiveness and layout which can come in handy when you are under a time crunch.  I also added several css edits to the Bootstrap for custimization such as container and div sizes and their positioning along with media quiries for screen break points.  
 

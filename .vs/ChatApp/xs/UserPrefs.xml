@@ -5,7 +5,7 @@
       <File FileName="API/appsettings.Development.json" />
       <File FileName="Core/Services/UserUpdateService.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/client/src/ChatRoom.js" Line="34" Column="20" />
+      <File FileName="API/client/src/ChatRoom.js" />
       <File FileName="Core/Services/GetMessagesService.cs" />
       <File FileName="Core/Services/GetUsersService.cs" />
       <File FileName="Core/Services/AuthorizeUserService.cs" />
