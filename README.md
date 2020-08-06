@@ -4,7 +4,7 @@ Chat application inspired by the construct of Slack and Facebook.  Users can cre
 
 See my deployed version on Azure - [HERE](https://reidchatapp.azurewebsites.net)
 
-![](src/chat_app.png)
+![](chat_app.png)
 
 ## Summary
 
