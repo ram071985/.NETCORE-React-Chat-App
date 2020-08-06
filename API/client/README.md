@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Gab Room Chat  (React.js, C# ASP.NET Core, PostgreSQL, NUnit)
 
-## Available Scripts
+Chat application inspired by the construct of Slack and Facebook.  Users can create an account and chat with other users in the main chat channel.
 
-In the project directory, you can run:
+See my deployed version on Azure - [HERE](https://reidchatapp.azurewebsites.net)
 
-### `npm start`
+![](src/chat_app.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Summary
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Over the span of a couple months I built this app to increase my knowledge of the C# framework .NET Core, client/server-side relationships and management/utilization of a relational SQL database in which I chose the powerful PostgreSQL.  I also have always been fasinated with how chat applicatiions work since my earliest internet experience with AOL chat rooms.   
 
-### `npm test`
+I used React.js to handle the client-side and React-Router library for handling routhing between React components.  When it came to styling this app, I chose a mix of css and Bootstrap because Bootstrap's library creates a very conveinant solution to screen responsiveness and layout which can come in handy when you are under a time crunch.  I also added several css edits to the Bootstrap for custimization such as container and div sizes and their positioning along with media quiries for screen break points.  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The back-end of my application was built with C# .NET Core which has been a wonderful framework for seprerating client-side and server-side buisiness logic.  HTTP requests are made from the client-side and sent to the internal API endpoints in a controller.  From there, the controller connects to services which then make the appropriate SQL calls to the PostgreSQL requesting or posting data back from and to the front-end.  For the SQL calls I had some help from the open-source data provider Npgsql, which allows access to the PostgreSQL server for programs written in C#.  For unit testing, I used Nunit framework to perform tests on important functionalities such as creating a new user, and sending a new message.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Installation Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.) Run `npm i` in the terminal (in the root/API directory)
 
-### `npm run eject`
+2.) Push the play button in VS or run `dotnet watch run` in terminal
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3.) Open a browser and navigate to `localhost:5001`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Author 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* **Reid Muchow** - *Full-Stack Web Developer* - [Website](https://www.reidmuchow.com) | [LinkedIn](https://www.linkedin.com/in/reidmuchow/)

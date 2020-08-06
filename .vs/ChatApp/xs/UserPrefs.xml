@@ -5,13 +5,13 @@
       <File FileName="API/appsettings.Development.json" />
       <File FileName="Core/Services/UserUpdateService.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="API/client/src/ChatRoom.js" Line="34" Column="20" />
       <File FileName="Core/Services/GetMessagesService.cs" />
       <File FileName="Core/Services/GetUsersService.cs" />
       <File FileName="Core/Services/AuthorizeUserService.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
       <File FileName="API/MessageModel.cs" />
-      <File FileName="API/client/src/index.css" Line="271" Column="1" />
+      <File FileName="API/client/src/index.css" Line="248" Column="9" />
       <File FileName="API/client/src/LandingPage.js" Line="145" Column="23" NotebookId="1" />
       <File FileName="API/Controllers/AuthorizationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/UsersController.cs" NotebookId="1" />
@@ -23,12 +23,10 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
-            <Node name="API" expanded="True">
+            <Node name="API" expanded="True" selected="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="client" expanded="True">
-                <Node name="src" expanded="True">
-                  <Node name="index.css" selected="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
