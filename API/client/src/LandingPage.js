@@ -4,7 +4,6 @@ import { Container, Button, Row, Col, Form } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import * as Scroll from 'react-scroll';
 
 class LandingPage extends Component {
   constructor() {
@@ -85,7 +84,6 @@ class LandingPage extends Component {
         password: this.state.existingPassword
       })
         .then(res => {
-          console.log(res.data);
           localStorage.setItem("session_id", res.data.id);
           localStorage.setItem("user_id", res.data.userId);
         this.setState({
@@ -119,7 +117,6 @@ class LandingPage extends Component {
   };
 
     render() {
-      console.log(this.state.toChatRoom)
     if (this.state.toChatRoom === true) {
       return <Redirect to='/' />
     } 

@@ -1,11 +1,10 @@
 ﻿import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
+import { Form, Col, Button } from "react-bootstrap";
 import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { animateScroll } from "react-scroll";
 import ScrollToBottom, { useScrollToBottom } from "react-scroll-to-bottom";
 
 class ChatRoom extends Component {
@@ -50,7 +49,6 @@ class ChatRoom extends Component {
 
   getUsers = () => {
     axios.get("/api/users", {}).then(res => {
-      console.log(res);
       this.setState({
         users: res.data
       });
@@ -65,7 +63,6 @@ class ChatRoom extends Component {
         newUsername: this.state.newUsername
       })
       .then(res => {
-        console.log(res);
         this.getUsers();
       });
   };
@@ -136,12 +133,10 @@ class ChatRoom extends Component {
         userId: parseId
       })
       .then(res => {
-        console.log(res);
       });
   };
 
   render() {
-    console.log(this.getMessagesFromDatabase);
     let id = localStorage.getItem("user_id");
 
     if (this.state.isLoggedIn === false) {
