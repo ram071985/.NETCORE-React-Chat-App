@@ -209,7 +209,7 @@ body {
   margin-left: 20rem;
   background-color: #fff5d7 !important;
   max-width: 660px !important;
-  min-width: 6px !important;
+  min-width: 600px !important;
 }
 
 
@@ -247,13 +247,17 @@ width: 100% !important;
 
 .col-8 {
 position: absolute;
-bottom: 20px;
-height: 100% !important;
-width: 100% !important;
+top: 552px;
+left: 250px;
+min-width: 758px !important;
+max-width: 758px !important;
+
 }
 
-.form-control {
-width: 20rem !important
+.message-input.form-control {
+  width: 80% !important;
+  margin-left: 11rem;
+  min-width: 400px !important;
 }
 
 .css-1qyrjaz {
@@ -261,7 +265,13 @@ width: 20rem !important
 }
 
 .messages-submit {
-  margin-left: 240px;
+  position: absolute;
+  margin-left: 680px;
+}
+
+.main-row {
+    max-width: 1140px !important;
+    min-width: 1140px !important;
 }
 
 

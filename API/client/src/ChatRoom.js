@@ -25,7 +25,10 @@ class ChatRoom extends Component {
     this.addLastActive();
     setInterval(() => {
       this.getMessagesFromDatabase();
-    }, 5000);
+    }, 2000);
+      setInterval(() => {
+          this.getUsers();
+      }, 5000);
     this.getUsers();
     this.setState({
       sessionId: id
@@ -175,7 +178,7 @@ class ChatRoom extends Component {
     });
     return (
       <div className="container">
-        <div className="row justify-content-center h-100">
+        <div className="row justify-content-center h-100 main-row">
           <div className="col-xs h-100 w-25 users-col">
             <h5 className="d-inline-block users-header">Users</h5>
             <a
@@ -195,7 +198,6 @@ class ChatRoom extends Component {
           <ScrollToBottom className="h-100 messages-col mt-5">
             {userMessages}
           </ScrollToBottom>
-          <Row className="justify-content-center submit-row">
             <Col className="col-8">
               <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
                 <Form.Group
@@ -203,6 +205,7 @@ class ChatRoom extends Component {
                   className="textarea-form"
                 >
                   <Form.Control
+                    className="message-input"
                     value={this.state.messageInput}
                     type="input"
                     onChange={this.handleChange}
@@ -222,7 +225,6 @@ class ChatRoom extends Component {
                 </Form.Group>
               </form>
             </Col>
-          </Row>
         </div>
       </div>
     );

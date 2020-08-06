@@ -164,11 +164,11 @@
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/service-worker.js
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/2.af3c1da9.chunk.css.map
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/runtime-main.8c40394c.js.map
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/precache-manifest.bf661ae9d113a63246bcafb968147e56.js
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/main.56f2539a.chunk.css
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/main.56f2539a.chunk.css.map
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/2.44866ea1.chunk.js
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/2.44866ea1.chunk.js.LICENSE.txt
 /Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/2.44866ea1.chunk.js.map
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/main.a146f39d.chunk.js
-/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/main.a146f39d.chunk.js.map
+/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/precache-manifest.ddcd4baffe4832d4fca55643b8e3bd7a.js
+/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/main.a593e407.chunk.css
+/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/css/main.a593e407.chunk.css.map
+/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/main.cc16e2c1.chunk.js
+/Users/reid/Desktop/Chat-App/API/bin/Debug/netcoreapp3.1/client/build/static/js/main.cc16e2c1.chunk.js.map

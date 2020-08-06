@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/index.css">
     <Files>
       <File FileName="Core/Services/CreateNewUserService.cs" Line="13" Column="6" IsPinned="True" />
       <File FileName="API/appsettings.Development.json" />
       <File FileName="Core/Services/UserUpdateService.cs" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/client/src/ChatRoom.js" Line="26" Column="2" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="41" Column="1" />
+      <File FileName="API/client/src/ChatRoom.js" />
+      <File FileName="Core/Services/GetMessagesService.cs" />
       <File FileName="Core/Services/GetUsersService.cs" />
       <File FileName="Core/Services/AuthorizeUserService.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
       <File FileName="API/MessageModel.cs" />
-      <File FileName="API/client/src/index.css" Line="245" Column="24" />
+      <File FileName="API/client/src/index.css" Line="271" Column="1" />
       <File FileName="API/client/src/LandingPage.js" Line="145" Column="23" NotebookId="1" />
       <File FileName="API/Controllers/AuthorizationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/UsersController.cs" NotebookId="1" />
@@ -26,9 +26,8 @@
             <Node name="API" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="client" expanded="True">
-                <Node name="build" expanded="True" />
                 <Node name="src" expanded="True">
-                  <Node name="ChatRoom.js" selected="True" />
+                  <Node name="index.css" selected="True" />
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
