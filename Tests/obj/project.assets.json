@@ -9148,11 +9148,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/reid/Desktop/Chat-App/Tests/Tests.csproj",
+      "projectUniqueName": "/Users/reid/Desktop/Projects/Chat-App/Tests/Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "/Users/reid/Desktop/Chat-App/Tests/Tests.csproj",
+      "projectPath": "/Users/reid/Desktop/Projects/Chat-App/Tests/Tests.csproj",
       "packagesPath": "/Users/reid/.nuget/packages/",
-      "outputPath": "/Users/reid/Desktop/Chat-App/Tests/obj/",
+      "outputPath": "/Users/reid/Desktop/Projects/Chat-App/Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/reid/.config/NuGet/NuGet.Config"
@@ -9166,11 +9166,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/reid/Desktop/Chat-App/API/API.csproj": {
-              "projectPath": "/Users/reid/Desktop/Chat-App/API/API.csproj"
+            "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj": {
+              "projectPath": "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj"
             },
-            "/Users/reid/Desktop/Chat-App/Core/Core.csproj": {
-              "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj"
+            "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj": {
+              "projectPath": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj"
             }
           }
         }

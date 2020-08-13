@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/reid/Desktop/Chat-App/API/API.csproj": {}
+    "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj": {}
   },
   "projects": {
-    "/Users/reid/Desktop/Chat-App/API/API.csproj": {
+    "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/reid/Desktop/Chat-App/API/API.csproj",
+        "projectUniqueName": "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/reid/Desktop/Chat-App/API/API.csproj",
+        "projectPath": "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj",
         "packagesPath": "/Users/reid/.nuget/packages/",
-        "outputPath": "/Users/reid/Desktop/Chat-App/API/obj/",
+        "outputPath": "/Users/reid/Desktop/Projects/Chat-App/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/reid/.config/NuGet/NuGet.Config"
@@ -25,8 +25,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/reid/Desktop/Chat-App/Core/Core.csproj": {
-                "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj"
+              "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj": {
+                "projectPath": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj"
               }
             }
           }
@@ -75,14 +75,14 @@
         }
       }
     },
-    "/Users/reid/Desktop/Chat-App/Core/Core.csproj": {
+    "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
+        "projectUniqueName": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
+        "projectPath": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj",
         "packagesPath": "/Users/reid/.nuget/packages/",
-        "outputPath": "/Users/reid/Desktop/Chat-App/Core/obj/",
+        "outputPath": "/Users/reid/Desktop/Projects/Chat-App/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/reid/.config/NuGet/NuGet.Config"

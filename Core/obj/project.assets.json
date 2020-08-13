@@ -7936,11 +7936,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
+      "projectUniqueName": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj",
       "projectName": "Core",
-      "projectPath": "/Users/reid/Desktop/Chat-App/Core/Core.csproj",
+      "projectPath": "/Users/reid/Desktop/Projects/Chat-App/Core/Core.csproj",
       "packagesPath": "/Users/reid/.nuget/packages/",
-      "outputPath": "/Users/reid/Desktop/Chat-App/Core/obj/",
+      "outputPath": "/Users/reid/Desktop/Projects/Chat-App/Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/reid/.config/NuGet/NuGet.Config"

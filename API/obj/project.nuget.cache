@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K5f2uVtIvexmYc1Th7EVecLBcN5+ctD/5y3rqoqc1EYVEuulziwK03txvPr0GsXnjqHvxkCUlO+x8ixaV03o+g==",
+  "dgSpecHash": "8oDF5Cf86Gi+YPhvlcLd6v0CgFPzDQjVuv62FlF6jL0jjbe9yL3k9mkVGT5tPT6WIlThzxiWRSKETB8wTiwc5w==",
   "success": true,
-  "projectFilePath": "/Users/reid/Desktop/Chat-App/API/API.csproj",
+  "projectFilePath": "/Users/reid/Desktop/Projects/Chat-App/API/API.csproj",
   "expectedPackageFiles": [
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.antiforgery/2.2.0/microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
