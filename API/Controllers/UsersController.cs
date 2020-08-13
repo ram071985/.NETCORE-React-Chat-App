@@ -7,6 +7,7 @@ using System.Linq;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
+using Core.Entities;
 
 namespace API.Controllers
 {
@@ -36,20 +37,20 @@ namespace API.Controllers
         }
 
         [HttpPut("last_active")]
-        public UserUpdate UpdateLastActive(int userId, UserModel userModel)
+        public User UpdateLastActive(int userId, UserModel userModel)
         {
             var user = _userUpdateService.UpdateLastActive(userModel.UserId);
-            return new UserUpdate
+            return new User
             {
                 UserId = user.UserId
             };
         }
 
         [HttpPut]
-        public UserUpdate PutNewUsername([FromBody] UserModel userModel)
+        public User PutNewUsername([FromBody] UserModel userModel)
         {
             var user = _userUpdateService.PutNewUsername(userModel.UserId, userModel.Username, userModel.NewUsername, userModel.CreatedDate);
-            return new UserUpdate
+            return new User
             {
                 Username = user.Username
             };

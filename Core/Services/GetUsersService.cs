@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
@@ -7,7 +8,7 @@ namespace Core.Services
 {
     public interface IGetUsersService
     {
-        List<GetUser> GetUserObject(string username);
+        List<User> GetUserObject(string username);
     }
     public class GetUsersService : IGetUsersService
     {
@@ -24,7 +25,7 @@ namespace Core.Services
             _databaseName = configuration["Database:Name"];
         }
 
-        public List<GetUser> GetUserObject(string username)
+        public List<User> GetUserObject(string username)
         {
 
 
@@ -40,11 +41,11 @@ namespace Core.Services
                 using (var reader = cmd.ExecuteReader())
                 {
 
-                    var users = new List<GetUser>();
+                    var users = new List<User>();
 
                     while (reader.Read())
                     {
-                        var user = new GetUser();
+                        var user = new User();
                         user.Username = reader[1].ToString();
                         users.Add(user);
 
@@ -54,11 +55,5 @@ namespace Core.Services
                 }
             }
         }
-    }
-
-    public class GetUser
-    {
-        public string Username { get; set; }
-
     }
 }

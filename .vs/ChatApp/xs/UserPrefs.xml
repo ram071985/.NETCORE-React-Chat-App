@@ -1,18 +1,26 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/.gitignore">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Startup.cs">
     <Files>
-      <File FileName="API/client/.gitignore" Line="21" Column="15" />
+      <File FileName="Core/Services/GetUsersService.cs" Line="30" Column="12" />
+      <File FileName="API/Controllers/UsersController.cs" Line="31" Column="66" />
+      <File FileName="API/Startup.cs" Line="1" Column="1" />
+      <File FileName="Core/Entities/User.cs" Line="10" Column="51" NotebookId="1" />
+      <File FileName="Core/Services/UserUpdateService.cs" Line="56" Column="1" NotebookId="1" />
+      <File FileName="Core/DataAccess/DbCollectionClass.cs" Line="10" Column="42" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="client" expanded="True">
-                <Node name="src" expanded="True" />
-                <Node name=".gitignore" selected="True" />
-              </Node>
+              <Node name="client" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
+            </Node>
+            <Node name="Core" expanded="True">
+              <Node name="DataAccess" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>

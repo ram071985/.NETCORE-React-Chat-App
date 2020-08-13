@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
@@ -6,8 +7,8 @@ namespace Core.Services
 {
     public interface IUserUpdateService
     {
-        UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate);
-        UserUpdate UpdateLastActive(int userId);
+        User PutNewUsername(int userId, string username, string newUsername, DateTime createdDate);
+        User UpdateLastActive(int userId);
     }
     public class UserUpdateService : IUserUpdateService
     {
@@ -25,7 +26,7 @@ namespace Core.Services
 
         }
 
-        public UserUpdate UpdateLastActive(int userId)
+        public User UpdateLastActive(int userId)
         {
             var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
@@ -38,7 +39,7 @@ namespace Core.Services
                 lastActiveInsert.Parameters.AddWithValue("@id", userId);
                 using (var reader = lastActiveInsert.ExecuteReader())
                 {
-                    var lastActive = new UserUpdate();
+                    var lastActive = new User();
                     while (reader.Read())
                     {
                       
@@ -50,7 +51,7 @@ namespace Core.Services
             }   
         }
 
-        public UserUpdate PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
+        public User PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
         {
 
 
@@ -82,7 +83,7 @@ namespace Core.Services
                 cmd.Parameters.AddWithValue("@username", username);
                 using (var reader = cmd.ExecuteReader())
                 {
-                    var user = new UserUpdate();
+                    var user = new User();
 
                     while (reader.Read())
                     {
@@ -101,15 +102,5 @@ namespace Core.Services
                 }
             }
         }
-    }
-
-    public class UserUpdate
-    {
-        public int UserId { get; set; }
-        public string NewUsername { get; set; }
-        public string Username { get; set; }
-        public DateTime LastActiveAt { get; set; }
-        public DateTime CreatedDate { get; set; }
-
     }
 }
