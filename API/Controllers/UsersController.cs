@@ -29,21 +29,15 @@ namespace API.Controllers
         public List<UserModel> GetUserObject(string username)
         {
             var users = _getUsersService.GetUserObject(username);
-
             var userModels = users.Select(user => new UserModel { Username = user.Username });
-
-            return userModels.ToList();
-   
+            return userModels.ToList();   
         }
 
         [HttpPut("last_active")]
         public User UpdateLastActive(int userId, UserModel userModel)
         {
-            var user = _userUpdateService.UpdateLastActive(userModel.UserId);
-            return new User
-            {
-                UserId = user.UserId
-            };
+           return _userUpdateService.UpdateLastActive(userModel.UserId);
+       
         }
 
         [HttpPut]

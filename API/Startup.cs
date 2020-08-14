@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Services;
@@ -40,6 +42,7 @@ namespace API
             services.AddScoped<ICreateNewUserService, CreateNewUserService>();
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<IUserUpdateService, UserUpdateService>();
+            services.AddScoped<IDbConnection, DbConnection>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

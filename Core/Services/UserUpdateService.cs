@@ -54,7 +54,6 @@ namespace Core.Services
         public User PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
         {
 
-
             var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
 
             using var conn = new NpgsqlConnection(connString);
