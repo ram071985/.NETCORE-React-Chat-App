@@ -9,7 +9,7 @@ namespace Core.DataAccess
     {
         NpgsqlConnection GetConnection();
     }
-    public class DbCollection : IDbConnection
+    public class DbConnection : IDbConnection
     {
 
         private string _databaseUserName;

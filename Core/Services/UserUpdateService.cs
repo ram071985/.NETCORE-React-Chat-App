@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.DataAccess;
 using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
@@ -12,94 +13,75 @@ namespace Core.Services
     }
     public class UserUpdateService : IUserUpdateService
     {
-        private string _databaseUserName;
-        private string _databasePassword;
-        private string _databaseHost;
-        private string _databaseName;
+        private IDbConnection _dbConnection;
 
-        public UserUpdateService(IConfiguration configuration)
+        public UserUpdateService(IDbConnection dbConnection)
         {
-            _databaseUserName = configuration["Database:Username"];
-            _databasePassword = configuration["Database:Password"];
-            _databaseHost = configuration["Database:Host"];
-            _databaseName = configuration["Database:Name"];
-
+            _dbConnection = dbConnection;
         }
 
         public User UpdateLastActive(int userId)
         {
-            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
-
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-
-            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE id = @id", conn))
+            using (var conn = _dbConnection.GetConnection())
             {
-                lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
-                lastActiveInsert.Parameters.AddWithValue("@id", userId);
-                using (var reader = lastActiveInsert.ExecuteReader())
-                {
-                    var lastActive = new User();
-                    while (reader.Read())
-                    {
-                      
 
+                using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE id = @id", conn))
+                {
+                    lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
+                    lastActiveInsert.Parameters.AddWithValue("@id", userId);
+                    using (var reader = lastActiveInsert.ExecuteReader())
+                    {
+                        var lastActive = new User();
+                        while (reader.Read())
+                        {
+
+                        }
+                        return lastActive;
                     }
-                    return lastActive;
                 }
-      
-            }   
+            }
         }
 
         public User PutNewUsername(int userId, string username, string newUsername, DateTime createdDate)
         {
-
-            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
-
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-
-            using (var getUsernameCommand = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
+            using (var conn = _dbConnection.GetConnection())
             {
-
-                getUsernameCommand.Parameters.AddWithValue("@id", userId);
-
-
-                using (var reader = getUsernameCommand.ExecuteReader())
+                using (var getUsernameCommand = new NpgsqlCommand("SELECT username FROM users WHERE id = @id", conn))
                 {
+                    getUsernameCommand.Parameters.AddWithValue("@id", userId);
 
-                    while (reader.Read())
+                    using (var reader = getUsernameCommand.ExecuteReader())
                     {
-                        username = reader[0].ToString();
-                       
-                    }
-                }
-            }
-
-            using (var cmd = new NpgsqlCommand("UPDATE users SET username = @newUsername WHERE username = @username RETURNING username", conn))
-            {
-                cmd.Parameters.AddWithValue("@newUsername", newUsername);
-                cmd.Parameters.AddWithValue("@username", username);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    var user = new User();
-
-                    while (reader.Read())
-                    {
-
-                        user.Username = reader[0].ToString();
-                        if (username == newUsername)
+                        while (reader.Read())
                         {
-
-                            throw new Exception("redundant username");
-
+                            username = reader[0].ToString();
                         }
-
                     }
-                    return user;
 
+                    using (var cmd = new NpgsqlCommand("UPDATE users SET username = @newUsername WHERE username = @username RETURNING username", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newUsername", newUsername);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            var user = new User();
+
+                            while (reader.Read())
+                            {
+
+                                user.Username = reader[0].ToString();
+                                if (username == newUsername)
+                                {
+                                    throw new Exception("redundant username");
+                                }
+
+                            }
+                            return user;
+                        }
+                    }
                 }
             }
         }
     }
 }
+

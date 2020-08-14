@@ -1,19 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.DataAccess;
 using Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace API
 {
@@ -43,6 +35,7 @@ namespace API
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<IUserUpdateService, UserUpdateService>();
             services.AddScoped<IDbConnection, DbConnection>();
+            services.AddScoped<ISessionDataAccess, SessionDataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

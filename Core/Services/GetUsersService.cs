@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using Core.DataAccess;
 using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;

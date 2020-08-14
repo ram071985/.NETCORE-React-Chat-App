@@ -1,4 +1,6 @@
 ﻿using System;
+using Core.DataAccess;
+using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using static Core.Services.AuthorizeUserService;
@@ -18,13 +20,18 @@ namespace Core.Services
         private string _databaseHost;
         private string _databaseName;
 
+        private ISessionDataAccess _sessionDataAccess;
 
-        public AuthorizeUserService(IConfiguration configuration)
+
+        public AuthorizeUserService(IConfiguration configuration,
+            ISessionDataAccess sessionDataAccess)
         {
             _databaseUserName = configuration["Database:Username"];
             _databasePassword = configuration["Database:Password"];
             _databaseHost = configuration["Database:Host"];
             _databaseName = configuration["Database:Name"];
+
+            _sessionDataAccess = sessionDataAccess;
 
         }
 
@@ -73,37 +80,8 @@ namespace Core.Services
                 throw new Exception("wrong credentials");
 
             }
+            return _sessionDataAccess.CreateSession(conn, id);
 
-
-            using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id, user_id", conn))
-            {
-
-                sessionInsertCommand.Parameters.AddWithValue("@userId", id);
-                using (var reader = sessionInsertCommand.ExecuteReader())
-                {
-
-                    while (reader.Read())
-                    {
-                        
-
-                        session.Id = (int)reader[0];
-                        session.UserId = (int)reader[1];
-                        
-                    }
-                    return session;
-
-                }
-            }
-        }
-
-        public class Session
-        {
-
-           public int Id { get; set; }
-           public int UserId { get; set; }
-          
         }
     }
-
- 
 }

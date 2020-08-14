@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.DataAccess;
+using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
@@ -7,7 +9,7 @@ namespace Core.Services
 {
     public interface ICreateNewUserService
     {
-        UserRegister PostNewUser(int id, int userId, string username, string password, DateTime createdDate);
+        Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate);
     }
     public class CreateNewUserService : ICreateNewUserService
     {
@@ -16,7 +18,9 @@ namespace Core.Services
         private string _databaseHost;
         private string _databaseName;
 
-        public CreateNewUserService(IConfiguration configuration)
+        private ISessionDataAccess _sessionDataAccess;
+
+        public CreateNewUserService(IConfiguration configuration, ISessionDataAccess sessionDataAccess)
         {
             _databaseUserName = configuration["Database:Username"];
             _databasePassword = configuration["Database:Password"];
@@ -24,7 +28,7 @@ namespace Core.Services
             _databaseName = configuration["Database:Name"];
         }
 
-        public UserRegister PostNewUser(int id, int userId, string username, string password, DateTime createdDate)
+        public Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate)
         {
             if (username == "")
             {
@@ -45,7 +49,6 @@ namespace Core.Services
 
                 checkUsernameCommand.Parameters.AddWithValue("@username", username);
 
-
                 using (var reader = checkUsernameCommand.ExecuteReader())
                 {
 
@@ -61,7 +64,6 @@ namespace Core.Services
                     }
                 }
             }
-
 
             using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
             {
@@ -82,24 +84,7 @@ namespace Core.Services
                 }
             }
 
-            using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
-            {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", id);
-                using (var reader = sessionInsertCommand.ExecuteReader())
-                {
-                    var newSession = new UserRegister();
-
-                    while (reader.Read())
-                    {
-
-                        newSession.Id = (int)reader[0];
-   
-
-                    }
-                    return newSession;
-
-                }
-            }
+            return _sessionDataAccess.CreateSession(conn, id);
         }
 
     }
