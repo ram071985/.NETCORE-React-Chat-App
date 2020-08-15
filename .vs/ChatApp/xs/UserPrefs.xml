@@ -1,24 +1,24 @@
-﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
+﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
   <MonoDevelop.Ide.Workbench ActiveDocument="Core/DataAccess/MessageDataAccess.cs">
     <Files>
       <File FileName="Core/Services/GetUsersService.cs" Line="25" Column="61" />
-      <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" />
-      <File FileName="API/Startup.cs" Line="40" Column="1" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="21" Column="55" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="29" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="32" Column="104" />
-      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="7" Column="10" />
+      <File FileName="API/Controllers/UsersController.cs" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="Core/Services/CreateNewUserService.cs" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="14" Column="2" />
+      <File FileName="Core/Services/CreateMessageService.cs" Line="1" Column="1" NotebookId="1" IsPinned="True" />
       <File FileName="Tests/CreateMessageTest.cs" Line="16" Column="14" NotebookId="1" />
-      <File FileName="Core/Entities/User.cs" Line="10" Column="51" NotebookId="1" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="48" Column="14" NotebookId="1" />
-      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="22" Column="126" NotebookId="1" />
-      <File FileName="Core/Entities/Session.cs" Line="7" Column="40" NotebookId="1" />
-      <File FileName="API/SessionModel.cs" Line="6" Column="8" NotebookId="1" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="83" Column="61" NotebookId="1" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="17" Column="15" NotebookId="1" />
-      <File FileName="Tests/CreateNewUserTest.cs" Line="25" Column="14" NotebookId="1" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="16" Column="15" NotebookId="1" />
-      <File FileName="Core/Entities/Message.cs" Line="6" Column="35" NotebookId="1" />
+      <File FileName="Core/Entities/User.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/UserUpdateService.cs" NotebookId="1" />
+      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/Entities/Session.cs" NotebookId="1" />
+      <File FileName="API/SessionModel.cs" NotebookId="1" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" NotebookId="1" />
+      <File FileName="Tests/UserUpdateTest.cs" NotebookId="1" />
+      <File FileName="Tests/CreateNewUserTest.cs" NotebookId="1" />
+      <File FileName="Tests/AuthorizeUserTest.cs" NotebookId="1" />
+      <File FileName="Core/Entities/Message.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,6 +31,8 @@
               <Node name="DataAccess" expanded="True">
                 <Node name="MessageDataAccess.cs" selected="True" />
               </Node>
+              <Node name="Entities" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True" />
           </Node>
@@ -52,7 +54,6 @@
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Projects/Chat-App/Core/Services/GetMessagesService.cs" relfile="Core/Services/GetMessagesService.cs" line="6" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="25" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/Services/UserUpdateService.cs" relfile="Core/Services/UserUpdateService.cs" line="68" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/Entities/User.cs" relfile="Core/Entities/User.cs" line="13" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
