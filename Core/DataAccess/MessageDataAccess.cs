@@ -11,6 +11,28 @@ namespace Core.DataAccess
     }
     public class MessageDataAccess : IMessageDataAccess
     {
+        public Message AddMessage(NpgsqlConnection conn, int sessionId, string text, DateTime createdDate)
+        {
+            using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
+            {
+                messageInsertCommand.Parameters.AddWithValue("@userId", sessionId);
+                messageInsertCommand.Parameters.AddWithValue("@text", text);
+                messageInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
+
+                using (var reader = messageInsertCommand.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+
+                        text = reader[3].ToString();
+                        createdDate = (DateTime)reader[4];
+
+                    }
+                }
+            }
+        }
+
         public List<Message> GetMessages(NpgsqlConnection conn)
         {
             using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.text, m.created_date FROM messages m JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))

@@ -1,17 +1,16 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/AuthorizeUserService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/CreateMessageService.cs">
     <Files>
       <File FileName="Core/Services/GetUsersService.cs" Line="25" Column="61" />
       <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" />
       <File FileName="API/Startup.cs" Line="39" Column="73" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="73" Column="1" />
       <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" />
-      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="8" Column="40" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="1" Column="1" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="6" Column="24" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="26" Column="8" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="60" Column="16" NotebookId="1" IsPinned="True" />
-      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/UserUpdateService.cs" Line="42" Column="1" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="31" Column="6" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="29" Column="55" />
+      <File FileName="Core/Services/CreateNewUserService.cs" Line="73" Column="1" />
+      <File FileName="Core/Services/CreateMessageService.cs" Line="63" Column="1" />
+      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="18" Column="10" NotebookId="1" />
       <File FileName="Tests/CreateMessageTest.cs" Line="16" Column="14" NotebookId="1" />
       <File FileName="Core/Entities/User.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Core/Entities/Session.cs" Line="1" Column="1" NotebookId="1" />
@@ -20,6 +19,8 @@
       <File FileName="Tests/CreateNewUserTest.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Core/Entities/Message.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/DataAccess/UserDataAccess.cs" Line="12" Column="19" NotebookId="1" />
+      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="14" Column="64" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,7 +33,7 @@
               <Node name="DataAccess" expanded="True" />
               <Node name="Entities" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="AuthorizeUserService.cs" selected="True" />
+                <Node name="CreateMessageService.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Tests" expanded="True" />
@@ -53,7 +54,6 @@
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Projects/Chat-App/API/MessageModel.cs" relfile="API/MessageModel.cs" line="19" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="25" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/Services/CreateNewUserService.cs" relfile="Core/Services/CreateNewUserService.cs" line="54" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

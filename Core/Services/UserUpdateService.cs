@@ -1,7 +1,6 @@
 ﻿using System;
 using Core.DataAccess;
 using Core.Entities;
-using Microsoft.Extensions.Configuration;
 using Npgsql;
 
 namespace Core.Services

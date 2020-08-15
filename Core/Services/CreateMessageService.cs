@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Core.DataAccess;
 using Core.Entities;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
+using static Core.Services.AuthorizeUserService;
 
 namespace Core.Services
 
@@ -29,14 +31,18 @@ namespace Core.Services
 
               using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
               {
+
                   checkUsernameCommand.Parameters.AddWithValue("@id", sessionId);
 
                   using (var reader =checkUsernameCommand.ExecuteReader())
                   {
+
                       while (reader.Read())
                       {
+
                           sessionId = (int)reader[0];
-                     }
+
+                      }
                   }
               }
 
@@ -48,20 +54,27 @@ namespace Core.Services
 
                   using (var reader = messageInsertCommand.ExecuteReader())
                   {
+
                       while (reader.Read())
                       {
+
                           text = reader[3].ToString();
                           createdDate = (DateTime)reader[4];
+
                       }
                   }
               }
 
               if (text == "")
               {
+
                   throw new Exception("no text");
+
               }
 
-                return _messageDataAccess.GetMessages(conn);              
+                return _messageDataAccess.GetMessages(conn);
+
+              
             }
         }
     }
