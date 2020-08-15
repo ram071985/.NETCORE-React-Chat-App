@@ -13,7 +13,7 @@ namespace Tests
         public void Setup()
         {
             var configuration = Substitute.For<IConfiguration>();
-            _createMessageService = new CreateMessageService(configuration);
+           // _createMessageService = new CreateMessageService(configuration);
         }
 
         [Test]

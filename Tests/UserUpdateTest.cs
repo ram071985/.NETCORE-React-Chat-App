@@ -14,7 +14,7 @@ namespace Tests
         public void Setup()
         {
             var configuration = Substitute.For<IConfiguration>();
-            _userUpdateService = new UserUpdateService(configuration);
+            //_userUpdateService = new UserUpdateService(configuration);
         }
 
         [Test]

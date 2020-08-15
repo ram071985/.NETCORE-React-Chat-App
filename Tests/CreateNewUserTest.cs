@@ -22,7 +22,7 @@ namespace Tests
         public void Setup()
         {
             var configuration = Substitute.For<IConfiguration>();
-            _createNewUserService = new CreateNewUserService(configuration);
+           // _createNewUserService = new CreateNewUserService(configuration);
         }
 
         [Test]

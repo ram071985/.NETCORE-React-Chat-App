@@ -13,7 +13,7 @@ namespace Tests
         public void Setup()
         {
             var configuration = Substitute.For<IConfiguration>();
-            _authorizeUserService = new AuthorizeUserService(configuration);
+            //_authorizeUserService = new AuthorizeUserService(configuration);
         }
 
         [Test]
