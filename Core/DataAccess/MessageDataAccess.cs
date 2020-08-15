@@ -5,7 +5,11 @@ using Npgsql;
 
 namespace Core.DataAccess
 {
-    public class MessageDataAccess
+    public interface IMessageDataAccess
+    {
+        List<Message> GetMessages(NpgsqlConnection conn);
+    }
+    public class MessageDataAccess : IMessageDataAccess
     {
         public List<Message> GetMessages(NpgsqlConnection conn)
         {
