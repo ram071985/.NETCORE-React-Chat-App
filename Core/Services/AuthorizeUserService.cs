@@ -1,13 +1,10 @@
 ﻿using System;
 using Core.DataAccess;
 using Core.Entities;
-using Microsoft.Extensions.Configuration;
 using Npgsql;
-using static Core.Services.AuthorizeUserService;
 
 namespace Core.Services
 {
-
     public interface IAuthorizeUserService
     {
         Session GetSession(int id, string username, string password);
@@ -15,31 +12,18 @@ namespace Core.Services
 
     public class AuthorizeUserService : IAuthorizeUserService
     {
-        private string _databaseUserName;
-        private string _databasePassword;
-        private string _databaseHost;
-        private string _databaseName;
-
+        private IDbConnection _dbConnection;
         private ISessionDataAccess _sessionDataAccess;
 
-
-        public AuthorizeUserService(IConfiguration configuration,
+        public AuthorizeUserService(IDbConnection dbConnection,
             ISessionDataAccess sessionDataAccess)
         {
-            _databaseUserName = configuration["Database:Username"];
-            _databasePassword = configuration["Database:Password"];
-            _databaseHost = configuration["Database:Host"];
-            _databaseName = configuration["Database:Name"];
-
+            _dbConnection = dbConnection;
             _sessionDataAccess = sessionDataAccess;
-
         }
 
         public Session GetSession(int id, string username, string password)
         {
-
-            var session = new Session();
-
             if (username == "")
             {
                 throw new Exception("empty username");
@@ -49,39 +33,30 @@ namespace Core.Services
                 throw new Exception("empty password");
             }
 
-            var connString = "Host=" + _databaseHost + ";Username =" + _databaseUserName + ";Password=" + _databasePassword + ";Database=" + _databaseName;
-
-
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
+            using (var conn = _dbConnection.GetConnection())
             {
-
-                checkUsernameCommand.Parameters.AddWithValue("@username", username);
-                checkUsernameCommand.Parameters.AddWithValue("@password", password);
-
-                using (var reader = checkUsernameCommand.ExecuteReader())
+                using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
                 {
+                    checkUsernameCommand.Parameters.AddWithValue("@username", username);
+                    checkUsernameCommand.Parameters.AddWithValue("@password", password);
 
-                    while (reader.Read())
+                    using (var reader = checkUsernameCommand.ExecuteReader())
                     {
-                        id = (int)reader[0];
-                        username = reader[1].ToString();
-                        password = reader[2].ToString();
-
+                        while (reader.Read())
+                        {
+                            id = (int)reader[0];
+                            username = reader[1].ToString();
+                            password = reader[2].ToString();
+                        }
                     }
                 }
+
+                if (id == 0)
+                {
+                    throw new Exception("wrong credentials");
+                }
+                return _sessionDataAccess.CreateSession(conn, id);
             }
-
-            if (id == 0)
-            {
-
-                throw new Exception("wrong credentials");
-
-            }
-            return _sessionDataAccess.CreateSession(conn, id);
-
         }
     }
 }
