@@ -8,7 +8,7 @@ namespace Core.DataAccess
     public interface IUserDataAccess
     {
         User AddUser(NpgsqlConnection conn, int id, string username, string passsword);
-        User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password);
+        User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password, DateTime createdDate, DateTime lastActiveAt);
         User UserLastActiveUpdate(NpgsqlConnection conn, int userId);
         User EditUsername(NpgsqlConnection conn, int userId, string username, string password,
             string newUsername, DateTime createdDate);
@@ -93,21 +93,26 @@ namespace Core.DataAccess
                 }
             }
         }
-        public User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password)
+        public User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password, DateTime createdDate, DateTime lastActiveAt)
         {
-            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
             {
                 checkUsernameCommand.Parameters.AddWithValue("@username", username);
-                checkUsernameCommand.Parameters.AddWithValue("@password", password);
 
                 using (var reader = checkUsernameCommand.ExecuteReader())
                 {
-
-                    var user = new User();              
+                   var user = new User();
                     while (reader.Read())
                     {
-                        id = (int)reader[0];
-                   
+                        user.Id = (int)reader[0];
+                        user.Username = reader[1].ToString();
+                        user.CreatedDate = (DateTime)reader[2];
+                        user.Password = reader[3].ToString();
+                        user.LastActiveAt = (DateTime)reader[4];
+                        if (user.Password != password)
+                        {
+                            throw new Exception("wrong credentials");
+                        }
                     }
                     return user;
                 }
