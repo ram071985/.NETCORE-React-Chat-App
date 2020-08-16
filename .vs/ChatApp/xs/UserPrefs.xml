@@ -1,45 +1,37 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/RegisterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/DataAccess/UserDataAccess.cs">
     <Files>
-      <File FileName="Core/Services/GetUsersService.cs" Line="29" Column="71" />
-      <File FileName="API/Controllers/UsersController.cs" Line="52" Column="6" />
-      <File FileName="API/Startup.cs" Line="40" Column="67" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="44" Column="1" />
-      <File FileName="Core/Services/GetMessagesService.cs" Line="31" Column="6" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="52" Column="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="43" Column="55" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="41" Column="67" />
-      <File FileName="Core/Services/CreateMessageService.cs" Line="38" Column="14" />
-      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="9" Column="66" />
-      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="56" Column="1" />
+      <File FileName="API/client/src/LandingPage.js" Line="1" Column="1" />
+      <File FileName="API/client/src/ChatRoom.js" Line="1" Column="1" />
+      <File FileName="API/SessionModel.cs" Line="7" Column="39" />
+      <File FileName="API/AuthorizationModel.cs" Line="1" Column="1" />
       <File FileName="API/UserModel.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="26" Column="22" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="16" Column="14" NotebookId="1" />
-      <File FileName="Core/Entities/User.cs" Line="7" Column="45" NotebookId="1" />
-      <File FileName="Core/Entities/Session.cs" Line="8" Column="40" NotebookId="1" />
-      <File FileName="API/SessionModel.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Tests/CreateNewUserTest.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Core/Entities/Message.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Core/DataAccess/UserDataAccess.cs" Line="54" Column="37" NotebookId="1" />
-      <File FileName="Core/DataAccess/DbConnection.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="68" Column="31" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="23" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="44" Column="1" NotebookId="1" />
+      <File FileName="Core/DataAccess/UserDataAccess.cs" Line="105" Column="40" NotebookId="1" />
+      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="API/Controllers/ErrorController.cs" Line="14" Column="1" NotebookId="1" />
+      <File FileName="Core/Entities/User.cs" Line="12" Column="50" NotebookId="1" />
+      <File FileName="Core/Entities/Session.cs" Line="2" Column="14" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="RegisterController.cs" selected="True" />
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True" />
               </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="Core" expanded="True">
-              <Node name="DataAccess" expanded="True" />
+              <Node name="DataAccess" expanded="True">
+                <Node name="UserDataAccess.cs" selected="True" />
+              </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
-            <Node name="Tests" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -56,7 +48,8 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" file="/Users/reid/Desktop/Projects/Chat-App/API/MessageModel.cs" relfile="API/MessageModel.cs" line="19" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="25" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/DataAccess/UserDataAccess.cs" relfile="Core/DataAccess/UserDataAccess.cs" line="97" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/API/Controllers/AuthorizationController.cs" relfile="API/Controllers/AuthorizationController.cs" line="22" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

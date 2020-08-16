@@ -102,12 +102,12 @@ namespace Core.DataAccess
 
                 using (var reader = checkUsernameCommand.ExecuteReader())
                 {
+
                     var user = new User();              
                     while (reader.Read())
                     {
-                        user.Id = (int)reader[0];
-                        user.Username = reader[1].ToString();
-                        user.Password = reader[2].ToString();
+                        id = (int)reader[0];
+                   
                     }
                     return user;
                 }
