@@ -7,6 +7,7 @@ using System.Net.Http;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
+using Core.Entities;
 
 namespace API.Controllers
 {
@@ -23,11 +24,11 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public UserRegister PostNewUser([FromBody] UserModel userModel)
+        public User PostNewUser([FromBody] UserModel userModel)
         {
 
             var session = _createNewUserService.PostNewUser(userModel.Id, userModel.UserId, userModel.Username, userModel.Password, userModel.CreatedDate);
-            return new UserRegister
+            return new User
             {
                 Id = session.Id,
                 UserId = session.UserId
