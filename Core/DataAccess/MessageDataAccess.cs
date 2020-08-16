@@ -7,12 +7,22 @@ namespace Core.DataAccess
 {
     public interface IMessageDataAccess
     {
+        Message AddMessage(NpgsqlConnection conn, int sessionId, string text, DateTime createdDate);
+        
         List<Message> GetMessages(NpgsqlConnection conn);
     }
     public class MessageDataAccess : IMessageDataAccess
     {
+        private ISessionDataAccess _sessionDataAccess;
+        public MessageDataAccess(ISessionDataAccess sessionDataAccess)
+        {
+            _sessionDataAccess = sessionDataAccess;
+        }
         public Message AddMessage(NpgsqlConnection conn, int sessionId, string text, DateTime createdDate)
         {
+
+            _sessionDataAccess.GetUserId(conn, sessionId);
+
             using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
             {
                 messageInsertCommand.Parameters.AddWithValue("@userId", sessionId);
@@ -21,21 +31,23 @@ namespace Core.DataAccess
 
                 using (var reader = messageInsertCommand.ExecuteReader())
                 {
+                    var message = new Message();
 
                     while (reader.Read())
-                    {
-
-                        text = reader[3].ToString();
-                        createdDate = (DateTime)reader[4];
-
+                    { 
+                        message.Text = reader[3].ToString();
+                        message.CreatedDate = (DateTime)reader[4];                     
                     }
+                    return message;
+              
                 }
             }
         }
 
         public List<Message> GetMessages(NpgsqlConnection conn)
         {
-            using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.text, m.created_date FROM messages m JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
+            using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.text, m.created_date FROM messages m " +
+                "JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
             {
 
                 using (var reader = messageInsertCommand.ExecuteReader())

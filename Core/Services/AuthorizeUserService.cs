@@ -1,7 +1,6 @@
 ﻿using System;
 using Core.DataAccess;
 using Core.Entities;
-using Npgsql;
 
 namespace Core.Services
 {
@@ -14,12 +13,14 @@ namespace Core.Services
     {
         private IDbConnection _dbConnection;
         private ISessionDataAccess _sessionDataAccess;
+        private IUserDataAccess _userDataAccess;
 
         public AuthorizeUserService(IDbConnection dbConnection,
-            ISessionDataAccess sessionDataAccess)
+            ISessionDataAccess sessionDataAccess, IUserDataAccess userDataAccess)
         {
             _dbConnection = dbConnection;
             _sessionDataAccess = sessionDataAccess;
+            _userDataAccess = userDataAccess;
         }
 
         public Session GetSession(int id, string username, string password)
@@ -35,26 +36,14 @@ namespace Core.Services
 
             using (var conn = _dbConnection.GetConnection())
             {
-                using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password", conn))
-                {
-                    checkUsernameCommand.Parameters.AddWithValue("@username", username);
-                    checkUsernameCommand.Parameters.AddWithValue("@password", password);
 
-                    using (var reader = checkUsernameCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            id = (int)reader[0];
-                            username = reader[1].ToString();
-                            password = reader[2].ToString();
-                        }
-                    }
-                }
+                _userDataAccess.CheckUserCredentials(conn, id, username, password);
 
                 if (id == 0)
                 {
                     throw new Exception("wrong credentials");
                 }
+
                 return _sessionDataAccess.CreateSession(conn, id);
             }
         }

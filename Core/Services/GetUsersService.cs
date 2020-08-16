@@ -14,32 +14,20 @@ namespace Core.Services
     public class GetUsersService : IGetUsersService
     {
         private IDbConnection _dbConnection;
+        private IUserDataAccess _userDataAccess;
 
-        public GetUsersService(IDbConnection dbConnection)
+        public GetUsersService(IDbConnection dbConnection, IUserDataAccess userDataAccess)
         {
             _dbConnection = dbConnection;
+            _userDataAccess = userDataAccess;
         }
 
         public List<User> GetUserObject(string username)
         {
             using (var conn = _dbConnection.GetConnection())
             {
-
-                using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at > NOW() - interval '20 minutes'", conn))
-                {
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        var users = new List<User>();
-
-                        while (reader.Read())
-                        {
-                            var user = new User();
-                            user.Username = reader[1].ToString();
-                            users.Add(user);
-                        }
-                        return users;
-                    }
-                }
+                return _userDataAccess.UserLastActive(conn, username);
+        
             }
         }
     }

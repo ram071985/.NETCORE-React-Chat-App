@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using Core.DataAccess;
 using Core.Entities;
-using Microsoft.Extensions.Configuration;
-using Npgsql;
-using static Core.Services.AuthorizeUserService;
 
 namespace Core.Services
 
@@ -28,48 +25,11 @@ namespace Core.Services
         {
             using (var conn = _dbConnection.GetConnection())
             { 
-
-              using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
-              {
-
-                  checkUsernameCommand.Parameters.AddWithValue("@id", sessionId);
-
-                  using (var reader =checkUsernameCommand.ExecuteReader())
-                  {
-
-                      while (reader.Read())
-                      {
-
-                          sessionId = (int)reader[0];
-
-                      }
-                  }
-              }
-
-              using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
-              {
-                messageInsertCommand.Parameters.AddWithValue("@userId", sessionId);
-                messageInsertCommand.Parameters.AddWithValue("@text", text);
-                messageInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
-
-                  using (var reader = messageInsertCommand.ExecuteReader())
-                  {
-
-                      while (reader.Read())
-                      {
-
-                          text = reader[3].ToString();
-                          createdDate = (DateTime)reader[4];
-
-                      }
-                  }
-              }
+                _messageDataAccess.AddMessage(conn, sessionId, text, createdDate);
 
               if (text == "")
               {
-
                   throw new Exception("no text");
-
               }
 
                 return _messageDataAccess.GetMessages(conn);

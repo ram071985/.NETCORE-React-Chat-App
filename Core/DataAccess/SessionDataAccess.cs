@@ -7,6 +7,7 @@ namespace Core.DataAccess
     public interface ISessionDataAccess
     {
         Session CreateSession(NpgsqlConnection conn, int userId);
+        Session GetUserId(NpgsqlConnection conn, int sessionId);
     }
     public class SessionDataAccess : ISessionDataAccess
     {
@@ -15,6 +16,27 @@ namespace Core.DataAccess
         public SessionDataAccess(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
+        }
+
+        public Session GetUserId(NpgsqlConnection conn, int sessionId)
+        {
+            using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
+            {
+
+                checkUsernameCommand.Parameters.AddWithValue("@id", sessionId);
+
+                using (var reader = checkUsernameCommand.ExecuteReader())
+                {
+                    var session = new Session();
+                    while (reader.Read())
+                    {
+
+                        session.SessionId = (int)reader[0];
+
+                    }
+                    return session;
+                }
+            }
         }
 
         public Session CreateSession(NpgsqlConnection conn, int userId)

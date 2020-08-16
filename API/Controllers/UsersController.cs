@@ -43,7 +43,7 @@ namespace API.Controllers
         [HttpPut]
         public User PutNewUsername([FromBody] UserModel userModel)
         {
-            var user = _userUpdateService.PutNewUsername(userModel.UserId, userModel.Username, userModel.NewUsername, userModel.CreatedDate);
+            var user = _userUpdateService.PutNewUsername(userModel.UserId, userModel.Password, userModel.Username, userModel.NewUsername, userModel.CreatedDate);
             return new User
             {
                 Username = user.Username

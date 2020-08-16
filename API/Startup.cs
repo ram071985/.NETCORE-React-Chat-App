@@ -37,6 +37,7 @@ namespace API
             services.AddScoped<IDbConnection, DbConnection>();
             services.AddScoped<ISessionDataAccess, SessionDataAccess>();
             services.AddScoped<IMessageDataAccess, MessageDataAccess>();
+            services.AddScoped<IUserDataAccess, UserDataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
