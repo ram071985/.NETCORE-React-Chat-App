@@ -6,16 +6,16 @@ namespace Core.DataAccess
 {
     public interface ISessionDataAccess
     {
-        Session CreateSession(NpgsqlConnection conn, int userId);
+        Session CreateSession(NpgsqlConnection conn, int id);
         Session GetUserId(NpgsqlConnection conn, int sessionId);
     }
     public class SessionDataAccess : ISessionDataAccess
     {
-        private IDbConnection _dbConnection;
+        private IUserDataAccess _userDataAccess;
 
-        public SessionDataAccess(IDbConnection dbConnection)
+        public SessionDataAccess(IUserDataAccess userDataAccess)
         {
-            _dbConnection = dbConnection;
+            _userDataAccess = userDataAccess;
         }
 
         public Session GetUserId(NpgsqlConnection conn, int sessionId)
@@ -39,11 +39,11 @@ namespace Core.DataAccess
             }
         }
 
-        public Session CreateSession(NpgsqlConnection conn, int userId)
+        public Session CreateSession(NpgsqlConnection conn, int id)
         {
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id", conn))
-            {
-                sessionInsertCommand.Parameters.AddWithValue("@userId", userId);
+            {            
+                sessionInsertCommand.Parameters.AddWithValue("@userId", id);
                 using (var reader = sessionInsertCommand.ExecuteReader())
                 {
                     var session = new Session();
@@ -51,7 +51,7 @@ namespace Core.DataAccess
                     while (reader.Read())
                     {
                         session.Id = (int)reader[0];
-                        session.UserId = (int)reader[1];
+                       
                     }
                     return session;
                 }

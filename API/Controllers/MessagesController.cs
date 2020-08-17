@@ -29,7 +29,7 @@ namespace API.Controllers
         {
 
             var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
-            var messageModels = messages.Select(message => new MessageModel { Username = message.User.Username, Text = message.Text, CreatedDate = message.CreatedDate });
+            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
             _userUpdateService.UpdateLastActive(messageModel.UserId);
 
@@ -42,7 +42,7 @@ namespace API.Controllers
 
             var messages = _getMessagesService.GetMessages();
 
-            var messageModels = messages.Select(message => new MessageModel { Username = message.User.Username, Text = message.Text, CreatedDate = message.User.CreatedDate });
+            var messageModels = messages.Select(message => new MessageModel { Username = message.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
             return messageModels.ToList();
         }

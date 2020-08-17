@@ -93,6 +93,7 @@ namespace Core.DataAccess
                 }
             }
         }
+
         public User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password, DateTime createdDate, DateTime lastActiveAt)
         {
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))

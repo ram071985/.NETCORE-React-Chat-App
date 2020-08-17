@@ -23,7 +23,7 @@ namespace Core.Services
             _userDataAccess = userDataAccess;
         }
 
-        public Session GetSession(int id, string username, string password, DateTime createdDate, DateTime  lastActiveAt)
+        public Session GetSession(int id, string username, string password,  DateTime createdDate, DateTime lastActiveAt)
         {
             if (username == "")
             {
@@ -36,12 +36,16 @@ namespace Core.Services
 
             using (var conn = _dbConnection.GetConnection())
             {
+                var user = _userDataAccess.CheckUserCredentials(conn, id, username, password, createdDate, lastActiveAt);
 
-                _userDataAccess.CheckUserCredentials(conn, id, username, password, createdDate, lastActiveAt);
-     
-              
+                if (user.Password != password)
+                {
+                    throw new Exception("wrong credentials");
+                }
+                var session =  _sessionDataAccess.CreateSession(conn, user.Id);
 
-                return _sessionDataAccess.CreateSession(conn, id);
+                return session;
+               
             }
         }
     }

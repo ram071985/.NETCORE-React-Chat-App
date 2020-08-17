@@ -12,7 +12,7 @@ namespace API.Controllers
     {
         private IAuthorizeUserService _authorizeUserService;
 
-        public AuthorizationController(IConfiguration configuration, IAuthorizeUserService authorizeUserService)
+        public AuthorizationController(IAuthorizeUserService authorizeUserService)
         {           
             _authorizeUserService = authorizeUserService;
         }
