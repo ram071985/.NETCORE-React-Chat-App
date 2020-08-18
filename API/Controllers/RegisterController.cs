@@ -31,7 +31,7 @@ namespace API.Controllers
             return new User
             {
                 Id = session.Id,
-                UserId = session.UserId
+             //   UserId = session.UserId
             };
         }
 

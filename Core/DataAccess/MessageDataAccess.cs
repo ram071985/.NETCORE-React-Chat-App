@@ -62,12 +62,11 @@ namespace Core.DataAccess
                             {
                                 Id = (int)reader[0],
                                 Username = reader[1].ToString(),
-                                Password = reader[2].ToString(),
-                                LastActiveAt = (DateTime)reader[3],
-                                CreatedDate = (DateTime)reader[4]
+                           
+                                Password = reader[4].ToString(),                                                    
                             },
-                            Text = reader[1].ToString(),
-                            CreatedDate = (DateTime)reader[2],
+                            Text = reader[2].ToString(),
+                                       
                         };
                         messages.Add(message);
                     }
