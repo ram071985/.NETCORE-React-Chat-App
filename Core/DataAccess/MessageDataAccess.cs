@@ -46,7 +46,7 @@ namespace Core.DataAccess
 
         public List<Message> GetMessages(NpgsqlConnection conn)
         {
-            using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.text, m.created_date FROM messages m " +
+            using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.id, m.text, m.created_date FROM messages m " +
                 "JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
             {
 
@@ -58,15 +58,19 @@ namespace Core.DataAccess
                     {
                         var message = new Message
                         {
+                            Id = (int)reader[5],
                             User = new User
                             {
                                 Id = (int)reader[0],
-                                Username = reader[1].ToString(),
-                           
-                                Password = reader[4].ToString(),                                                    
+                                Username = reader[1].ToString(),                          
+                                Password = reader[2].ToString(),
+                                CreatedDate = (DateTime)reader[4],
+                                LastActiveAt = (DateTime)reader[3],
+                                
                             },
-                            Text = reader[2].ToString(),
-                                       
+                            Text = reader[6].ToString(),
+                            CreatedDate = (DateTime)reader[7],
+                                                                   
                         };
                         messages.Add(message);
                     }

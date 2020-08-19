@@ -2,6 +2,7 @@
 using Core.Services;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace API.Controllers
 {
@@ -25,7 +26,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public List<MessageModel> GetBackMessage([FromBody] MessageModel messageModel)
+        public List<MessageModel> GetBackMessage([FromBody] MessageInputModel messageModel)
         {
 
             var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
@@ -46,5 +47,14 @@ namespace API.Controllers
 
             return messageModels.ToList();
         }
+    }
+
+    public class MessageInputModel
+    {
+        public int SessionId { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Text { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
