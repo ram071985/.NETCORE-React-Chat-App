@@ -43,13 +43,11 @@ namespace Core.DataAccess
 
                         while (reader.Read())
                         {
-
                             user.Username = reader[0].ToString();
                             if (username == newUsername)
                             {
                                 throw new Exception("redundant username");
                             }
-
                         }
                         return user;
                     }
@@ -58,8 +56,7 @@ namespace Core.DataAccess
         }
 
         public List<User> UserLastActive(NpgsqlConnection conn, string username)
-        {
-           
+        {           
                 using (var cmd = new NpgsqlCommand("SELECT * FROM users WHERE last_active_at > NOW() - interval '20 minutes'", conn))
                 {
                     using (var reader = cmd.ExecuteReader())
@@ -69,13 +66,14 @@ namespace Core.DataAccess
                         while (reader.Read())
                         {
                             var user = new User();
-                            user.Username = reader[1].ToString();
+                            user.Username = reader[0].ToString();
                             users.Add(user);
                         }
                         return users;
                     }
                 }
         }
+
         public User UserLastActiveUpdate(NpgsqlConnection conn, int userId)
         {
             using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE id = @id", conn))

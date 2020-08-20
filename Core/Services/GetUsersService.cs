@@ -26,8 +26,7 @@ namespace Core.Services
         {
             using (var conn = _dbConnection.GetConnection())
             {
-                return _userDataAccess.UserLastActive(conn, username);
-        
+                return _userDataAccess.UserLastActive(conn, username);       
             }
         }
     }

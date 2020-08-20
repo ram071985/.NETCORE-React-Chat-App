@@ -38,7 +38,7 @@ namespace Core.Services
 
                 _userDataAccess.AddUser(conn, id, username, password);
 
-                return _sessionDataAccess.CreateSession(conn, id);
+                return _sessionDataAccess.CreateSession(conn, id, userId);
             }
         }
     }

@@ -20,7 +20,8 @@ namespace API.Controllers
         [HttpPost]
         public SessionModel Post([FromBody] User user)
         {
-            var session = _authorizeUserService.GetSession(user.Id, user.Username, user.Password, user.CreatedDate, user.LastActiveAt);
+            var sessionModel = new Session();
+            var session = _authorizeUserService.GetSession(user.Id, sessionModel.UserId, user.Username, user.Password, user.CreatedDate, user.LastActiveAt);
 
             return new SessionModel
             {

@@ -134,11 +134,12 @@ class ChatRoom extends Component {
       })
       .then(res => {
       });
+      console.log(parseId);
   };
 
     render() {
 
-        console.log(this.state.messages);
+        
     let id = localStorage.getItem("user_id");
 
     if (this.state.isLoggedIn === false) {

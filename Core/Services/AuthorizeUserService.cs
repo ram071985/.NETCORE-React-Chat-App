@@ -6,7 +6,7 @@ namespace Core.Services
 {
     public interface IAuthorizeUserService
     {
-        Session GetSession(int id, string username, string password, DateTime createdDate, DateTime lastActiveAt);
+        Session GetSession(int id, int userId, string username, string password, DateTime createdDate, DateTime lastActiveAt);
     }
 
     public class AuthorizeUserService : IAuthorizeUserService
@@ -23,7 +23,7 @@ namespace Core.Services
             _userDataAccess = userDataAccess;
         }
 
-        public Session GetSession(int id, string username, string password,  DateTime createdDate, DateTime lastActiveAt)
+        public Session GetSession(int id, int userId, string username, string password,  DateTime createdDate, DateTime lastActiveAt)
         {
             if (username == "")
             {
@@ -42,7 +42,7 @@ namespace Core.Services
                 {
                     throw new Exception("wrong credentials");
                 }
-                var session =  _sessionDataAccess.CreateSession(conn, user.Id);
+                var session = _sessionDataAccess.CreateSession(conn, user.Id, userId);
 
                 return session;
                
