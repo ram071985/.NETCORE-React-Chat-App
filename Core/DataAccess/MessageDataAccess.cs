@@ -7,7 +7,7 @@ namespace Core.DataAccess
 {
     public interface IMessageDataAccess
     {
-        Message AddMessage(NpgsqlConnection conn, int sessionId, string text, DateTime createdDate);
+        Message AddMessage(NpgsqlConnection conn, int userId, string text, DateTime createdDate);
         
         List<Message> GetMessages(NpgsqlConnection conn);
     }
@@ -18,14 +18,12 @@ namespace Core.DataAccess
         {
             _sessionDataAccess = sessionDataAccess;
         }
-        public Message AddMessage(NpgsqlConnection conn, int sessionId, string text, DateTime createdDate)
+        public Message AddMessage(NpgsqlConnection conn, int userId, string text, DateTime createdDate)
         {
-
-            _sessionDataAccess.GetUserId(conn, sessionId);
 
             using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
             {
-                messageInsertCommand.Parameters.AddWithValue("@userId", sessionId);
+                messageInsertCommand.Parameters.AddWithValue("@userId", userId);
                 messageInsertCommand.Parameters.AddWithValue("@text", text);
                 messageInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);
 
@@ -34,7 +32,8 @@ namespace Core.DataAccess
                     var message = new Message();
 
                     while (reader.Read())
-                    { 
+                    {
+                        userId = (int)reader[0];
                         message.Text = reader[3].ToString();
                         message.CreatedDate = (DateTime)reader[4];                     
                     }

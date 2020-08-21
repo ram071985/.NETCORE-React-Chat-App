@@ -8,7 +8,7 @@ namespace Core.Services
 {
     public interface ICreateMessageService
     {
-        List<Message> GetBackMessage(int sessionId, string text, DateTime createdDate);
+        List<Message> GetBackMessage(int userId, string text, DateTime createdDate);
     }
     public class CreateMessageService : ICreateMessageService
     {
@@ -21,11 +21,11 @@ namespace Core.Services
             _messageDataAccess = messageDataAccess;
         }
 
-        public List<Message> GetBackMessage(int sessionId, string text, DateTime createdDate)
+        public List<Message> GetBackMessage(int userId, string text, DateTime createdDate)
         {
             using (var conn = _dbConnection.GetConnection())
             { 
-                _messageDataAccess.AddMessage(conn, sessionId, text, createdDate);
+                _messageDataAccess.AddMessage(conn, userId, text, createdDate);
 
               if (text == "")
               {

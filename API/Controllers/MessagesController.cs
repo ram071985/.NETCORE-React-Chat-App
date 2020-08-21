@@ -29,7 +29,7 @@ namespace API.Controllers
         public List<MessageModel> GetBackMessage([FromBody] MessageInputModel messageModel)
         {
 
-            var messages = _createMessageService.GetBackMessage(messageModel.SessionId, messageModel.Text, messageModel.CreatedDate);
+            var messages = _createMessageService.GetBackMessage(messageModel.UserId, messageModel.Text, messageModel.CreatedDate);
             var messageModels = messages.Select(message => new MessageModel { Username = message.User.Username, Text = message.Text, CreatedDate = message.CreatedDate });
 
             _userUpdateService.UpdateLastActive(messageModel.UserId);
