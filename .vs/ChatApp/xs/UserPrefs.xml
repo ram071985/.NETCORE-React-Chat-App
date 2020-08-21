@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UsersController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/UserUpdateService.cs">
     <Files>
+      <File FileName="API/client/src/ChatRoom.js" Line="24" Column="26" IsPinned="True" />
       <File FileName="API/client/src/LandingPage.js" Line="1" Column="1" />
-      <File FileName="API/client/src/ChatRoom.js" Line="137" Column="28" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/AuthorizationModel.cs" />
       <File FileName="API/UserModel.cs" />
@@ -10,19 +10,19 @@
       <File FileName="Core/Entities/User.cs" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/Controllers/MessagesController.cs" />
-      <File FileName="Core/Services/UserUpdateService.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/UsersController.cs" Line="28" Column="14" />
-      <File FileName="Core/DataAccess/MessageDataAccess.cs" />
-      <File FileName="API/Controllers/AuthorizationController.cs" Line="29" Column="40" NotebookId="1" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" Line="45" Column="79" NotebookId="1" />
-      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="9" Column="72" NotebookId="1" />
-      <File FileName="Core/Entities/Session.cs" Line="7" Column="40" NotebookId="1" />
+      <File FileName="Core/DataAccess/MessageDataAccess.cs" Line="53" Column="1" />
+      <File FileName="API/Controllers/UsersController.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/UserUpdateService.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/DataAccess/UserDataAccess.cs" Line="78" Column="10" NotebookId="1" />
+      <File FileName="API/Controllers/AuthorizationController.cs" Line="22" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" NotebookId="1" />
+      <File FileName="Core/DataAccess/SessionDataAccess.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Core/Entities/Session.cs" NotebookId="1" />
       <File FileName="API/Program.cs" NotebookId="1" />
-      <File FileName="Core/DataAccess/UserDataAccess.cs" Line="96" Column="1" NotebookId="1" />
-      <File FileName="Core/Services/GetMessagesService.cs" NotebookId="1" />
+      <File FileName="Core/Services/GetMessagesService.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Core/Services/GetUsersService.cs" NotebookId="1" />
       <File FileName="Core/DataAccess/DbConnection.cs" NotebookId="1" />
-      <File FileName="Core/Services/CreateNewUserService.cs" Line="46" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/CreateNewUserService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,14 +32,14 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="UsersController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="Core" expanded="True">
               <Node name="DataAccess" expanded="True" />
               <Node name="Entities" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="UserUpdateService.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="Tests" expanded="True" />
           </Node>

@@ -66,7 +66,7 @@ namespace Core.DataAccess
                         while (reader.Read())
                         {
                             var user = new User();
-                            user.Username = reader[0].ToString();
+                            user.Username = reader[1].ToString();
                             users.Add(user);
                         }
                         return users;
@@ -76,7 +76,7 @@ namespace Core.DataAccess
 
         public User UserLastActiveUpdate(NpgsqlConnection conn, int userId)
         {
-            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = @lastActiveAt WHERE id = @id", conn))
+            using (var lastActiveInsert = new NpgsqlCommand("UPDATE users SET last_active_at = NOW() WHERE id = @id", conn))
             {
                 lastActiveInsert.Parameters.AddWithValue("@lastActiveAt", DateTime.Now);
                 lastActiveInsert.Parameters.AddWithValue("@id", userId);

@@ -134,7 +134,6 @@ class ChatRoom extends Component {
       })
       .then(res => {
       });
-      console.log(parseId);
   };
 
     render() {
