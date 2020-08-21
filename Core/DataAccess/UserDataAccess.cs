@@ -107,7 +107,7 @@ namespace Core.DataAccess
                         user.Username = reader[1].ToString();
                         user.CreatedDate = (DateTime)reader[2];
                         user.Password = reader[3].ToString();
-                        user.LastActiveAt = (DateTime)reader[4];
+                     
                         if (user.Password != password)
                         {
                             throw new Exception("wrong credentials");

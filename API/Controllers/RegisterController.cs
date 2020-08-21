@@ -1,13 +1,7 @@
-﻿using System;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
-using System.Collections.Generic;
-using Npgsql;
-using System.Net.Http;
-using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
-using Core.Entities;
 
 namespace API.Controllers
 {
@@ -24,14 +18,16 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public User PostNewUser([FromBody] UserModel userModel)
+        public SessionModel PostNewUser([FromBody] UserModel user)
         {
-
-            var session = _createNewUserService.PostNewUser(userModel.Id, userModel.UserId, userModel.Username, userModel.Password, userModel.CreatedDate);
-            return new User
-            {
+            var sessionModel = new SessionModel();
+            var session = _createNewUserService.PostNewUser(user.Id, sessionModel.UserId, user.Username, user.Password, user.CreatedDate, user.LastActiveAt);
+     
+            return new SessionModel
+         
+            {               
                 Id = session.Id,
-             //   UserId = session.UserId
+                UserId = sessionModel.UserId
             };
         }
 

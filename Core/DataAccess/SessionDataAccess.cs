@@ -6,7 +6,7 @@ namespace Core.DataAccess
 {
     public interface ISessionDataAccess
     {
-        Session CreateSession(NpgsqlConnection conn, int id, int userId);
+        Session CreateSession(NpgsqlConnection conn, int id, int userId, DateTime lastActiveAt);
         Session GetUserId(NpgsqlConnection conn, int sessionId);
     }
     public class SessionDataAccess : ISessionDataAccess
@@ -39,7 +39,7 @@ namespace Core.DataAccess
             }
         }
 
-        public Session CreateSession(NpgsqlConnection conn, int id, int userId)
+        public Session CreateSession(NpgsqlConnection conn, int id, int userId, DateTime lastActiveAt)
         {
             using (var sessionInsertCommand = new NpgsqlCommand("INSERT INTO sessions (user_id) VALUES (@userId) RETURNING id, user_id", conn))
             {            

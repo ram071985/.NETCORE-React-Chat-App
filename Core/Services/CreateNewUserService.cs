@@ -7,7 +7,7 @@ namespace Core.Services
 {
     public interface ICreateNewUserService
     {
-        Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate);
+        Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate, DateTime lastActiveAt);
     }
     public class CreateNewUserService : ICreateNewUserService
     {
@@ -23,7 +23,7 @@ namespace Core.Services
             _userDataAccess = userDataAccess;
         }
 
-        public Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate)
+        public Session PostNewUser(int id, int userId, string username, string password, DateTime createdDate, DateTime lastActiveAt)
         {
             using (var conn = _dbConnection.GetConnection())
             {
@@ -38,7 +38,7 @@ namespace Core.Services
 
                 _userDataAccess.AddUser(conn, id, username, password);
 
-                return _sessionDataAccess.CreateSession(conn, id, userId);
+                return _sessionDataAccess.CreateSession(conn, id, userId, lastActiveAt);
             }
         }
     }

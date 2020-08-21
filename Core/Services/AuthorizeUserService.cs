@@ -42,7 +42,7 @@ namespace Core.Services
                 {
                     throw new Exception("wrong credentials");
                 }
-                var session = _sessionDataAccess.CreateSession(conn, user.Id, userId);
+                var session = _sessionDataAccess.CreateSession(conn, user.Id, userId, lastActiveAt);
 
                 return session;
                
