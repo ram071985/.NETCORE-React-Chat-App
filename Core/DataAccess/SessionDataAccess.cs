@@ -30,9 +30,7 @@ namespace Core.DataAccess
                     var session = new Session();
                     while (reader.Read())
                     {
-
                         session.SessionId = (int)reader[0];
-
                     }
                     return session;
                 }
@@ -51,9 +49,7 @@ namespace Core.DataAccess
                     while (reader.Read())
                     {
                         session.Id = (int)reader[0];
-                        session.UserId = (int)reader[1];
-                        
-                       
+                        session.UserId = (int)reader[1];                                             
                     }
                     return session;
                 }

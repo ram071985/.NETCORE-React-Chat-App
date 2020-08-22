@@ -15,62 +15,60 @@ class LandingPage extends Component {
       existingPassword: "",
       errorMessage: "",
       logInErrorMessage: "",
-      toChatRoom: false
+      toChatRoom: false,
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
       errorMessage: "",
-      logInErrorMessage: ""
+      logInErrorMessage: "",
     });
   };
 
-  handleNewUserSubmit = e => {
+  handleNewUserSubmit = (e) => {
     e.preventDefault();
     this.postNewUser();
   };
 
-  handleLogInSubmit = e => {
+  handleLogInSubmit = (e) => {
     e.preventDefault();
-      this.logInUser();
-
+    this.logInUser();
   };
 
-  redirectUser =() => {
+  redirectUser = () => {
     if (this.state.toChatRoom === true) {
-      return <Redirect to='/' />
+      return <Redirect to="/" />;
     }
-  }
+  };
 
-  
   postNewUser = () => {
     axios
       .post("/api/register", {
         username: this.state.newUsername,
-        password: this.state.newPassword
+        password: this.state.newPassword,
       })
-        .then(res => {
-          localStorage.setItem("session_id", res.data.id);
-          localStorage.setItem("user_id", res.data.userId);     
+      .then((res) => {
+        localStorage.setItem("session_id", res.data.id);
+        localStorage.setItem("user_id", res.data.userId);
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response.data.title === "empty username") {
           this.setState({
-            errorMessage: "Please choose a username."
+            errorMessage: "Please choose a username.",
           });
         }
         if (err.response.data.title === "empty password") {
           this.setState({
-            errorMessage: "Please choose a password."
+            errorMessage: "Please choose a password.",
           });
         }
         if (err.response.data.title === "redundant username") {
           this.setState({
             errorMessage:
-              "The username you chose is already taken.  Please try another entry."
+              "The username you chose is already taken.  Please try another entry.",
           });
         }
       });
@@ -80,45 +78,52 @@ class LandingPage extends Component {
     axios
       .post("/api/authorize", {
         username: this.state.existingUsername,
-        password: this.state.existingPassword
+        password: this.state.existingPassword,
       })
-        .then(res => {
-          localStorage.setItem("session_id", res.data.id);
-          localStorage.setItem("user_id", res.data.userId);
+      .then((res) => {
+        localStorage.setItem("session_id", res.data.id);
+        localStorage.setItem("user_id", res.data.userId);
         this.setState({
-          toChatRoom: true
-        })
+          toChatRoom: true,
+        });
       })
-      .catch(err => {
-  
+      .catch((err) => {
         if (err.response.data.title === "empty username") {
           this.setState({
-            logInErrorMessage: "Please enter a username."
+            logInErrorMessage: "Please enter a username.",
           });
         }
         if (err.response.data.title === "empty password") {
           this.setState({
-            logInErrorMessage: "Please enter a password."
+            logInErrorMessage: "Please enter a password.",
           });
         }
         if (err.response.data.title === "false username") {
           this.setState({
             logInErrorMessage:
-              "The username you chose is already taken.  Please try another entry."
+              "The username you chose is already taken.  Please try another entry.",
           });
         }
-          if (err.response.data.title === "wrong credentials") {
-              this.setState({
-                  logInErrorMessage: "Username or password are invalid."
-              });
-          }
+        if (err.response.data.title === "wrong credentials") {
+          this.setState({
+            logInErrorMessage: "Username or password combination is invalid.",
+          });
+        }
       });
   };
 
-    render() {
+  logInErrorText = () => {
+    if (this.state.logInErrorMessage === "") {
+      return true;
+    }
+  };
+
+  render() {
     if (this.state.toChatRoom === true) {
-      return <Redirect to='/' />
-    } 
+      return <Redirect to="/" />;
+    }
+
+    console.log(this.state.logInErrorMessage);
 
     return (
       <div className="main-container">
@@ -150,14 +155,22 @@ class LandingPage extends Component {
                       name="existingPassword"
                     />
                   </Col>
-              
-                    <Button className="login-btn" variant="dark" type="submit">
+
+                  <Button className="login-btn" variant="dark" type="submit">
                     <h6 className="text-center login-text">Log In</h6>
-                    </Button>
-                    <h6>{this.state.logInErrorMessage}</h6>
-            
+                  </Button>
                 </Form.Row>
               </Form>
+              <h6
+                style={
+                  this.logInErrorText()
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+                className="log-in-error"
+              >
+                {this.state.logInErrorMessage}
+              </h6>
             </Col>
           </Row>
         </Container>
