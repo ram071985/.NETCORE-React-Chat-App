@@ -5,7 +5,7 @@ import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import ScrollToBottom, { useScrollToBottom } from "react-scroll-to-bottom";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 class ChatRoom extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class ChatRoom extends Component {
       messages: [],
       messageInput: "",
       isLoggedIn: true,
-      sessionId: 0
+      sessionId: 0,
     };
   }
 
@@ -25,32 +25,32 @@ class ChatRoom extends Component {
     setInterval(() => {
       this.getMessagesFromDatabase();
     }, 2000);
-      setInterval(() => {
-          this.getUsers();
-      }, 5000);
+    setInterval(() => {
+      this.getUsers();
+    }, 5000);
     this.getUsers();
     this.setState({
-      sessionId: id
+      sessionId: id,
     });
   }
 
   getMessagesFromDatabase = () => {
-    axios.get("/api/messages", {}).then(res => {
+    axios.get("/api/messages", {}).then((res) => {
       const messageDates = res.data.sort((a, b) => {
         const message1 = new Date(b.createdDate);
         const message2 = new Date(a.createdDate);
         return message1 + message2;
       });
       this.setState({
-        messages: messageDates
+        messages: messageDates,
       });
     });
   };
 
   getUsers = () => {
-    axios.get("/api/users", {}).then(res => {
+    axios.get("/api/users", {}).then((res) => {
       this.setState({
-        users: res.data
+        users: res.data,
       });
     });
   };
@@ -60,9 +60,9 @@ class ChatRoom extends Component {
     axios
       .put("/api/users", {
         userId: parseId,
-        newUsername: this.state.newUsername
+        newUsername: this.state.newUsername,
       })
-      .then(res => {
+      .then((res) => {
         this.getUsers();
       });
   };
@@ -74,28 +74,28 @@ class ChatRoom extends Component {
       .post("/api/messages", {
         sessionId: parseId,
         userId: parseUserId,
-        text: this.state.messageInput
+        text: this.state.messageInput,
       })
-      .then(res => {
+      .then((res) => {
         const messageDates = res.data.sort((a, b) => {
           const message1 = new Date(b.createdDate);
           const message2 = new Date(a.createdDate);
           return message1 + message2;
         });
         this.setState({
-          messages: messageDates
+          messages: messageDates,
         });
       });
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.postNewMessage();
     this.addLastActive();
@@ -107,11 +107,11 @@ class ChatRoom extends Component {
     localStorage.removeItem("session_id");
     localStorage.removeItem("user_id");
     this.setState({
-      isLoggedIn: false
+      isLoggedIn: false,
     });
   };
 
-  onKeyPress = e => {
+  onKeyPress = (e) => {
     if (e.which === 13) {
       e.preventDefault();
       this.postNewMessage();
@@ -122,7 +122,7 @@ class ChatRoom extends Component {
 
   clearInput = () => {
     this.setState({
-      messageInput: ""
+      messageInput: "",
     });
   };
 
@@ -130,15 +130,12 @@ class ChatRoom extends Component {
     let parseId = parseInt(localStorage.getItem("user_id"));
     axios
       .put("/api/users/last_active", {
-        userId: parseId
+        userId: parseId,
       })
-      .then(res => {
-      });
+      .then((res) => {});
   };
 
-    render() {
-
-        
+  render() {
     let id = localStorage.getItem("user_id");
 
     if (this.state.isLoggedIn === false) {
@@ -159,7 +156,7 @@ class ChatRoom extends Component {
       );
     });
 
-    const userMessages = this.state.messages.map(message => {
+    const userMessages = this.state.messages.map((message) => {
       return (
         <div
           className="card message-card"
@@ -195,33 +192,33 @@ class ChatRoom extends Component {
           <ScrollToBottom className="h-100 messages-col mt-5">
             {userMessages}
           </ScrollToBottom>
-            <Col className="col-8">
-              <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
-                <Form.Group
-                  controlId="exampleForm.ControlTextarea1"
-                  className="textarea-form"
-                >
-                  <Form.Control
-                    className="message-input"
-                    value={this.state.messageInput}
-                    type="input"
-                    onChange={this.handleChange}
-                    name="messageInput"
-                    placeholder="Type Message Here"
-                    as="textarea"
-                    rows="3"
-                  />
+          <Col className="col-8">
+            <form onSubmit={this.handleSubmit} onKeyPress={this.onKeyPress}>
+              <Form.Group
+                controlId="exampleForm.ControlTextarea1"
+                className="textarea-form"
+              >
+                <Form.Control
+                  className="message-input"
+                  value={this.state.messageInput}
+                  type="input"
+                  onChange={this.handleChange}
+                  name="messageInput"
+                  placeholder="Type Message Here"
+                  as="textarea"
+                  rows="3"
+                />
 
-                  <Button
-                    className="mt-1 d-block messages-submit"
-                    type="submit"
-                    variant="outline-dark"
-                  >
-                    Submit
-                  </Button>
-                </Form.Group>
-              </form>
-            </Col>
+                <Button
+                  className="mt-1 d-block messages-submit"
+                  type="submit"
+                  variant="outline-dark"
+                >
+                  Submit
+                </Button>
+              </Form.Group>
+            </form>
+          </Col>
         </div>
       </div>
     );

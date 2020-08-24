@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
   Redirect
 } from "react-router-dom";
-import LandingPage from "./LandingPage";
-import ChatRoom from "./ChatRoom";
 
 class Authenticate extends Component {
 

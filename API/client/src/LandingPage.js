@@ -123,8 +123,6 @@ class LandingPage extends Component {
       return <Redirect to="/" />;
     }
 
-    console.log(this.state.logInErrorMessage);
-
     return (
       <div className="main-container">
         <Container className="top-container" fluid>
