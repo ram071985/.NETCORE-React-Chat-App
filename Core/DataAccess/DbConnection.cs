@@ -4,14 +4,12 @@ using Npgsql;
 
 namespace Core.DataAccess
 {
-
     public interface IDbConnection
     {
         NpgsqlConnection GetConnection();
     }
     public class DbConnection : IDbConnection
     {
-
         private string _databaseUserName;
         private string _databasePassword;
         private string _databaseHost;

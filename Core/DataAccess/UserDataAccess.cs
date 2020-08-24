@@ -85,7 +85,6 @@ namespace Core.DataAccess
                     var lastActive = new User();
                     while (reader.Read())
                     {
-
                     }
                     return lastActive;
                 }
@@ -140,7 +139,6 @@ namespace Core.DataAccess
 
             using (var userInsertCommand = new NpgsqlCommand("INSERT INTO users (username, password, created_date) VALUES (@username, @password, @created_date) RETURNING id", conn))
             {
-
                 userInsertCommand.Parameters.AddWithValue("@username", username);
                 userInsertCommand.Parameters.AddWithValue("@password", password);
                 userInsertCommand.Parameters.AddWithValue("@created_date", DateTime.Now);

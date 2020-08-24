@@ -31,10 +31,7 @@ namespace Core.Services
               {
                   throw new Exception("no text");
               }
-
-                return _messageDataAccess.GetMessages(conn);
-
-              
+                return _messageDataAccess.GetMessages(conn);              
             }
         }
     }

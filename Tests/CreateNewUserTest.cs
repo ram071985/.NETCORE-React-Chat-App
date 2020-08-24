@@ -26,7 +26,8 @@ namespace Tests
         }
 
         [Test]
-        public void should_session_id_is_not_equal_to_null()
+        public void should_session_id_is_not_equal_to_null(id, userId, username,
+            password, createdDate, lastActiveAt)
         {
             Random rnd = new Random();
             var sessionId = _createNewUserService.PostNewUser(rnd.Next(), 0, RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now);

@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/ChatRoom.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/UserUpdateTest.cs">
     <Files>
-      <File FileName="API/client/src/LandingPage.js" Line="124" Column="6" />
-      <File FileName="API/client/src/ChatRoom.js" Line="14" Column="17" NotebookId="1" />
-      <File FileName="API/client/src/index.css" NotebookId="1" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" NotebookId="1" />
-      <File FileName="API/client/public/index.html" Line="3" Column="9" NotebookId="1" />
-      <File FileName="API/client/src/ProtectedRoute.js" Line="4" Column="1" NotebookId="1" />
+      <File FileName="Core/Services/UserUpdateService.cs" Line="1" Column="1" />
+      <File FileName="Tests/UserUpdateTest.cs" Line="19" Column="1" />
+      <File FileName="Tests/CreateNewUserTest.cs" Line="30" Column="13" NotebookId="1" />
+      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +15,7 @@
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
                 <Node name="public" expanded="True" />
-                <Node name="src" expanded="True">
-                  <Node name="ChatRoom.js" selected="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
             </Node>
@@ -25,6 +23,9 @@
               <Node name="DataAccess" expanded="True" />
               <Node name="Entities" expanded="True" />
               <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="Tests" expanded="True">
+              <Node name="UserUpdateTest.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -35,11 +36,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/DataAccess/MessageDataAccess.cs" relfile="Core/DataAccess/MessageDataAccess.cs" line="25" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/DataAccess/UserDataAccess.cs" relfile="Core/DataAccess/UserDataAccess.cs" line="122" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/Core/Services/UserUpdateService.cs" relfile="Core/Services/UserUpdateService.cs" line="34" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

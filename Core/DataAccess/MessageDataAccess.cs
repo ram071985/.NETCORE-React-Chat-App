@@ -20,7 +20,6 @@ namespace Core.DataAccess
         }
         public Message AddMessage(NpgsqlConnection conn, int userId, string text, DateTime createdDate)
         {
-
             using (var messageInsertCommand = new NpgsqlCommand("INSERT INTO messages (user_id, text, created_date) VALUES (@userId, @text, @created_date)", conn))
             {
                 messageInsertCommand.Parameters.AddWithValue("@userId", userId);
@@ -37,8 +36,7 @@ namespace Core.DataAccess
                         message.Text = reader[3].ToString();
                         message.CreatedDate = (DateTime)reader[4];                     
                     }
-                    return message;
-              
+                    return message;             
                 }
             }
         }
@@ -48,7 +46,6 @@ namespace Core.DataAccess
             using (var messageInsertCommand = new NpgsqlCommand("SELECT u.id, u.username, u.password, u.last_active_at, u.created_date, m.id, m.text, m.created_date FROM messages m " +
                 "JOIN users u ON u.id = m.user_id WHERE m.user_id = u.id", conn))
             {
-
                 using (var reader = messageInsertCommand.ExecuteReader())
                 {
                     var messages = new List<Message>();

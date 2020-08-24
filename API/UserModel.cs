@@ -10,6 +10,5 @@ namespace API
         public string Password { get; set; }
         public DateTime LastActiveAt { get; set; }
         public DateTime CreatedDate { get; set; }
-
     }
 }
