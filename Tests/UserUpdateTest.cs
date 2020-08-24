@@ -11,17 +11,13 @@ namespace Tests
     public class UserUpdateTest
     {
         private IUserUpdateService _userUpdateService;
-
-        public UserUpdateTest(IDbConnection dbConnection, IUserUpdateService userUpdateService)
-         {
-            _userUpdateService = userUpdateService;
-         }
+        private IConfiguration _configuration;
     
         [SetUp]
         public void Setup()
         {
-            var configuration = Substitute.For<IDbConnection>();
-            _userUpdateService = new UserUpdateService(configuration);
+            _configuration = Substitute.For<IConfiguration>();
+            _userUpdateService = Substitute.For<IUserUpdateService>();
         }
 
         [Test]

@@ -8,12 +8,14 @@ namespace Tests
     [TestFixture]
     public class CreateMessageTest
     {
-        private CreateMessageService _createMessageService;
+        private IConfiguration _configuration;
+        private ICreateMessageService _createMessageService;
+
         [SetUp]
         public void Setup()
         {
-            var configuration = Substitute.For<IConfiguration>();
-           // _createMessageService = new CreateMessageService(configuration);
+           _configuration = Substitute.For<IConfiguration>();
+           _createMessageService = Substitute.For<ICreateMessageService>();
         }
 
         [Test]

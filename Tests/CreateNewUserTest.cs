@@ -10,9 +10,8 @@ namespace Tests
     public class CreateNewUserTest
     {
         private readonly Random _random = new Random();
-
-        private CreateNewUserService _createNewUserService;
-
+        private ICreateNewUserService _createNewUserService;
+        private IConfiguration _configuration;
         public int RandomNumber(int min, int max)
         {
             return _random.Next(min, max);
@@ -21,16 +20,15 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            var configuration = Substitute.For<IConfiguration>();
-           // _createNewUserService = new CreateNewUserService(configuration);
+           _configuration = Substitute.For<IConfiguration>();
+           _createNewUserService = Substitute.For<ICreateNewUserService>();
         }
 
         [Test]
-        public void should_session_id_is_not_equal_to_null(id, userId, username,
-            password, createdDate, lastActiveAt)
+        public void should_session_id_is_not_equal_to_null()
         {
             Random rnd = new Random();
-            var sessionId = _createNewUserService.PostNewUser(rnd.Next(), 0, RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now);
+            var sessionId = _createNewUserService.PostNewUser(rnd.Next(), 0, RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now, DateTime.Now);
 
             Assert.That(sessionId.Id, Is.Not.EqualTo(null));
         }

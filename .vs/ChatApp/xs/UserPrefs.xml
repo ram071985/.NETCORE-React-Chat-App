@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/UserUpdateTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/AuthorizeUserTest.cs">
     <Files>
       <File FileName="Core/Services/UserUpdateService.cs" Line="1" Column="1" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="19" Column="1" />
-      <File FileName="Tests/CreateNewUserTest.cs" Line="30" Column="13" NotebookId="1" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="API/Controllers/MessagesController.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Tests/UserUpdateTest.cs" Line="14" Column="1" />
+      <File FileName="Tests/CreateNewUserTest.cs" Line="28" Column="1" />
+      <File FileName="Tests/CreateMessageTest.cs" Line="15" Column="28" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="15" Column="14" />
+      <File FileName="API/Controllers/MessagesController.cs" Line="9" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,7 +25,7 @@
               <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
-              <Node name="UserUpdateTest.cs" selected="True" />
+              <Node name="AuthorizeUserTest.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -36,7 +36,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/reid/Desktop/Projects/Chat-App/API/Controllers/MessagesController.cs" relfile="API/Controllers/MessagesController.cs" line="8" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
