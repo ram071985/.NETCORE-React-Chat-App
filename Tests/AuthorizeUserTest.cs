@@ -3,6 +3,7 @@ using Core.Services;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
+using Core.Entities;
 
 namespace Tests
 {
@@ -21,8 +22,9 @@ namespace Tests
 
         [Test]
         public void should_users_table_id_column_is_equal_to_no_number_is_false()
-        {
-            var session = _authorizeUserService.GetSession(1, 12, "random-username", "random-password", DateTime.Now, DateTime.Now);
+        { 
+            
+            Session session = _authorizeUserService.GetSession(1, 12, "random-username", "random-password", DateTime.Now, DateTime.Now);
 
             Assert.That(session.UserId, Is.GreaterThan(0));
         }

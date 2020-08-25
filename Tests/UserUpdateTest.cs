@@ -12,18 +12,23 @@ namespace Tests
     {
         private IUserUpdateService _userUpdateService;
         private IConfiguration _configuration;
+        private IDbConnection _dbConnection;
+        private IUserDataAccess _userDataAccess;
     
         [SetUp]
         public void Setup()
         {
             _configuration = Substitute.For<IConfiguration>();
-            _userUpdateService = Substitute.For<IUserUpdateService>();
+            _userDataAccess = Substitute.For<IUserDataAccess>();
+            _dbConnection = Substitute.For<IDbConnection>();
+            _userUpdateService = new UserUpdateService(_dbConnection, _userDataAccess);
         }
 
         [Test]
         public void should_updated_username_column_not_be_empty()
         {
-            var username = _userUpdateService.PutNewUsername(81, "","", UserRandomUtil.GetRandomString(), DateTime.Now);
+
+            var username = _userUpdateService.PutNewUsername(81, "yo","yo", UserRandomUtil.GetRandomString(), DateTime.Now);
 
             Assert.That(username.Username, Is.Not.EqualTo(null));
         }
