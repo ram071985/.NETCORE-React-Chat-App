@@ -27,10 +27,21 @@ namespace Tests
         [Test]
         public void should_updated_username_column_not_be_empty()
         {
+            var userId = 81;
+            var username = UserRandomUtil.GetRandomString();
+            var password = UserRandomUtil.GetRandomString();
+            var newUsername = UserRandomUtil.GetRandomString();
+            var createdDate = DateTime.Now;
 
-            var username = _userUpdateService.PutNewUsername(81, "","", UserRandomUtil.GetRandomString(), DateTime.Now);
+            _userUpdateService.PutNewUsername(userId, username, password, newUsername, createdDate);
 
-            Assert.That(username.Username, Is.Not.EqualTo(null));
+            _userDataAccess.Received(1).EditUsername(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(userId),
+                Arg.Is(username),
+                Arg.Is(newUsername),
+                Arg.Is(password),
+                Arg.Is(createdDate));
         }
     }
     static class UserRandomUtil

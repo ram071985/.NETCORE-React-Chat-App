@@ -7,7 +7,7 @@ namespace Core.DataAccess
 {
     public interface IUserDataAccess
     {
-        User AddUser(NpgsqlConnection conn, int id, string username, string passsword);
+        User AddUser(NpgsqlConnection conn, int id, string username, string password);
         User CheckUserCredentials(NpgsqlConnection conn, int id, string username, string password, DateTime createdDate, DateTime lastActiveAt);
         User UserLastActiveUpdate(NpgsqlConnection conn, int userId);
         User EditUsername(NpgsqlConnection conn, int userId, string username, string password,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Core.DataAccess;
 using Core.Services;
 using Microsoft.Extensions.Configuration;
 using NSubstitute;
@@ -10,8 +11,13 @@ namespace Tests
     public class CreateNewUserTest
     {
         private readonly Random _random = new Random();
+
         private ICreateNewUserService _createNewUserService;
         private IConfiguration _configuration;
+        private IUserDataAccess _userDataAccess;
+        private IDbConnection _dbConnection;
+        private ISessionDataAccess _sessionDataAccess;
+
         public int RandomNumber(int min, int max)
         {
             return _random.Next(min, max);
@@ -20,17 +26,37 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-           _configuration = Substitute.For<IConfiguration>();
-           _createNewUserService = Substitute.For<ICreateNewUserService>();
+           _configuration = Substitute.For<IConfiguration>();          
+           _dbConnection = Substitute.For<IDbConnection>();
+           _userDataAccess = Substitute.For<IUserDataAccess>();
+           _sessionDataAccess = Substitute.For<ISessionDataAccess>();
+           _createNewUserService = new CreateNewUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
         }
 
         [Test]
         public void should_session_id_is_not_equal_to_null()
         {
             Random rnd = new Random();
-            var sessionId = _createNewUserService.PostNewUser(rnd.Next(), 0, RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now, DateTime.Now);
+            var id = rnd.Next();
+            var userId = rnd.Next();
+            var username = RandomUtil.GetRandomString();
+            var password = RandomUtil.GetRandomString();
+    
 
-            Assert.That(sessionId.Id, Is.Not.EqualTo(null));
+
+            _userDataAccess.Received(1)AddUser(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(id),
+                Arg.Is(username),
+                Arg.Is(password));
+                
+
+            _sessionDataAccess.Received(1)CreateSession(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(id),
+                Arg.Is(userId),
+                Arg.Is(lastActiveAt));
+
         }
     }
 
