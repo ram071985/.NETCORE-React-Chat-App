@@ -34,28 +34,25 @@ namespace Tests
         }
 
         [Test]
-        public void should_session_id_is_not_equal_to_null()
+        public void should_add_user_return()
         {
             Random rnd = new Random();
             var id = rnd.Next();
-            var userId = rnd.Next();
             var username = RandomUtil.GetRandomString();
             var password = RandomUtil.GetRandomString();
-    
+            var userId = rnd.Next();
+            var createdDate = DateTime.Now;
+            var lastActiveAt = DateTime.Now;
 
+            _createNewUserService.PostNewUser(id, userId, username, password, createdDate, lastActiveAt);
 
-            _userDataAccess.Received(1)AddUser(
+            _userDataAccess.Received(1).AddUser(
                 Arg.Any<Npgsql.NpgsqlConnection>(),
                 Arg.Is(id),
                 Arg.Is(username),
                 Arg.Is(password));
-                
 
-            _sessionDataAccess.Received(1)CreateSession(
-                Arg.Any<Npgsql.NpgsqlConnection>(),
-                Arg.Is(id),
-                Arg.Is(userId),
-                Arg.Is(lastActiveAt));
+                
 
         }
     }
