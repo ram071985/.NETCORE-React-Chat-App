@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|API">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/CreateMessageTest.cs">
+﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Services/AuthorizeUserService.cs">
     <Files>
       <File FileName="Tests/CreateNewUserTest.cs" Line="25" Column="1" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="41" Column="56" />
+      <File FileName="Tests/CreateMessageTest.cs" />
       <File FileName="Tests/AuthorizeUserTest.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
       <File FileName="Core/DataAccess/SessionDataAccess.cs" />
@@ -10,7 +10,7 @@
       <File FileName="Core/Services/CreateMessageService.cs" NotebookId="1" />
       <File FileName="Core/DataAccess/MessageDataAccess.cs" NotebookId="1" />
       <File FileName="Core/Services/UserUpdateService.cs" NotebookId="1" />
-      <File FileName="Core/Services/AuthorizeUserService.cs" NotebookId="1" />
+      <File FileName="Core/Services/AuthorizeUserService.cs" Line="43" Column="1" NotebookId="1" />
       <File FileName="Core/DataAccess/UserDataAccess.cs" NotebookId="1" />
       <File FileName="Tests/UserUpdateTest.cs" NotebookId="1" />
       <File FileName="Core/Services/CreateNewUserService.cs" NotebookId="1" />
@@ -29,11 +29,11 @@
             <Node name="Core" expanded="True">
               <Node name="DataAccess" expanded="True" />
               <Node name="Entities" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="AuthorizeUserService.cs" selected="True" />
+              </Node>
             </Node>
-            <Node name="Tests" expanded="True">
-              <Node name="CreateMessageTest.cs" selected="True" />
-            </Node>
+            <Node name="Tests" expanded="True" />
           </Node>
         </State>
       </Pad>

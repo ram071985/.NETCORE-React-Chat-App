@@ -2,7 +2,6 @@
 using System.IO;
 using Core.DataAccess;
 using Core.Services;
-using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
 namespace Tests
@@ -13,7 +12,6 @@ namespace Tests
         private readonly Random _random = new Random();
 
         private ICreateNewUserService _createNewUserService;
-        private IConfiguration _configuration;
         private IUserDataAccess _userDataAccess;
         private IDbConnection _dbConnection;
         private ISessionDataAccess _sessionDataAccess;
@@ -25,8 +23,7 @@ namespace Tests
 
         [SetUp]
         public void Setup()
-        {
-           _configuration = Substitute.For<IConfiguration>();          
+        {       
            _dbConnection = Substitute.For<IDbConnection>();
            _userDataAccess = Substitute.For<IUserDataAccess>();
            _sessionDataAccess = Substitute.For<ISessionDataAccess>();
@@ -50,9 +47,7 @@ namespace Tests
                 Arg.Any<Npgsql.NpgsqlConnection>(),
                 Arg.Is(id),
                 Arg.Is(username),
-                Arg.Is(password));
-
-                
+                Arg.Is(password));               
 
         }
     }

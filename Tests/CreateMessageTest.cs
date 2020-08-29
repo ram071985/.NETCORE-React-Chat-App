@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Core.DataAccess;
+using Core.Entities;
 using Core.Services;
-using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
 namespace Tests
@@ -10,7 +11,10 @@ namespace Tests
     [TestFixture]
     public class CreateMessageTest
     {
-        private IConfiguration _configuration;
+        
+        private readonly Random _random = new Random();
+
+        private IDbConnection _dbConnection;
         private ICreateMessageService _createMessageService;
         private IMessageDataAccess _messageDataAccess;
 
@@ -22,23 +26,26 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-           _configuration = Substitute.For<IConfiguration>();
-           _createMessageService = Substitute.For<ICreateMessageService>();
+           _createMessageService = new CreateMessageService(_dbConnection, _messageDataAccess);
            _messageDataAccess = Substitute.For<IMessageDataAccess>();
         }
 
         [Test]
-        public void should_message_sql_return()
+        public void should_add_message_sql_return()
         {
+            Random rnd = new Random();
 
-            var rnd = new Random();
             var userId = rnd.Next();
             var text = MessageRandomUtil.GetRandomString();
             var createdDate = DateTime.Now;
 
             _createMessageService.GetBackMessage(userId, text, createdDate);
-           
-            _messageDataAccess.Received(1).GetMessages();
+        
+            _messageDataAccess.Received(1).AddMessage(
+                 Arg.Any<Npgsql.NpgsqlConnection>(),
+                 Arg.Is(userId),
+                 Arg.Is(text),
+                 Arg.Is(createdDate));         
         }
 
         static class MessageRandomUtil
