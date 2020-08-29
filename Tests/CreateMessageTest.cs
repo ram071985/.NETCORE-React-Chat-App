@@ -26,8 +26,9 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-           _createMessageService = new CreateMessageService(_dbConnection, _messageDataAccess);
-           _messageDataAccess = Substitute.For<IMessageDataAccess>();
+            _dbConnection = Substitute.For<IDbConnection>();
+            _messageDataAccess = Substitute.For<IMessageDataAccess>();
+            _createMessageService = new CreateMessageService(_dbConnection, _messageDataAccess);         
         }
 
         [Test]
