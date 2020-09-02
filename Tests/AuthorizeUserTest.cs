@@ -29,30 +29,22 @@ namespace Tests
         }
 
         [Test]
-        public void should_users_table_id_column_is_equal_to_no_number_is_false()
+        public void should_throw_exception_when_username_is_empty_string()
         {
             Random rnd = new Random();
 
-     
-
             var id = rnd.Next();
-            var username = CredentialRandomUtil.GetRandomString();
-            var password = "reid";
+            var username = "";
+            var password = "";
             var userId = rnd.Next();
             var createdDate = DateTime.Now;
             var lastActiveAt = DateTime.Now;
 
-                _authorizeUserService.GetSession(
-                Arg.Is(id),
-                Arg.Is(userId),
-                Arg.Is(username),
-                Arg.Is("reid"),
-                Arg.Is(createdDate),
-                Arg.Is(lastActiveAt)
-                );
-    
+            var aus = new AuthorizeUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
 
-            Assert.That(password, Is.EqualTo("reid"));
+            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("empty username"), () => aus.GetSession(id, userId, username, password, createdDate, lastActiveAt));
+
+
         }
 
         static class CredentialRandomUtil
