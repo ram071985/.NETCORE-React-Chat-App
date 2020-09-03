@@ -47,6 +47,78 @@ namespace Tests
 
         }
 
+        [Test]
+        public void should_throw_exception_when_password_is_empty_string()
+        {
+            Random rnd = new Random();
+
+            var id = rnd.Next();
+            var username = CredentialRandomUtil.GetRandomString();
+            var password = "";
+            var userId = rnd.Next();
+            var createdDate = DateTime.Now;
+            var lastActiveAt = DateTime.Now;
+
+            var aus = new AuthorizeUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
+
+            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("empty password"), () => aus.GetSession(id, userId, username, password, createdDate, lastActiveAt));
+        }
+
+        [Test]
+        public void should_throw_exception_when_passwords_dont_match()
+        {
+            Random rnd = new Random();          
+
+            var user = new User
+            {
+                Id = 1,
+                Username = CredentialRandomUtil.GetRandomString(),
+                CreatedDate = DateTime.Now,
+                Password = "password"                
+            };
+
+            _userDataAccess.CheckUserCredentials(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(user.Id),
+                Arg.Is(user.Username),
+                Arg.Is(user.Password),
+                Arg.Is(user.CreatedDate),
+                Arg.Is(user.LastActiveAt)        
+                ).Returns(user);
+
+            var aus = new AuthorizeUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
+
+            var id = 1;
+            var userId = 1;
+            var username = CredentialRandomUtil.GetRandomString();
+            var password = "reid";
+            var createdDate = DateTime.Now;
+            var lastActiveAt = DateTime.Now;
+
+            _authorizeUserService.GetSession(
+               id,
+                userId,
+                username,
+                password,
+                createdDate,
+                lastActiveAt
+                );
+
+            _userDataAccess.CheckUserCredentials(
+              Arg.Any<Npgsql.NpgsqlConnection>(),
+              Arg.Is(id),
+              Arg.Is(username),
+              Arg.Is(password),
+              Arg.Is(createdDate),
+              Arg.Is(lastActiveAt)
+              );
+
+
+
+            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("wrong credentials"), () => _authorizeUserService.GetSession(id, userId, username, password, createdDate, lastActiveAt));
+            
+        }
+
         static class CredentialRandomUtil
         {
 
