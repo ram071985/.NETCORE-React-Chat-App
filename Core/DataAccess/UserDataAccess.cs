@@ -105,12 +105,8 @@ namespace Core.DataAccess
                         user.Id = (int)reader[0];
                         user.Username = reader[1].ToString();
                         user.CreatedDate = (DateTime)reader[2];
-                        user.Password = reader[3].ToString();
+                        user.Password = reader[3].ToString();                     
                      
-                        if (user.Password != password)
-                        {
-                            throw new Exception("wrong credentials");
-                        }
                     }
                     return user;
                 }

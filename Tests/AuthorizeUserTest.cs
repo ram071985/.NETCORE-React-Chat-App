@@ -43,8 +43,6 @@ namespace Tests
             var aus = new AuthorizeUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
 
             Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("empty username"), () => aus.GetSession(id, userId, username, password, createdDate, lastActiveAt));
-
-
         }
 
         [Test]
@@ -67,43 +65,35 @@ namespace Tests
         [Test]
         public void should_throw_exception_when_passwords_dont_match()
         {
-
             var user = new User
             {
+                Id = 1,
                 Username = "jive",
                 Password = "password"
             };
 
             _userDataAccess.CheckUserCredentials(
                 Arg.Any<Npgsql.NpgsqlConnection>(),
-                Arg.Is(user.Id),
-                Arg.Is(user.Username),
-                Arg.Is(user.Password),
-                Arg.Is(user.CreatedDate),
-                Arg.Is(user.LastActiveAt)
-            ).Returns(user);
+                Arg.Any<int>(),
+                Arg.Any<string>(),
+                Arg.Any<string>(),
+                Arg.Any<DateTime>(),
+                Arg.Any<DateTime>()
+            ).Returns(user); 
 
             Random rnd = new Random();
 
-            var id = rnd.Next();
+            var id = 1;
             var username = "jive";
             var password = "wrongpassword";
             var userId = rnd.Next();
             var createdDate = DateTime.Now;
-            var lastActiveAt = DateTime.Now;
+            var lastActiveAt = DateTime.Now;             
 
-            _authorizeUserService.GetSession(
-                id,
-                userId,
-                username,
-                password,
-                createdDate,
-                lastActiveAt
-                );
             var aus = new AuthorizeUserService(_dbConnection, _sessionDataAccess, _userDataAccess);
 
-            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("wrong credentials"), () => aus.GetSession(id, userId, username, password, createdDate, lastActiveAt));
-            
+            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("wrong credentials"), () => aus.GetSession(
+                id, userId, username, password, createdDate, lastActiveAt));
         }
 
         static class CredentialRandomUtil
