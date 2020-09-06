@@ -37,11 +37,7 @@ namespace Core.Services
             using (var conn = _dbConnection.GetConnection())
             {
                 var user = _userDataAccess.CheckUserCredentials(conn, id, username, password, createdDate, lastActiveAt);
-
-                if (user.Password != password)
-                {
-                    throw new Exception("wrong credentials");
-                }
+             
                 var session = _sessionDataAccess.CreateSession(conn, user.Id, userId, lastActiveAt);
 
                 return session;
