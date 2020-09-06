@@ -96,6 +96,96 @@ namespace Tests
                 id, userId, username, password, createdDate, lastActiveAt));
         }
 
+        [Test]
+        public void should_check_user_credentials_return()
+        {
+            var user = new User
+            {
+                Id = 1,
+                Username = "jive",
+                Password = "password"
+            };
+
+            _userDataAccess.CheckUserCredentials(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Any<int>(),
+                Arg.Any<string>(),
+                Arg.Any<string>(),
+                Arg.Any<DateTime>(),
+                Arg.Any<DateTime>()
+            ).Returns(user);
+
+            Random rnd = new Random();
+
+            var id = 1;
+            var username = "jive";
+            var password = "password";
+            var userId = rnd.Next();
+            var createdDate = DateTime.Now;
+            var lastActiveAt = DateTime.Now;
+
+            _authorizeUserService.GetSession(
+                  id,
+                  userId,
+                  username,
+                  password,
+                  createdDate,
+                  lastActiveAt
+                  );
+
+            _userDataAccess.Received(1).CheckUserCredentials(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(id),
+                Arg.Is(username),
+                Arg.Is(password),
+                Arg.Is(createdDate),
+                Arg.Is(lastActiveAt));
+        }
+
+        [Test]
+        public void should_create_session_return()
+        {
+            var user = new User
+            {
+                Id = 1,
+                Username = "jive",
+                Password = "password"
+            };
+
+            _userDataAccess.CheckUserCredentials(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Any<int>(),
+                Arg.Any<string>(),
+                Arg.Any<string>(),
+                Arg.Any<DateTime>(),
+                Arg.Any<DateTime>()
+            ).Returns(user);
+
+            Random rnd = new Random();
+
+            var id = 1;
+            var username = "jive";
+            var password = "password";
+            var userId = rnd.Next();
+            var createdDate = DateTime.Now;
+            var lastActiveAt = DateTime.Now;
+
+            _authorizeUserService.GetSession(
+                  id,
+                  userId,
+                  username,
+                  password,
+                  createdDate,
+                  lastActiveAt
+                  );
+
+            _sessionDataAccess.Received(1).CreateSession(
+                Arg.Any<Npgsql.NpgsqlConnection>(),
+                Arg.Is(user.Id),
+                Arg.Is(userId),
+                Arg.Is(lastActiveAt));
+        }
+
         static class CredentialRandomUtil
         {
 
