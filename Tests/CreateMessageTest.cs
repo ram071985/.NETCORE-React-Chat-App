@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Core.DataAccess;
-using Core.Entities;
 using Core.Services;
 using NSubstitute;
 using NUnit.Framework;
@@ -51,7 +49,6 @@ namespace Tests
 
         static class MessageRandomUtil
         {
-
             public static string GetRandomString()
             {
                 string path = Path.GetRandomFileName();

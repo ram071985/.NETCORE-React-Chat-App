@@ -115,7 +115,6 @@ namespace Core.DataAccess
 
         public User AddUser(NpgsqlConnection conn, int id, string username, string password)
         {
-
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT * FROM users WHERE username = @username", conn))
             {
                 checkUsernameCommand.Parameters.AddWithValue("@username", username);

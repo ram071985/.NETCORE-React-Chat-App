@@ -4,7 +4,6 @@ using Core.DataAccess;
 using Core.Entities;
 
 namespace Core.Services
-
 {
     public interface ICreateMessageService
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using API;
 using System.Linq;
-using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Core.Services;
 using Core.Entities;

@@ -48,13 +48,11 @@ namespace Tests
                 Arg.Is(id),
                 Arg.Is(username),
                 Arg.Is(password));               
-
         }
     }
 
     static class RandomUtil
     {
-
         public static string GetRandomString()
         {
             string path = Path.GetRandomFileName();

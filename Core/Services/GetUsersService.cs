@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Core.DataAccess;
 using Core.Entities;
-using Microsoft.Extensions.Configuration;
-using Npgsql;
 
 namespace Core.Services
 {

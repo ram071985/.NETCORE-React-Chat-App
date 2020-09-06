@@ -44,8 +44,7 @@ namespace Core.Services
                 }
                 var session = _sessionDataAccess.CreateSession(conn, user.Id, userId, lastActiveAt);
 
-                return session;
-               
+                return session;               
             }
         }
     }

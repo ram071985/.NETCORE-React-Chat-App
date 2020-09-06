@@ -6,13 +6,11 @@ using System;
 
 namespace API.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
 
     public class MessagesController : ControllerBase
     {
-
         private ICreateMessageService _createMessageService;
         private IGetMessagesService _getMessagesService;
         private IUserUpdateService _userUpdateService;
@@ -23,7 +21,6 @@ namespace API.Controllers
             _getMessagesService = getMessagesService;
             _userUpdateService = userUpdateService;
         }
-
 
         [HttpPost]
         public List<MessageModel> GetBackMessage([FromBody] MessageInputModel messageModel)
@@ -40,7 +37,6 @@ namespace API.Controllers
         [HttpGet]
         public List<MessageModel> GetMessages()
         {
-
             var messages = _getMessagesService.GetMessages();
 
             var messageModels = messages.Select(message => new MessageModel { Username = message.User.Username, Text = message.Text, CreatedDate = message.CreatedDate });

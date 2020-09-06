@@ -1,30 +1,19 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/WeatherForecastController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/UserUpdateTest.cs">
     <Files>
-      <File FileName="Tests/CreateNewUserTest.cs" Line="42" Column="45" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="1" Column="1" />
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="2" Column="21" />
-      <File FileName="API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" />
+      <File FileName="Tests/CreateMessageTest.cs" Line="20" Column="10" />
+      <File FileName="Tests/CreateNewUserTest.cs" Line="55" Column="6" />
+      <File FileName="Tests/UserUpdateTest.cs" Line="48" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
-            <Node name="API" expanded="True">
-              <Node name="client" expanded="True">
-                <Node name="public" expanded="True" />
-                <Node name="src" expanded="True" />
-              </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="WeatherForecastController.cs" selected="True" />
-              </Node>
+            <Node name="Core" expanded="True" />
+            <Node name="Tests" expanded="True">
+              <Node name="UserUpdateTest.cs" selected="True" />
             </Node>
-            <Node name="Core" expanded="True">
-              <Node name="DataAccess" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Services" expanded="True" />
-            </Node>
-            <Node name="Tests" expanded="True" />
           </Node>
         </State>
       </Pad>

@@ -22,7 +22,6 @@ namespace Core.DataAccess
         {
             using (var checkUsernameCommand = new NpgsqlCommand("SELECT user_id FROM sessions WHERE id = @id", conn))
             {
-
                 checkUsernameCommand.Parameters.AddWithValue("@id", sessionId);
 
                 using (var reader = checkUsernameCommand.ExecuteReader())

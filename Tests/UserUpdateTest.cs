@@ -46,7 +46,6 @@ namespace Tests
     }
     static class UserRandomUtil
     {
-
         public static string GetRandomString()
         {
             string path = Path.GetRandomFileName();
