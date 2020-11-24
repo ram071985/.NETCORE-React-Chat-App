@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import ProtectedRoute from "./ProtectedRoute";
-import LandingPage from "./LandingPage";
-import ChatRoom from "./ChatRoom";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import LandingPage from "./Components/LandingPage";
+import ChatRoom from "./Components/ChatRoom";
 
 ReactDOM.render(
   <BrowserRouter>
