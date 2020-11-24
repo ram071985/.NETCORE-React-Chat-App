@@ -16,18 +16,13 @@ namespace Tests
         private ICreateMessageService _createMessageService;
         private IMessageDataAccess _messageDataAccess;
 
-        public int RandomNumber(int min, int max)
-        {
-            return _random.Next(min, max);
-        }
-
-        [SetUp]
+      [SetUp]
         public void Setup()
         {
             _dbConnection = Substitute.For<IDbConnection>();
             _messageDataAccess = Substitute.For<IMessageDataAccess>();
             _createMessageService = new CreateMessageService(_dbConnection, _messageDataAccess);         
-        }
+        }  
 
         [Test]
         public void should_add_message_sql_return()

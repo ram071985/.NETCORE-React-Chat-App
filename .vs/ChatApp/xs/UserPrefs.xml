@@ -1,33 +1,32 @@
 ﻿<Properties StartupConfiguration="{644C17CA-33CD-46C6-A0E2-4D18F090E044}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/UserUpdateTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/appsettings.Development.json">
     <Files>
-      <File FileName="Tests/AuthorizeUserTest.cs" Line="1" Column="1" />
-      <File FileName="Tests/CreateMessageTest.cs" Line="20" Column="10" />
-      <File FileName="Tests/CreateNewUserTest.cs" Line="55" Column="6" />
-      <File FileName="Tests/UserUpdateTest.cs" Line="48" Column="6" />
+      <File FileName="API/Controllers/MessagesController.cs" />
+      <File FileName="Core/Services/CreateMessageService.cs" />
+      <File FileName="Tests/CreateMessageTest.cs" Line="53" Column="14" />
+      <File FileName="API/API.csproj" Line="1" Column="1" />
+      <File FileName="Core/DataAccess/DbConnection.cs" Line="23" Column="60" />
+      <File FileName="API/Startup.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="API/appsettings.Development.json" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ChatApp" expanded="True">
-            <Node name="Core" expanded="True" />
-            <Node name="Tests" expanded="True">
-              <Node name="UserUpdateTest.cs" selected="True" />
+            <Node name="API" expanded="True">
+              <Node name="appsettings.json" expanded="True">
+                <Node name="appsettings.Development.json" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Core" expanded="True">
+              <Node name="DataAccess" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="ChatApp" expanded="True">
-            <Node name="Tests" expanded="True">
-              <Node name="Tests" expanded="True">
-                <Node name="AuthorizeUserTest" expanded="True">
-                  <Node name="should_throw_exception_when_passwords_dont_match" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="ChatApp" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
