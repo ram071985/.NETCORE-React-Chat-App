@@ -5,6 +5,7 @@ project.lock.json
 *.pyc
 *System
 *obj
+*DatabaseBackups
 
 # Visual Studio Code
 .vscode
