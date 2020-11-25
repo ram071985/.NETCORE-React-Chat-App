@@ -23,7 +23,6 @@ See my deployed version on Azure - [The Gab](https://reidchatapp.azurewebsites.n
 3.) Move to the project root directory and run `dotnet watch run`.
 
 ## Tech Stack Used
----
 * Back-End
     * ASP.NET Core 3.1
     * Npgsql
