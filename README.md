@@ -14,6 +14,14 @@ The back-end of my application was built with C# .NET Core which has been a wond
 
 See my deployed version on Azure - [The Gab](https://reidchatapp.azurewebsites.net)
 
+## Installation Instructions
+
+1.) Do a fork and clone of the repo to your local machine.
+
+2.) Navigate to the `client` directory and run `npm install`.
+
+3.) Move to the project root directory and run `dotnet watch run`.
+
 ## Tech Stack Used
 ---
 * Back-End
@@ -25,15 +33,6 @@ See my deployed version on Azure - [The Gab](https://reidchatapp.azurewebsites.n
     * React.js
     * Axios
     * Bootstrap
-
-
-## Installation Instructions
-
-1.) Do a fork and clone of the repo to your local machine.
-
-2.) Navigate to the `client` directory and run `npm install`.
-
-3.) Move to the project root directory and run `dotnet watch run`.
 
 
 ## Author 
