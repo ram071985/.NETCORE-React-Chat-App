@@ -1,7 +1,6 @@
 ﻿import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Col, Button } from "react-bootstrap";
-import "./index.css";
 import { Circle } from "react-feather";
 import { Redirect } from "react-router-dom";
 import axios from "axios";

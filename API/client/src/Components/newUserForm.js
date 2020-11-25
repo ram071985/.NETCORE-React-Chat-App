@@ -1,17 +1,9 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  Container,
   Button,
-  Card,
-  InputGroup,
-  FormControl,
   Form,
-  Col,
-  Row,
 } from "react-bootstrap";
-import "./index.css";
-import { Circle } from "react-feather";
 
 class NewUserForm extends Component {
   render() {
